@@ -1,0 +1,7 @@
+{
+  "first": ["doc1"],
+  "document": ["doc1", "doc2", "doc3"],
+  "second": ["doc2"],
+  "third": ["doc3"],
+  "this": ["doc1", "doc2", "doc3"]
+}
