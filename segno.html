@@ -51,73 +51,7 @@
         div2.style.display = 'block';
         div2.innerHTML = textarea2.value;
       }
-    }<!DOCTYPE html>
-<html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>digisegno</title>
-  <style>
-    body {
-      background-color: black;
-      color: white;
-      font-size: 2em;
-      font-family: sans-serif;
     }
-
-    .input-field {
-      background-color: #333;
-      color: #fff;
-      border: none;
-      outline: none;
-      padding: 6px;
-      border-radius: 6px;
-    }
-
-    #button1 {
-      background-color: #333;
-      color: #aaa;
-      border: none;
-      outline: none;
-      padding: 6px;
-      border-radius: 6px;
-    }
-  </style>
-  <script>
-    function initializeVisibility() {
-      var div1 = document.getElementById('div1');
-      var div2 = document.getElementById('div2');
-
-      div1.style.display = 'block';
-      div2.style.display = 'none';
-    }
-
-    function toggleDivVisibility() {
-      var div1 = document.getElementById('div1');
-      var div2 = document.getElementById('div2');
-      var textarea2 = document.getElementById('textarea2');
-
-      if (div1.style.display === 'none') {
-        div1.style.display = 'block';
-        div2.style.display = 'none';
-      } else {
-        div1.style.display = 'none';
-        div2.style.display = 'block';
-        div2.innerHTML = textarea2.value;
-      }
-    }
-  </script>
-</head>
-<body onload="initializeVisibility()">
-  <button id="button1" onclick="toggleDivVisibility()">go</button>
-
-  <div id="div1">
-    <textarea id="textarea2" class="input-field" rows="5" cols="30"></textarea><br>
-  </div>
-
-  <div id="div2"></div>
-</body>
-</html>
-
   </script>
 </head>
 <body onload="initializeVisibility()">
