@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<style-scheme id="kanonikal" _name="kanonikal" version="1.0">
+
+	<author>Matthew Grimm</author>
+	<_description>A dark colorful theme designed around my particular preferences</_description>
+
+	<!-- Color palette -->
+	<color name="bg" value="#000000" />
+	<color name="text" value="#ffffff" />
+
+	<!-- Global Settings -->
+	<style name="keyword"                     foreground="#ff0000" background="#888888" />
+	<style name="text"                        foreground="#cccccc" background="#000000" />
+	<style name="selection"                   foreground="#000000" background="#dddddd" />
+	<style name="cursor"                      foreground="#ff6600" background="#000000" bold="true" />
+	<style name="current-line"                foreground="#00ff00" background="#000000" />
+	<style name="line-numbers"                foreground="#555555" background="#000000" />
+
+	<!-- Comments -->
+	<style name="def:comment"                 foreground="#009900" background="#000000" />
+
+	<!-- Constants -->
+	<style name="def:constant"                foreground="#2266ff" background="#000000" bold="true" />
+	<style name="def:floating-point"          foreground="#2266ff" background="#000000" bold="true" />
+	<style name="def:string"                  foreground="#eeaa66" background="#000000" />
+
+	<!-- Bracket Matching -->
+	<style name="bracket-match"               foreground="aluminium1" background="aluminium3"/>
+	<style name="bracket-mismatch"            foreground="aluminium1" background="scarletred3"/>
+
+	<!-- Identifiers -->
+	<style name="def:identifier"              foreground="#66ccff" background="#000000" /> <!--  -->
+
+	<!-- Statements -->
+	<style name="def:statement"               foreground="#aa88ff" background="#000000" /> <!-- python def -->
+
+	<!-- Types -->
+	<style name="def:type"                    foreground="#77ddff" background="#000000" />
+
+	<!-- Others -->
+	<style name="def:preprocessor"            foreground="#ff5555" background="#000000" />
+
+
+</style-scheme>
