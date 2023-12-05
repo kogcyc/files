@@ -1,0 +1,10 @@
+After booting, the Raspberry Pi will be powered by the laptop.
+On the Raspberry Pi, you need to enable USB networking.
+This can typically be done by editing the config.txt file 
+on the boot partition of the SD card. Add the following lines:
+
+      dtoverlay=dwc2
+
+And in the cmdline.txt file, add the following at the end of the line:
+
+      modules-load=dwc2,g_ether
