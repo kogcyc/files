@@ -2,7 +2,7 @@
 from github import Github
 from github import Auth
 
-auth = Auth.Token("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")
+auth = Auth.Token("")
 g = Github(auth=auth)
 repo_name = "kogcyc/files"
 file_path = "aaa.html"
