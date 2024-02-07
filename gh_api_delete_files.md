@@ -14,4 +14,4 @@ repo = gitub_api.get_repo(repo_name)
 contents = repo.get_contents("")
 or file in contents:
     print(file.path)
-    repo.delete_file(file.path, "destroyed", file.sha)
+    repo.delete_file(file.path, "removed", file.sha)
