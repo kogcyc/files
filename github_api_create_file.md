@@ -6,8 +6,8 @@
     import os
     import base36
     import time
-    ss = os.getenv('SUPER_SECRET')
-    auth = Auth.Token(ss)
+    shhhh = os.getenv('SHHHH')
+    auth = Auth.Token(shhhh)
     gitub_api = Github(auth=auth)
     repo_name = "<userID>/<repoNAME>"
     repo = gitub_api.get_repo(repo_name)
