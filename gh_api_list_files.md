@@ -1,4 +1,4 @@
-## github api list files ##
+## api list files ##
 
 ```python
 from github import Github
