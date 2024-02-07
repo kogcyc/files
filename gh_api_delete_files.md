@@ -4,8 +4,6 @@
 from github import Github
 from github import Auth
 import os
-import base36
-import time
 shhhh = os.getenv('SHHHH')
 auth = Auth.Token(shhhh)
 gitub_api = Github(auth=auth)
