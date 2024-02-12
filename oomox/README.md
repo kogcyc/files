@@ -11,4 +11,4 @@ sudo apt install librsvg2-bin
 
 ./gui.sh
 
-'''
+```
