@@ -10,4 +10,5 @@ sudo apt install libglib2.0-dev
 sudo apt install librsvg2-bin
 
 ./gui.sh
+
 '''
