@@ -1,5 +1,5 @@
 ---
-slug: Hello_World
+slug: Hello I'm Glad
 img0: https://kogcyc.github.io/imago/Jersey_rainbow.svg
 ---
 ![]()
