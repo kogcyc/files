@@ -12,7 +12,7 @@ git clone https://github.com/themix-project/oomox.git --recursive
 # change into that oomox diretory
 cd ./oomox
 
-issue this command to start the application
+#issue this command to start the application
 ./gui.sh
 
 ```
