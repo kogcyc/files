@@ -26,7 +26,7 @@
 	<style name="def:string"                  foreground="#ddc261" background="#000000" />
 
 	<!-- Bracket Matching -->
-	<style name="bracket-match"               foreground="aluminium1" background="aluminium3"/>
+	<style name="bracket-match"               foreground="#aaffff" background="#aaffff"/>
 	<style name="bracket-mismatch"            foreground="#ff0000" background="#ff0000"/>
 
 	<!-- Identifiers -->
