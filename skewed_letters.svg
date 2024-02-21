@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="angle_letter.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.31559402"
+     inkscape:cx="82.384325"
+     inkscape:cy="511.7334"
+     inkscape:window-width="1280"
+     inkscape:window-height="658"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#c6a848;stroke-width:0.210035;fill-opacity:1"
+       id="rect11594"
+       width="58.9333"
+       height="82.916023"
+       x="75.476318"
+       y="75.859299"
+       rx="3.9938178"
+       ry="3.9446471"
+       transform="matrix(0.98768834,0.15643447,0,1,0,0)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:55.2385px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.38097"
+       x="82.275696"
+       y="137.45172"
+       id="text2235"
+       transform="skewY(9)"><tspan
+         sodipodi:role="line"
+         id="tspan2233"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffffff;stroke-width:1.38097"
+         x="82.275696"
+         y="137.45172">B</tspan></text>
+    <rect
+       style="fill:#536df2;stroke-width:0.210035;fill-opacity:1"
+       id="rect11594-0"
+       width="58.9333"
+       height="82.916023"
+       x="16.54302"
+       y="79.89431"
+       rx="3.9938178"
+       ry="3.9446471"
+       transform="matrix(0.98768834,-0.15643447,0,1,0,0)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:55.2385px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.38097"
+       x="24.067984"
+       y="141.48686"
+       id="text2235-0"
+       transform="skewY(-9)"><tspan
+         sodipodi:role="line"
+         id="tspan2233-3"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffffff;stroke-width:1.38097"
+         x="24.067984"
+         y="141.48686">A</tspan></text>
+    <rect
+       style="fill:#9e5b75;stroke-width:0.210035;fill-opacity:1"
+       id="rect11594-3"
+       width="58.9333"
+       height="82.916023"
+       x="134.40964"
+       y="98.332726"
+       rx="3.9938178"
+       ry="3.9446471"
+       transform="matrix(0.98768834,-0.15643447,0,1,0,0)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:55.2385px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.38097"
+       x="140.48344"
+       y="159.92528"
+       id="text2235-9"
+       transform="skewY(-9)"><tspan
+         sodipodi:role="line"
+         id="tspan2233-5"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffffff;stroke-width:1.38097"
+         x="140.48344"
+         y="159.92528">C</tspan></text>
+  </g>
+</svg>
