@@ -1,3 +1,5 @@
+// while inotifywait -e close_write ball.pov; do povray ball.pov +A0.1; done
+
 camera {
   location <400, 400, -10000>
   look_at <400, 400, 0>
