@@ -5,6 +5,8 @@
 	<author>Matthew Grimm</author>
 	<_description>A dark colorful theme designed around my particular preferences</_description>
 
+        <!-- /usr/share/gtksourceview-4/styles -->
+
 	<!-- Color palette -->
 	<color name="bg" value="#000000" />
 	<color name="text" value="#6880F3" />

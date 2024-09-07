@@ -1,3 +1,0 @@
-Enter: installer -pkg  /Volumes/Mac\ OS\ X\ Install\ DVD/Packages/OSInstall.mpkg -target /Volumes/"XXX" where XXX is the name of the disk you're installing to.
-
-Press return and wait for the installation to say it's complete. You will not see any sort of progress display.
