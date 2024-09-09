@@ -5,7 +5,7 @@
   <!-- Blur Filter -->
   <defs>
     <filter id="blur" width="250" height="250">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="35" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
     </filter>
   </defs>
 
@@ -14,6 +14,6 @@
     <circle cx="0" cy="0" r="100" stroke="#000" stroke-width="0" fill="#004080" />
 
     <!-- Smaller white circle with blur effect -->
-    <circle cx="0" cy="0" r="50" fill="white" filter="url(#blur)" />
+    <circle cx="30" cy="30" r="50" fill="white" filter="url(#blur)" />
   </g>
 </svg>
