@@ -4,8 +4,8 @@
 
   <!-- Blur Filter -->
   <defs>
-    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
+    <filter id="blur" x="-60%" y="-60%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="25" />
     </filter>
   </defs>
 
