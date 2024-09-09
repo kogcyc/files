@@ -1,11 +1,19 @@
 <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#ace" />
 
-<rect width="400" height="400" fill="#ace" />
+  <!-- Blur Filter -->
+  <defs>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+    </filter>
+  </defs>
 
-<g transform="translate(200,200) scale(1,-1)">
+  <g transform="translate(200,200) scale(1,-1)">
+    <!-- Filled dark blue circle -->
+    <circle cx="0" cy="0" r="100" stroke="#000" stroke-width="5" fill="#004080" />
 
-<circle cx="0" cy="0" r="100" stroke="#000" stroke-width="5" fill="none" />
-
-</g>
-
+    <!-- Smaller white circle with blur effect -->
+    <circle cx="0" cy="0" r="50" fill="white" filter="url(#blur)" />
+  </g>
 </svg>
