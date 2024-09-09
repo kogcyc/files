@@ -4,7 +4,7 @@
 
   <!-- Blur Filter -->
   <defs>
-    <filter id="blur" x="40" y="40" width="300" height="300">
+    <filter id="blur" width="300" height="300">
       <feGaussianBlur in="SourceGraphic" stdDeviation="35" />
     </filter>
   </defs>
