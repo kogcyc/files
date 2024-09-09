@@ -1,6 +1,6 @@
 <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
 
-<rect width="400" height="400" fill="#5e5c64" />
+<rect width="400" height="400" fill="#ace" />
 
 <g transform="translate(200,200) scale(1,-1)">
 
