@@ -13,7 +13,7 @@ sudo apt install python3-github
 
 ### how to fix LightDM ###
 
-[greeter]
+/[greeter]/
 background = /aaa/camo1.png
 theme-name = green
 icon-theme-name = ePapirus-Dark
