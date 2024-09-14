@@ -1,3 +1,5 @@
+####make####
+
 convert -size 1920x1080 xc:none transparent_image.png
 
 export MY_VAR=bigLONGstring
