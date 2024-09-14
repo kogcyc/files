@@ -11,9 +11,14 @@ theme-name = green
 icon-theme-name = ePapirus-Dark
 user-background = false
 position = 50%,center 35%,center
+
 sudo mousepad /etc/lightdm/lightdm-gtk-greeter.conf
+
+cd /usr/share/themes/
+sudo thunar
 
 /usr/share/gtksourceview-4/styles/
 sudo wget https://kogcyc.github.io/files/kanonikal.xml
 
-
+cd /usr/share/themes/
+sudo thunar
