@@ -1,10 +1,10 @@
 ### make a transparent PNG ###
 
-convert -size 1920x1080 xc:none transparent_image.png
+    convert -size 1920x1080 xc:none transparent_image.png
 
 ### make and environment variable ###
 
-export MY_VAR=bigLONGstring
+    export MY_VAR=bigLONGstring
 put it in .bashrc if you want it permanent
 
 ### install python github module ###
