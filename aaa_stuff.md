@@ -13,12 +13,12 @@ sudo apt install python3-github
 
 ### how to fix LightDM ###
 
-/[greeter]/
-background = /aaa/camo1.png
-theme-name = green
-icon-theme-name = ePapirus-Dark
-user-background = false
-position = 50%,center 35%,center
+    [greeter]
+    background = /aaa/camo1.png
+    theme-name = green
+    icon-theme-name = ePapirus-Dark
+    user-background = false
+    position = 50%,center 35%,center
 
 sudo mousepad /etc/lightdm/lightdm-gtk-greeter.conf
 
