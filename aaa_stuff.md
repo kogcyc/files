@@ -2,7 +2,7 @@
 
     convert -size 1920x1080 xc:none transparent_image.png
 
-### make and environment variable ###
+### make an environment variable ###
 
     export MY_VAR=bigLONGstring
 put it in .bashrc if you want it permanent
