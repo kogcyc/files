@@ -1,3 +1,20 @@
+Explanation:
+
+    Functions:
+        rivit_radius_polygon: Computes the circumradius of a regular polygon based on the number of teeth.
+        angle_range: Generates an array of angles for the rotation of each tooth.
+
+    Modules:
+        conditional_extrude: Handles the extrusion of shapes, allowing for dynamic switching between 2D and 3D output based on the is_2D flag.
+
+    Main Block:
+        Colors the shape with a grey shade.
+        Uses the difference() function to subtract areas from the main body.
+        Adds outer and inner circles and places each tooth in a loop using rotation and translation to position them correctly.
+
+
+
+
 ```openscad
 
 // Toggle between 2D and 3D output
