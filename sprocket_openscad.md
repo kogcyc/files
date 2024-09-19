@@ -1,4 +1,4 @@
-Explanation:
+### openscad bicycle sprocket: ###
 
     Functions:
         rivit_radius_polygon: Computes the circumradius of a regular polygon based on the number of teeth.
