@@ -1,3 +1,5 @@
+```openscad
+
 // Toggle between 2D and 3D output
 is_2D = true;  // Set this to 'false' for 3D output
 
@@ -65,3 +67,5 @@ difference() {
         circle(r = circumradius - 12, $fn = 100);  // Inner circle
     }
 }
+
+```
