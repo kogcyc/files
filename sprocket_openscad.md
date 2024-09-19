@@ -5,7 +5,8 @@
         angle_range: Generates an array of angles for the rotation of each tooth.
 
     Modules:
-        conditional_extrude: Handles the extrusion of shapes, allowing for dynamic switching between 2D and 3D output based on the is_2D flag.
+        conditional_extrude: Handles the extrusion of shapes, allowing for dynamic switching between 2D and 3D output 
+        based on the is_2D flag.
 
     Main Block:
         Colors the shape with a grey shade.
