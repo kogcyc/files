@@ -11,7 +11,8 @@
     Main Block:
         Colors the shape with a grey shade.
         Uses the difference() function to subtract areas from the main body.
-        Adds outer and inner circles and places each tooth in a loop using rotation and translation to position them correctly.
+        Adds outer and inner circles and places each tooth in a loop using rotation and translation 
+        to position them correctly.
 
 
 
