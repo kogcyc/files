@@ -38,3 +38,9 @@ put it in .bashrc if you want it permanent
     make -f po.mk install
     pip3 install colorz colorthief haishoku pystache PyYAML --break-system-packages
     ./gui.sh 
+
+### git name email
+
+    git config --global user.email "kogcyc@gmail.com"
+    git config --global user.name "Matthew"
+    
