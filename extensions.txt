@@ -1,0 +1,1 @@
+Unique file extensions: ['.AppImage', '.csv', '.desktop', '.gz', '.html', '.inc', '.jpg', '.pdf', '.png', '.pov', '.py', '.scad', '.stl', '.svg', '.zip']
