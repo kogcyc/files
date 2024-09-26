@@ -1,4 +1,4 @@
-Bright Red 	91 	101
+Bright Red 	  91 	101
 Bright Green 	92 	102
 Bright Yellow 	93 	103
 Bright Blue 	94 	104
