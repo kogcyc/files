@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+
+import sys
+from math import *
+
+def calculate(expression):
+    try:
+        # Use eval to evaluate the mathematical expression
+        result = eval(expression)
+        return result
+    except Exception as e:
+        return f"Error: {e}"
+
+if __name__ == "__main__":
+    # Check if an expression is passed
+    if len(sys.argv) > 1:
+        # sys.argv[1] will contain the expression passed as argument
+        expression = sys.argv[1]
+        print(calculate(expression))
+    else:
+        print("Usage: kalk '<math expression>'")
