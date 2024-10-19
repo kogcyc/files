@@ -44,3 +44,6 @@ put it in .bashrc if you want it permanent
     git config --global user.email "kogcyc@gmail.com"
     git config --global user.name "Matthew"
     
+### add user to sudoers
+
+    usermod -aG sudo username
