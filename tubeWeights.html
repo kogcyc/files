@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tube Weight Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .tube-calculator {
+            border: 1px solid #ccc;
+            padding: 15px;
+            width: 300px;
+            border-radius: 8px;
+        }
+        .tube-calculator label {
+            display: block;
+            margin: 8px 0 4px;
+        }
+        .tube-calculator input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Tube Weight Calculator</h1>
+<p>Enter the length, outer diameter, and wall thickness of two tubes to compare their weights.</p>
+
+<div class="container">
+    <div class="tube-calculator" id="tube1">
+        <h2>Tube 1</h2>
+        <label for="length1">Length (mm):</label>
+        <input type="number" id="length1" value="1000" min="0" step="0.1">
+        
+        <label for="od1">Outer Diameter (OD) (mm):</label>
+        <input type="number" id="od1" value="50" min="0" step="0.1">
+        
+        <label for="wall1">Wall Thickness (mm):</label>
+        <input type="number" id="wall1" value="2" min="0" step="0.1">
+        
+        <button onclick="calculateWeight(1)">Calculate Weight</button>
+        <p class="result" id="result1">Weight: - g</p>
+    </div>
+    
+    <div class="tube-calculator" id="tube2">
+        <h2>Tube 2</h2>
+        <label for="length2">Length (mm):</label>
+        <input type="number" id="length2" value="1000" min="0" step="0.1">
+        
+        <label for="od2">Outer Diameter (OD) (mm):</label>
+        <input type="number" id="od2" value="40" min="0" step="0.1">
+        
+        <label for="wall2">Wall Thickness (mm):</label>
+        <input type="number" id="wall2" value="1.5" min="0" step="0.1">
+        
+        <button onclick="calculateWeight(2)">Calculate Weight</button>
+        <p class="result" id="result2">Weight: - g</p>
+    </div>
+</div>
+
+<script>
+    const density = 0.00785; // g/mm^3 for steel, adjust as needed
+
+    function calculateWeight(tubeNumber) {
+        const length = parseFloat(document.getElementById(`length${tubeNumber}`).value);
+        const outerDiameter = parseFloat(document.getElementById(`od${tubeNumber}`).value);
+        const wall = parseFloat(document.getElementById(`wall${tubeNumber}`).value);
+
+        if (isNaN(length) || isNaN(outerDiameter) || isNaN(wall)) {
+            alert("Please enter valid values for all dimensions.");
+            return;
+        }
+
+        const innerDiameter = outerDiameter - 2 * wall;
+        const volume = length * Math.PI * (Math.pow(outerDiameter / 2, 2) - Math.pow(innerDiameter / 2, 2));
+        const weight = volume * density;
+
+        document.getElementById(`result${tubeNumber}`).textContent = `Weight: ${weight.toFixed(2)} g`;
+    }
+</script>
+
+</body>
+</html>
