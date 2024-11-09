@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tube Weight Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .tube-calculator {
+            border: 1px solid #ccc;
+            padding: 15px;
+            width: 300px;
+            border-radius: 8px;
+        }
+        .tube-calculator label {
+            display: block;
+            margin: 8px 0 4px;
+        }
+        .tube-calculator input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .tube-calculator select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .result {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Tube Weight Calculator</h1>
+<p>Select material, enter dimensions, and calculate the weight of both straight and butted tubes.</p>
+
+<div class="container">
+    <div class="tube-calculator" id="straightTube">
+        <h2>Straight Tube</h2>
+        <label for="materialStraight">Material:</label>
+        <select id="materialStraight">
+            <option value="0.00785">Steel</option>
+            <option value="0.0027">Aluminum</option>
+            <option value="0.0045">Titanium</option>
+        </select>
+        
+        <label for="lengthStraight">Length (mm):</label>
+        <input type="number" id="lengthStraight" value="600" min="0" step="0.1">
+        
+        <label for="diameterStraight">Outer Diameter (mm):</label>
+        <input type="number" id="diameterStraight" value="25.4" min="0" step="0.1">
+        
+        <label for="wallStraight">Wall Thickness (mm):</label>
+        <input type="number" id="wallStraight" value="0.8" min="0" step="0.1">
+        
+        <button onclick="calculateStraightTube()">Calculate Weight</button>
+        <p class="result" id="resultStraight">Weight: - g</p>
+    </div>
+    
+    <div class="tube-calculator" id="buttedTube">
+        <h2>Butted Tube</h2>
+        <label for="materialButted">Material:</label>
+        <select id="materialButted">
+            <option value="0.00785">Steel</option>
+            <option value="0.0027">Aluminum</option>
+            <option value="0.0045">Titanium</option>
+        </select>
+        
+        <label for="totalLengthButted">Total Length (mm):</label>
+        <input type="number" id="totalLengthButted" value="600" min="0" step="0.1">
+        
+        <label for="diameterButted">Outer Diameter (mm):</label>
+        <input type="number" id="diameterButted" value="25.4" min="0" step="0.1">
+        
+        <label for="buttLength1">Thick End Length 1 (mm):</label>
+        <input type="number" id="buttLength1" value="100" min="0" step="0.1">
+        
+        <label for="buttLength2">Thick End Length 2 (mm):</label>
+        <input type="number" id="buttLength2" value="100" min="0" step="0.1">
+        
+        <label for="transLength1">Transition Length 1 (mm):</label>
+        <input type="number" id="transLength1" value="40" min="0" step="0.1">
+        
+        <label for="transLength2">Transition Length 2 (mm):</label>
+        <input type="number" id="transLength2" value="40" min="0" step="0.1">
+        
+        <label for="wallButt">Wall Thickness of Thick Ends (mm):</label>
+        <input type="number" id="wallButt" value="0.8" min="0" step="0.1">
+        
+        <label for="wallThin">Wall Thickness of Thin Middle Section (mm):</label>
+        <input type="number" id="wallThin" value="0.5" min="0" step="0.1">
+        
+        <button onclick="calculateButtedTube()">Calculate Weight</button>
+        <p class="result" id="resultButted">Weight: - g</p>
+    </div>
+</div>
+
+<script>
+    // Function to calculate the volume of a straight tube
+    function volSTRAIGHTmat(length, diameter, wall) {
+        return length * Math.PI * (Math.pow(diameter / 2, 2) - Math.pow((diameter - wall * 2) / 2, 2));
+    }
+
+    // Function to calculate the volume of a butted tube with five zones
+    function volBUTTEDmat(totalLength, diameter, buttLength1, buttLength2, transLength1, transLength2, wallBUTT, wallTHIN) {
+        const vb1 = volSTRAIGHTmat(buttLength1, diameter, wallBUTT);
+        const vb2 = volSTRAIGHTmat(buttLength2, diameter, wallBUTT);
+        
+        const vt1 = (volSTRAIGHTmat(transLength1, diameter, wallBUTT) + volSTRAIGHTmat(transLength1, diameter, wallTHIN)) / 2;
+        const vt2 = (volSTRAIGHTmat(transLength2, diameter, wallBUTT) + volSTRAIGHTmat(transLength2, diameter, wallTHIN)) / 2;
+        
+        const middleLength = totalLength - (buttLength1 + buttLength2 + transLength1 + transLength2);
+        const vthin = volSTRAIGHTmat(middleLength, diameter, wallTHIN);
+        
+        return vb1 + vb2 + vt1 + vt2 + vthin;
+    }
+
+    // Calculate weight for a straight tube
+    function calculateStraightTube() {
+        const length = parseFloat(document.getElementById("lengthStraight").value);
+        const diameter = parseFloat(document.getElementById("diameterStraight").value);
+        const wall = parseFloat(document.getElementById("wallStraight").value);
+        const density = parseFloat(document.getElementById("materialStraight").value);
+        
+        const volume = volSTRAIGHTmat(length, diameter, wall);
+        const weight = volume * density;
+        
+        document.getElementById("resultStraight").textContent = `Weight: ${weight.toFixed(2)} g`;
+    }
+
+    // Calculate weight for a butted tube
+    function calculateButtedTube() {
+        const totalLength = parseFloat(document.getElementById("totalLengthButted").value);
+        const diameter = parseFloat(document.getElementById("diameterButted").value);
+        const buttLength1 = parseFloat(document.getElementById("buttLength1").value);
+        const buttLength2 = parseFloat(document.getElementById("buttLength2").value);
+        const transLength1 = parseFloat(document.getElementById("transLength1").value);
+        const transLength2 = parseFloat(document.getElementById("transLength2").value);
+        const wallBUTT = parseFloat(document.getElementById("wallButt").value);
+        const wallTHIN = parseFloat(document.getElementById("wallThin").value);
+        const density = parseFloat(document.getElementById("materialButted").value);
+        
+        const volume = volBUTTEDmat(totalLength, diameter, buttLength1, buttLength2, transLength1, transLength2, wallBUTT, wallTHIN);
+        const weight = volume * density;
+        
+        document.getElementById("resultButted").textContent = `Weight: ${weight.toFixed(2)} g`;
+    }
+</script>
+
+</body>
+</html>
