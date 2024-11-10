@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tube Deflection and Weight Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { display: flex; justify-content: space-around; margin-top: 20px; }
+        .calculator { max-width: 400px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        input, select, button { width: 100%; padding: 8px; margin: 8px 0; }
+        button { background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        .result { margin-top: 20px; font-size: 1.2em; color: #333; }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align: center;">Tube Deflection and Weight Calculator</h2>
+<p style="text-align: center;">Compare two tubes by weight and deflection</p>
+
+<div class="container">
+    <!-- Calculator 1 -->
+    <div class="calculator">
+        <h3>Calculator 1</h3>
+        <label for="length1">Length of Tube (mm):</label>
+        <input type="number" id="length1" step="0.01" required>
+
+        <label for="outerDiameter1">Outer Diameter (mm):</label>
+        <input type="number" id="outerDiameter1" required>
+
+        <label for="wallThickness1">Wall Thickness (mm):</label>
+        <input type="number" id="wallThickness1" required>
+
+        <label for="load1">Load (kg):</label>
+        <input type="number" id="load1" required>
+
+        <label for="material1">Material:</label>
+        <select id="material1">
+            <option value="steel">Steel</option>
+            <option value="aluminum">6061 Aluminum</option>
+            <option value="titanium">Titanium</option>
+        </select>
+
+        <button onclick="calculateTubeProperties(1)">Calculate</button>
+
+        <div class="result" id="result1"></div>
+    </div>
+
+    <!-- Calculator 2 -->
+    <div class="calculator">
+        <h3>Calculator 2</h3>
+        <label for="length2">Length of Tube (mm):</label>
+        <input type="number" id="length2" step="0.01" required>
+
+        <label for="outerDiameter2">Outer Diameter (mm):</label>
+        <input type="number" id="outerDiameter2" required>
+
+        <label for="wallThickness2">Wall Thickness (mm):</label>
+        <input type="number" id="wallThickness2" required>
+
+        <label for="load2">Load (kg):</label>
+        <input type="number" id="load2" required>
+
+        <label for="material2">Material:</label>
+        <select id="material2">
+            <option value="steel">Steel</option>
+            <option value="aluminum">6061 Aluminum</option>
+            <option value="titanium">Titanium</option>
+        </select>
+
+        <button onclick="calculateTubeProperties(2)">Calculate</button>
+
+        <div class="result" id="result2"></div>
+    </div>
+</div>
+
+<script>
+    // Material densities (g/mm³)
+    const densities = {
+        steel: 0.00785,
+        aluminum: 0.0027,
+        titanium: 0.00443
+    };
+
+    // Material Young's modulus (Pa)
+    const youngModulus = {
+        steel: 210e9,
+        aluminum: 69e9,
+        titanium: 110e9
+    };
+
+    function calculateTubeProperties(calculatorNumber) {
+        const lengthMm = parseFloat(document.getElementById(`length${calculatorNumber}`).value); // Length in mm
+        const outerDiameter = parseFloat(document.getElementById(`outerDiameter${calculatorNumber}`).value) / 1000; // Convert to meters
+        const wallThickness = parseFloat(document.getElementById(`wallThickness${calculatorNumber}`).value) / 1000; // Convert to meters
+        const loadKg = parseFloat(document.getElementById(`load${calculatorNumber}`).value); // Load in kg
+        const material = document.getElementById(`material${calculatorNumber}`).value;
+
+        if (isNaN(lengthMm) || isNaN(outerDiameter) || isNaN(wallThickness) || isNaN(loadKg) || lengthMm <= 0 || outerDiameter <= 0 || wallThickness <= 0 || wallThickness * 2 >= outerDiameter) {
+            document.getElementById(`result${calculatorNumber}`).textContent = "Please enter valid dimensions.";
+            return;
+        }
+
+        // Convert length from mm to meters for calculations
+        const length = lengthMm / 1000;
+
+        // Convert load from kg to Newtons (N)
+        const load = loadKg * 9.81;
+
+        // Calculate inner diameter
+        const innerDiameter = outerDiameter - 2 * wallThickness;
+
+        // Calculate the moment of inertia I
+        const I = (Math.PI * (Math.pow(outerDiameter, 4) - Math.pow(innerDiameter, 4))) / 64;
+
+        // Calculate the deflection in meters, then convert to mm
+        const deflectionMeters = (load * Math.pow(length, 3)) / (48 * youngModulus[material] * I);
+        const deflectionMm = deflectionMeters * 1000; // Convert to mm
+
+        // Calculate volume in mm³ for weight calculation
+        const volume = Math.PI * lengthMm * ((outerDiameter * 1000 / 2) ** 2 - (innerDiameter * 1000 / 2) ** 2); // mm³
+
+        // Calculate weight in grams
+        const weight = volume * densities[material];
+
+        // Display results
+        document.getElementById(`result${calculatorNumber}`).innerHTML = `
+            <strong>Deflection:</strong> ${deflectionMm.toFixed(4)} mm<br>
+            <strong>Weight:</strong> ${weight.toFixed(2)} grams
+        `;
+    }
+</script>
+
+</body>
+</html>
