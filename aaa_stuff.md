@@ -32,17 +32,24 @@ put it in .bashrc if you want it permanent
 
 ### how to install oomox ###
 
-    git clone https://github.com/themix-project/oomox.git --recursive
-    
-    cd oomox/
-    
-    sudo apt update && sudo apt install -y libgtk-3-dev python3-gi libgdk-pixbuf2.0-dev sassc librsvg2-bin libglib2.0-bin
-    
-    make -f po.mk install
-    
-    pip3 install colorz colorthief haishoku pystache PyYAML --break-system-packages
-    
-    ./gui.sh 
+    https://github.com/themix-project/oomox-gtk-theme?tab=readme-ov-file
+
+    ./change_color.sh -o zzz <(echo -e "
+    BG=224466
+    FG=ffffff
+    BTN_BG=446688
+    BTN_FG=ffffff
+    HDR_BTN_BG=1a5fb4
+    HDR_BTN_FG=ffffff
+    HDR_BG=224466
+    HDR_FG=ffffff
+    SEL_BG=bb7700
+    SEL_FG=ffffff
+    TXT_BG=882211
+    TXT_FG=ffffff
+    WM_BORDER_FOCUS=777777
+    WM_BORDER_UNFOCUS=777777
+    ")
 
 ### git name email
 
