@@ -44,7 +44,7 @@ put it in .bashrc if you want it permanent
     HDR_BG=224466
     HDR_FG=ffffff
     SEL_BG=bb7700
-    SEL_FG=ffffff
+    SEL_FG=ffffff       <<--- controls the color of the text under desktop icons
     TXT_BG=882211
     TXT_FG=ffffff
     WM_BORDER_FOCUS=777777
