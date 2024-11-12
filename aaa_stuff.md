@@ -32,7 +32,7 @@ put it in .bashrc if you want it permanent
 
 ### how to install oomox ###
 
-    https://github.com/themix-project/oomox-gtk-theme?tab=readme-ov-file
+    git clone https://github.com/themix-project/oomox-gtk-theme.git
 
     ./change_color.sh -o zzz <(echo -e "
     BG=224466
