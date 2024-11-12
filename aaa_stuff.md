@@ -51,6 +51,10 @@ put it in .bashrc if you want it permanent
     WM_BORDER_UNFOCUS=777777
     ")
 
+
+
+    https://github.com/PapirusDevelopmentTeam/papirus-folders?tab=readme-ov-file#script-usage
+
 ### git name email
 
     git config --global user.email "kogcyc@gmail.com"
