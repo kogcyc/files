@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>chainring and chain Calculator</title>
+  <style>
+    html {
+      font-family: monospace;
+      color: #fff;
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>chainring to sprocket distance calculator</h1>
+  
+  <label for="chainring1">teeth on front chainring:</label>
+  <input type="number" id="chainring1" required><br><br>
+  
+  <label for="chainring2">teeth on rear sprocket:</label>
+  <input type="number" id="chainring2" required><br><br>
+  
+  <label for="chain">number of links in the chain:</label>
+  <input type="number" id="chain" required><br><br>
+  
+  <button onclick="calculateDistance()">calculate chainring to sprocket distance</button>
+
+  <h2>Result:</h2>
+  <p id="output"></p>
+
+  <script>
+    // Constant unit length in mm
+    const unitLength = 12.7;
+
+    // chain length calculation function for open chain
+    function openchainLength(D, radius1, radius2) {
+      const theta1 = Math.asin((radius1 - radius2) / D);
+      const theta2 = Math.asin((radius2 - radius1) / D);
+      const length = 2 * Math.sqrt(D * D - (radius1 - radius2) ** 2) +
+                     Math.PI * (radius1 + radius2) +
+                     2 * (radius1 * theta1 + radius2 * theta2);
+      return length;
+    }
+
+    // Bisection method to solve for D
+    function solveForD(radius1, radius2, targetLength, tolerance = 1e-5, maxIterations = 100) {
+      let lower = radius1 + radius2; // Minimum possible D to avoid zero division
+      let upper = 1000; // Arbitrary upper bound
+      let D, currentLength;
+
+      for (let i = 0; i < maxIterations; i++) {
+        D = (lower + upper) / 2;
+        currentLength = openchainLength(D, radius1, radius2);
+
+        if (Math.abs(currentLength - targetLength) < tolerance) {
+          return D;
+        }
+
+        if (currentLength < targetLength) {
+          lower = D;
+        } else {
+          upper = D;
+        }
+      }
+
+      // If we reach max iterations, return the closest value found
+      return D;
+    }
+
+    // Function to get input values and perform calculation
+    function calculateDistance() {
+      // Get user inputs
+      const chainringUnits1 = parseFloat(document.getElementById("chainring1").value);
+      const chainringUnits2 = parseFloat(document.getElementById("chainring2").value);
+      const chainUnits = parseFloat(document.getElementById("chain").value);
+
+      if (isNaN(chainringUnits1) || isNaN(chainringUnits2) || isNaN(chainUnits)) {
+        document.getElementById("output").textContent = "Please enter valid numbers for all fields.";
+        return;
+      }
+
+      // Convert to actual lengths in mm
+      const circumference1 = chainringUnits1 * unitLength;
+      const circumference2 = chainringUnits2 * unitLength;
+      const chainLength = chainUnits * unitLength;
+
+      // Calculate radii
+      const radius1 = circumference1 / (2 * Math.PI);
+      const radius2 = circumference2 / (2 * Math.PI);
+
+      // Calculate D
+      const D_final = solveForD(radius1, radius2, chainLength);
+
+      // Display result
+      document.getElementById("output").textContent = `distance from chainring to sprocket: ${D_final.toFixed(0)} mm`;
+    }
+  </script>
+</body>
+</html>
