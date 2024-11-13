@@ -14,7 +14,7 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 0;
+            margin: 20px;
         }
         h1 {
             font-size: 1.5em;
@@ -46,7 +46,8 @@
 </head>
 <body>
 
-    <h1>Chainring-to-Sprocket Distance Calculator</h1>
+    <h1>Chainring-to-Sprocket</h1>
+    <h1>Distance Calculator</h1>
 
     <label for="chainring">Front Chainring Teeth:</label>
     <input type="number" id="chainring" min="1" required>
@@ -54,7 +55,7 @@
     <label for="sprocket">Rear Sprocket Teeth:</label>
     <input type="number" id="sprocket" min="1" required>
 
-    <label for="links">Number of Links:</label>
+    <label for="links">Number of Chain Links:</label>
     <input type="number" id="links" min="1" required>
 
     <button onclick="calculateDistance()">Calculate</button>
@@ -98,7 +99,7 @@
             }
 
             document.getElementById('result').textContent = 
-                `Center Distance: ${centerDistance.toFixed(2)} mm`;
+                `Distance: ${centerDistance.toFixed(0)} mm`;
         }
     </script>
 </body>
