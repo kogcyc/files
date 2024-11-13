@@ -1,113 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chainring and Sprocket Distance Calculator</title>
-  <style>
-    html {
-      font-family: monospace;
-      color: #fff;
-      background-color: #222;
-    }
-    input, button {
-      background-color: #000;
-      color: #fff;
-      border: 2mm solid #000;
-      border-radius: 5px;
-    }
-    button {
-      background-color: #400;
-      border: 2mm solid #400;
-    }
-    #output {
-      color: #0a0;
-    }    
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chainring-to-Sprocket Distance Calculator</title>
+    <style>
+        body {
+            font-family: monospace;
+            color: white;
+            background-color: #121212;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        label, input, button {
+            font-size: 1em;
+            margin: 0.2em;
+        }
+        input, button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.5em;
+            border-radius: 5px;
+        }
+        button {
+            cursor: pointer;
+            margin-top: 1em;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        #result {
+            margin-top: 1em;
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
-  <h2>Chainring to Sprocket Distance Calculator</h2>
-  
-  <label for="chainring1">Teeth on front chainring:</label>
-  <input type="number" id="chainring1" required><br><br>
-  
-  <label for="chainring2">Teeth on rear sprocket:</label>
-  <input type="number" id="chainring2" required><br><br>
-  
-  <label for="chain">Number of links in the chain:</label>
-  <input type="number" id="chain" required><br><br>
-  
-  <button onclick="calculateDistance()">Calculate Chainring to Sprocket Distance</button>
 
-  <h2>Result:</h2>
-  <h2 id="output"></h2>
+    <h1>Chainring-to-Sprocket Distance Calculator</h1>
 
-  <script>
-    // Constant unit length in mm
-    const unitLength = 12.7;
+    <label for="chainring">Front Chainring Teeth:</label>
+    <input type="number" id="chainring" min="1" required>
 
-    // Chain length calculation function for open chain
-    function calculateChainLength(D, radius1, radius2) {
-      const theta1 = Math.asin((radius1 - radius2) / D);
-      const theta2 = Math.asin((radius2 - radius1) / D);
-      const length = 2 * Math.sqrt(D * D - (radius1 - radius2) ** 2) +
-                     Math.PI * (radius1 + radius2) +
-                     2 * (radius1 * theta1 + radius2 * theta2);
-      return length;
-    }
+    <label for="sprocket">Rear Sprocket Teeth:</label>
+    <input type="number" id="sprocket" min="1" required>
 
-    // Bisection method to solve for D
-    function solveForD(radius1, radius2, targetLength, tolerance = 1e-5, maxIterations = 100) {
-      let lower = radius1 + radius2; // Minimum possible D to avoid zero division
-      let upper = 1000; // Arbitrary upper bound
-      let D, currentLength;
+    <label for="links">Number of Links:</label>
+    <input type="number" id="links" min="1" required>
 
-      for (let i = 0; i < maxIterations; i++) {
-        D = (lower + upper) / 2;
-        currentLength = calculateChainLength(D, radius1, radius2);
+    <button onclick="calculateDistance()">Calculate</button>
 
-        if (Math.abs(currentLength - targetLength) < tolerance) {
-          return D;
+    <div id="result"></div>
+
+    <script>
+        function chainLength(chainringTeeth, sprocketTeeth, centerDistance) {
+            const pitch = 12.7;  // Chain pitch in mm
+            const chainringRadius = (pitch * chainringTeeth) / (2 * Math.PI);
+            const sprocketRadius = (pitch * sprocketTeeth) / (2 * Math.PI);
+            const halfChainLength = 2 * centerDistance + 
+                                    2 * (chainringRadius + sprocketRadius) + 
+                                    (chainringRadius - sprocketRadius) ** 2 / (2 * centerDistance);
+            return halfChainLength;
         }
 
-        if (currentLength < targetLength) {
-          lower = D;
-        } else {
-          upper = D;
+        function calculateDistance() {
+            const chainring = parseInt(document.getElementById('chainring').value);
+            const sprocket = parseInt(document.getElementById('sprocket').value);
+            const links = parseInt(document.getElementById('links').value);
+
+            if (isNaN(chainring) || isNaN(sprocket) || isNaN(links)) {
+                document.getElementById('result').textContent = "Please enter valid numbers.";
+                return;
+            }
+
+            const chainLengthTarget = links * 12.7; // Chain pitch in mm * number of links
+            let lower = 0;  // Initial lower bound
+            let upper = 500;  // Initial upper bound for distance in mm
+            let centerDistance = 0;
+
+            while (upper - lower > 0.01) {
+                centerDistance = (lower + upper) / 2;
+                const currentLength = chainLength(chainring, sprocket, centerDistance);
+                if (currentLength < chainLengthTarget) {
+                    lower = centerDistance;
+                } else {
+                    upper = centerDistance;
+                }
+            }
+
+            document.getElementById('result').textContent = 
+                `Center Distance: ${centerDistance.toFixed(2)} mm`;
         }
-      }
-
-      // If we reach max iterations, return the closest value found
-      return D;
-    }
-
-    // Function to get input values and perform calculation
-    function calculateDistance() {
-      // Get user inputs
-      const chainringUnits1 = parseFloat(document.getElementById("chainring1").value);
-      const chainringUnits2 = parseFloat(document.getElementById("chainring2").value);
-      const chainUnits = parseFloat(document.getElementById("chain").value);
-
-      if (isNaN(chainringUnits1) || isNaN(chainringUnits2) || isNaN(chainUnits)) {
-        document.getElementById("output").textContent = "Please enter valid numbers for all fields.";
-        return;
-      }
-
-      // Convert to actual lengths in mm
-      const circumference1 = chainringUnits1 * unitLength;
-      const circumference2 = chainringUnits2 * unitLength;
-      const chainLength = chainUnits * unitLength;
-
-      // Calculate radii
-      const radius1 = circumference1 / (2 * Math.PI);
-      const radius2 = circumference2 / (2 * Math.PI);
-
-      // Calculate D
-      const D_final = solveForD(radius1, radius2, chainLength);
-
-      // Display result
-      document.getElementById("output").textContent = `Distance from chainring to sprocket: ${D_final.toFixed(0)} mm`;
-    }
-  </script>
+    </script>
 </body>
 </html>
