@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chain Length Calculator</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: monospace;
+            color: white;
+            background-color: #121212;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Header styling */
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+            text-align: center;
+        }
+
+        /* Input and label styling */
+        label {
+            font-size: 1em;
+            margin: 0.5em 0 0.2em;
+            display: block;
+            text-align: center;
+        }
+        input {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.5em;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 200px;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        button:hover {
+            background-color: #555;
+        }
+
+        /* Result display styling */
+        #result {
+            margin-top: 1em;
+            font-size: 1.2em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chain Length Calculator</h1>
+
+    <label for="chainring">Chainring Teeth:</label>
+    <input type="number" id="chainring" placeholder="e.g., 50">
+
+    <label for="sprocket">Sprocket Teeth:</label>
+    <input type="number" id="sprocket" placeholder="e.g., 24">
+
+    <label for="length">Chainstay(mm):</label>
+    <input type="number" id="length" placeholder="e.g., 420">
+
+    <button onclick="calc()">Calculate</button>
+
+    <div id="result"></div>
+
+    <script>
+        const model = {
+            coefficients: [0.3544391339524867, 0.6094590081257829, 0.16120634396854788], 
+            intercept: -0.3932796257592628 
+        };
+
+        function calc() {
+            // Get inputs
+            const chainring = parseFloat(document.getElementById('chainring').value);
+            const sprocket = parseFloat(document.getElementById('sprocket').value);
+            const length = parseFloat(document.getElementById('length').value);
+
+            if (isNaN(chainring) || isNaN(sprocket) || isNaN(length)) {
+                document.getElementById('result').textContent = "Please enter valid numbers.";
+                return;
+            }
+
+            // Apply the model: t = coef[0] * chainring + coef[1] * sprocket + coef[2] * length + intercept
+            const { coefficients, intercept } = model;
+            const predictedLinks = coefficients[0] * chainring + coefficients[1] * sprocket + coefficients[2] * length + intercept;
+
+            // Display the result
+            document.getElementById('result').textContent = `Number of chain links: ${predictedLinks.toFixed(0)}`;
+        }
+    </script>
+</body>
+</html>
