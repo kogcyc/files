@@ -55,6 +55,13 @@ put it in .bashrc if you want it permanent
 
     https://github.com/PapirusDevelopmentTeam/papirus-folders?tab=readme-ov-file#script-usage
 
+    sudo add-apt-repository ppa:papirus/papirus
+    sudo apt-get update
+    sudo apt-get install papirus-folders
+
+    papirus-folders -C brown --theme Papirus-Dark
+
+
 ### git name email
 
     git config --global user.email "kogcyc@gmail.com"
