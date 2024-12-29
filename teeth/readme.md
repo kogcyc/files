@@ -1,8 +1,9 @@
-**genTeeth** a Python3 script to generate bicycle sprocket and chainring shape in SVG
+**genTeeth** a Python3 script to generate bicycle sprocket and chainring shape in SVG  
 
 Usage:
 
-    python3 genTeeth.py <teeth> <tooth angle> <tooth height> <magic number>
+bash```
+python3 genTeeth.py <teeth> <tooth angle> <tooth height> <magic number>
 
 Good chainring teeth:
 
