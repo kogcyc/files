@@ -26,6 +26,10 @@ python3 genTeeth.py 45 24 4 1.5
 
 E X A M P L E
 
+```bash
+python3 make5_refactored.py 15 22 2 4
+```
+
 ![](https://raw.githubusercontent.com/kogcyc/files/22d7384ac87fa531927e6a78c8d1e34cf6eb0038/teeth/15.svg)
 
 
