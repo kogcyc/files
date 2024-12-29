@@ -24,6 +24,6 @@ python3 genTeeth.py 45 24 4 1.5
 ```
 
 
-![Description of SVG](../15.svg)
+![]../15.svg
 
 
