@@ -42,7 +42,7 @@ def generate_sprocket_svg(teeth=35, tangle=32, tlength=4, ttop=4, output_fn="tee
     svgMID = svgMID + '<circle cx="0" cy="0" r="3" fill="#f00" stroke="none"/>'
 
     # Write to file
-    output_path = f'./geeqie/{output_fn}'
+    output_path = f'./{output_fn}'
     with open(output_path, 'w') as ff:
         ff.write(makeSVG(svgMID))
 
