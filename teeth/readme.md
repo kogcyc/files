@@ -2,9 +2,9 @@
 a Python3 script to generate bicycle sprocket and chainring shapes in SVG  
 <br/><br/>
 
-> I grew increasingly frustrated with graphic representations of sprockets  
-> that lacked a convincing sense of realism.  
-> So, I proposed a streamlined solution.
+> I became uncomfortable with graphic representations of sprockets that lacked a sense of realism.
+>   
+> So, I proposed a solution.
 >  
 > — Matthew Grimm, 2024
 
