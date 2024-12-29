@@ -2,9 +2,10 @@
 
 Usage:
 
-bash```
+```bash
 python3 genTeeth.py <teeth> <tooth angle> <tooth height> <magic number>
 
 Good chainring teeth:
 
-    python3 genTeeth.py 45 24 4 1.5
+```bash
+python3 genTeeth.py 45 24 4 1.5
