@@ -1,4 +1,4 @@
-teeth
+**TEETH**
 
 good chainring teeth
 
