@@ -30,6 +30,6 @@ E X A M P L E
 python3 genTeeth.py 15 22 2 4
 ```
 
-![](https://raw.githubusercontent.com/kogcyc/files/22d7384ac87fa531927e6a78c8d1e34cf6eb0038/teeth/15.svg)
+![](https://raw.githubusercontent.com/kogcyc/files/fb1658c2f1e9593bcb580e92a451a0e053c21b41/teeth/15.svg)
 
 
