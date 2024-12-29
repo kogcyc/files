@@ -1,5 +1,5 @@
 # genTeeth
-a Python3 script to generate bicycle sprocket and chainring shape in SVG  
+a Python3 script to generate bicycle sprocket and chainring shapes in SVG  
 
 Usage:
 
