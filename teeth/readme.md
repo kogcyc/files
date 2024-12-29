@@ -1,8 +1,8 @@
 # genTeeth
-a Python3 script to generate bicycle sprocket and chainring shapes in SVG
+a Python3 script to generate bicycle sprocket and chainring shapes in SVG  
 
 
-> I grew increasingly frustrated with sprocket designs
+> I grew increasingly frustrated with sprocket designs  
 > that lacked a convincing sense of realism.  
 > So, I proposed a streamlined solution.
 >  
