@@ -24,6 +24,6 @@ python3 genTeeth.py 45 24 4 1.5
 ```
 
 
-![](./../15.svg)
+![](teeth/15.svg)
 
 
