@@ -13,9 +13,8 @@ tooth_height = 1;
 
 roller = 3.96875;  // Radius of the chain's "roller," a constant - for a bicycle chain, it is 5/16" divided by 2 ~= 3.97mm
 
-// The rollers of a chain are located at what is, in essence,
-// the vertices of a regular polygon. This function calculates
-// the distance from the center of the polygon to one of those vertices.
+// The rollers of a chain are located at the vertices of a regular polygon.
+// This function calculates the distance from the center of the polygon to one of those vertices.
 
 function roller_radius_polygon(teeth, pitch = 12.7) =
     pitch / (2 * sin(180 / teeth));  // Divides 360 degrees by the number of teeth to calculate that radius
