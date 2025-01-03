@@ -1,7 +1,6 @@
 from sys import argv
 a = float(argv[1])
-b = float(argv[2])
-c = float(argv[3])
-d = a*40 + b*240 + c*30 
+n = float(argv[2])
+d = a*240 + n*600
 e = round(d,0)
 print(e)
