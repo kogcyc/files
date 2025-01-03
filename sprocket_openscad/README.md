@@ -1,7 +1,7 @@
 An OpenSCAD file that generates a bicycle sprocket
 
 
-```c
+```openscad
 
 // Number of teeth for the sprocket
 // The angle that each tooth is formed at
