@@ -63,34 +63,6 @@ This nutrient-packed, delicious stew is perfect for meal prep or a wholesome fam
 | **Fiber**          | ~4.3 g        | ~15%                   |
 | **Iron**           | ~2.2 mg       | ~12%                   |
 | **Vitamin A**      | ~250%         | -                      |
-    12 oz chicken breast (raw)
-    3 stalks celery
-    2 large carrots
-    1 large yellow onion
-    1/2 medium cabbage
-    1 14oz can black beans
-    1 14oz can chopped tomatoes
-    4 oz uncooked quinoa
-    3 cups kale (added near the end)
-    1/2 cup dry lentils (cooked separately or added to the stew)
-    2 tablespoons olive oil
-    1 diced bell pepper (any color)
-    4 oz raw spinach (added toward the end)
-    1/2 lemon squeezed per 16oz serving (optional for flavor and vitamin C)
-
-
-
-Nutrient	Per Serving (8 oz)	% DV (Based on 2,000 kcal diet)
-Calories	~140 kcal	~7%
-Protein	~11.7 g	~23%
-Fat	~4.3 g	~6%
-Carbohydrates	~17 g	~6%
-Fiber	~4.3 g	~15%
-Iron	~2.2 mg	~12%
-Vitamin A	~250%	-
-Vitamin C	~80%	-
-Folate (B9)	~25%	-
-Potassium	~470 mg	~10%
 | **Vitamin C**      | ~80%          | -                      |
 | **Folate (B9)**    | ~25%          | -                      |
 | **Potassium**      | ~470 mg       | ~10%                   |
