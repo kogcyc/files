@@ -1,22 +1,44 @@
 ### How to install oomox on XUbuntu ###
 
 ```bash
-# install support applications and libraries
+
+sudo apt install libgdk-pixbuf2.0-dev libxml2-utils gtk2-engines-murrine librsvg2-bin
 sudo apt install sassc
-sudo apt install libglib2.0-dev
-sudo apt install librsvg2-bin
+git clone https://github.com/themix-project/oomox-gtk-theme.git
+cd oomox-gtk-theme/
+./change_color.sh -o themeName ./themeFile 
 
-# clone the oomox application into a directory named oomox
-git clone https://github.com/themix-project/oomox.git --recursive
 
-# change into that oomox diretory
-cd ./oomox
+BG=888a85
+BTN_BG=85509b
+BTN_FG=0e0021
+FG=0e0021
+GRADIENT=0.0
+HDR_BTN_BG=85509b
+HDR_BTN_FG=0e0021
+HDR_BG=0e0021
+HDR_FG=888a85
+ROUNDNESS=4
+SEL_BG=dc5e86
+SEL_FG=000000
+SPACING=3
+TXT_BG=c0bbbb
+TXT_FG=000000
+WM_BORDER_FOCUS=9edc60
+WM_BORDER_UNFOCUS=0e0021
 
-#issue this command to start the application
-./gui.sh
+
+sudo add-apt-repository ppa:papirus/papirus
+sudo apt-get update
+sudo apt-get install papirus-folders
+
+papirus-colors -l
+
+paprirus-colors -C color
+
 
 ```
-## Preview
+## colors available to papirus-folder
 
 | Name | Preview | Name | Preview |
 |:-----|:-------:|:-----|:-------:|
