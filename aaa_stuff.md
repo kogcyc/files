@@ -25,6 +25,9 @@ put it in .bashrc if you want it permanent
     cd /usr/share/themes/
     sudo thunar
 
+    sudo cp -r .themes/darkRed /usr/share/themes
+
+
 ### add to mousepad schemes ###
 
     cd /usr/share/gtksourceview-4/styles/
