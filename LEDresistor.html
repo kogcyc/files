@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Resistor Calculator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        select, input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            background-color: #444;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        button:active {
+            background-color: #666;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>LED Resistor Calculator</h1>
+        <label for="supplyVoltage">Supply Voltage:</label>
+        <select id="supplyVoltage">
+            <option value="5">5V</option>
+            <option value="3.7">3.7V</option>
+            <option value="3">3V</option>
+        </select>
+
+        <label for="ledVoltage">LED Voltage:</label>
+        <select id="ledVoltage">
+            <script>
+                for (let v = 2.0; v <= 3.6; v += 0.1) {
+                    document.write(`<option value="${v.toFixed(1)}">${v.toFixed(1)}V</option>`);
+                }
+            </script>
+        </select>
+
+        <label for="ledCurrent">LED Current (mA):</label>
+        <input type="number" id="ledCurrent" placeholder="e.g., 20" />
+
+        <button id="calculateButton">Calculate Resistor</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        const calculateButton = document.getElementById('calculateButton');
+        const resultDiv = document.getElementById('result');
+
+        calculateButton.addEventListener('click', () => {
+            const supplyVoltage = parseFloat(document.getElementById('supplyVoltage').value);
+            const ledVoltage = parseFloat(document.getElementById('ledVoltage').value);
+            const ledCurrent = parseFloat(document.getElementById('ledCurrent').value);
+
+            if (isNaN(ledCurrent) || ledCurrent <= 0) {
+                resultDiv.textContent = 'Please enter a valid LED current (mA).';
+                return;
+            }
+
+            if (supplyVoltage <= ledVoltage) {
+                resultDiv.textContent = 'Supply voltage must be greater than LED voltage.';
+                return;
+            }
+
+            const resistorValue = ((supplyVoltage - ledVoltage) / (ledCurrent / 1000)).toFixed(2);
+            resultDiv.textContent = `Recommended Resistor: ${resistorValue} Ω`;
+        });
+    </script>
+</body>
+</html>
