@@ -3,7 +3,7 @@ sudo apt install povray
 sudo apt install simplescreenrecorder
 sudo apt install python3-cairosvg
 sudo apt install handbrake
-sudo apt install vlc
+sudo apt install vlcsudop
 sudo apt install libdvdcss2
 sudo apt install curl
 sudo apt install thonny
