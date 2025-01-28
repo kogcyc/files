@@ -1,4 +1,5 @@
-sudo apt install audio-recorder
+
+
 sudo apt install povray
 sudo apt install simplescreenrecorder
 sudo apt install python3-cairosvg
@@ -14,4 +15,6 @@ sudo apt install kicad
 sudo apt install python3-cairosvg
 sudo apt install git inkscape galculator geeqie openscad
 sudo apt install ffmpeg
+
 hdpi-gtk_border
+
