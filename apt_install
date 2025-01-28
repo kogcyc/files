@@ -1,0 +1,17 @@
+sudo apt install audio-recorder
+sudo apt install povray
+sudo apt install simplescreenrecorder
+sudo apt install python3-cairosvg
+sudo apt install handbrake
+sudo apt install vlc
+sudo apt install libdvdcss2
+sudo apt install curl
+sudo apt install thonny
+sudo apt install inotify-tools
+sudo apt install gnome-themes-extra-data
+sudo apt install build-essential python3-dev python3-pip python3-venv libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev
+sudo apt install kicad
+sudo apt install python3-cairosvg
+sudo apt install git inkscape galculator geeqie openscad
+sudo apt install ffmpeg
+hdpi-gtk_border
