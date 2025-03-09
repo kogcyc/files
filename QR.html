@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <style>
+        body {
+            padding: 10px 40px;
+        }
+        .QR-container {
+            display: flex;
+            gap: 60px;
+        }
+        .QR {
+            display: inline-block;
+        }
+        .clik {
+            margin-right: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Input for Phone Number -->
+    <label for="phoneNumber">Enter phone number (e.g., +1234567890):</label>
+    <input type="text" id="phoneNumber" placeholder="Phone number">
+    <br><br>
+
+    <!-- Buttons to Generate QR Codes -->
+    <button class="clik" onclick="generatePhoneQRCode()">Generate Phone Call QR Code</button>
+    <button class="clik" onclick="generateSMSQRCode()">Generate Text MSG QR Code</button>
+    
+    <br><br>
+
+    <!-- Display Generated QR Codes -->
+    <div class="QR-container">
+        <div class="QR" id="phoneQRCode"><img src="https://www.dummyimg.in/placeholder?width=200&text=phone&bg_color=%23333377"/></div>
+        <div class="QR" id="smsQRCode"><img src="https://www.dummyimg.in/placeholder?width=200&text=text&bg_color=%23337733"/></div>
+    </div>
+
+    <br>
+
+    <!-- Input for URL -->
+    <label for="url">Enter a URL (e.g., https://example.com):</label>
+    <input type="text" id="url" placeholder="URL">
+
+    <br><br>
+
+    <!-- Button to Generate URL QR Code -->
+    <button class="clik" onclick="generateURLQRCode()">Generate URL QR Code</button>
+
+    <br><br>
+
+    <!-- Display Generated URL QR Code -->
+    <div class="QR" id="urlQRCode"><img src="https://www.dummyimg.in/placeholder?width=200&text=url&bg_color=%23337777"/></div>
+
+    <script>
+        function generatePhoneQRCode() {
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const phoneQRCodeContainer = document.getElementById('phoneQRCode');
+
+            // Clear any previous QR codes
+            phoneQRCodeContainer.innerHTML = '';
+
+            // Generate the Phone URI for the QR code (for calling)
+            const phoneUri = `tel:${phoneNumber}`;
+
+            // Generate the QR code
+            new QRCode(phoneQRCodeContainer, {
+                text: phoneUri,
+                width: 200,
+                height: 200
+            });
+        }
+
+        function generateSMSQRCode() {
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const smsQRCodeContainer = document.getElementById('smsQRCode');
+
+            // Clear any previous QR codes
+            smsQRCodeContainer.innerHTML = '';
+
+            // Generate the SMS URI for the QR code
+            const smsUri = `sms:${phoneNumber}`;
+
+            // Generate the QR code
+            new QRCode(smsQRCodeContainer, {
+                text: smsUri,
+                width: 200,
+                height: 200
+            });
+        }
+
+        function generateURLQRCode() {
+            const url = document.getElementById('url').value;
+            const urlQRCodeContainer = document.getElementById('urlQRCode');
+
+            // Clear any previous QR codes
+            urlQRCodeContainer.innerHTML = '';
+
+            // Generate the QR code for the URL
+            new QRCode(urlQRCodeContainer, {
+                text: url,
+                width: 200,
+                height: 200
+            });
+        }
+    </script>
+</body>
+</html>
