@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive 2-Column Grid</title>
+
+    <style>
+
+      @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=PT+Sans+Narrow:wght@400;700&family=Supermercado+One&display=swap");
+
+      html {background-color: #98A;}
+
+      body {
+        padding: 20px;
+        margin: 0px;
+      }
+
+      .logo {
+        font-family: sans-serif;
+        font-weight: 900;
+        font-size: 2.5em;
+        margin-bottom: 14px;
+        font-family: Supermercado One;
+        letter-spacing: -2px;
+        margin-left: -2px;
+        text-shadow:
+          0px 0px 0 red,
+          0px 0px 0 red,
+          1px 1px 0 black,
+          1px 1px 0 black; /* Offsets create an outline effect */
+      }
+
+      .header_green {
+        background-color: #768;
+        color: #8a4;
+        font-size: 0.3em;
+        border-radius: 3px;
+      }
+
+      .title {
+        font-family: sans-serif;
+        font-weight: 900;
+        font-size: 1.2em;
+      }
+
+      .ciclet {
+        background-color: #213;
+        color: #fff;
+        padding: 10px;
+        border: 0px solid #fd8;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+
+      .container {
+        display: grid;
+        grid-template-columns: 60% 35%;
+        gap:30px;
+      }
+      .box {
+        padding: 0px;
+      }
+
+
+      .ciclet_container {
+        display: grid;
+        grid-template-columns: 60% 35%;
+        gap:30px;
+      }
+      .ciclet_box {
+        background-color: #fff;
+        padding: 0px;
+      }
+
+      @media (max-width: 900px) {
+        .container {
+          grid-template-columns: 100%;
+          gap: 14px;
+        } 
+      }
+
+
+
+      h2 {
+        font-family: sans-serif;
+      }
+
+    </style>
+
+  </head>
+
+    <div class="logo">kogswell</div>
+
+    <div class="container">
+      <div class="box white_background">
+        <div class="header_green">.</div>
+        <div class="title">
+          <p>This Is A Title</p>
+        </div>
+        <p>This is line one.</p>
+      </div>
+
+      <div class="box" 1>
+        <div class="ciclet">
+          <p>One</p>
+        </div>
+        <div class="ciclet">
+          <p>Two</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

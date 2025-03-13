@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=HTTPd
+Comment=
+Exec=python3 -m http.server 8000 --directory .
+Icon=network-server
+Path=
+Terminal=true
+StartupNotify=false
