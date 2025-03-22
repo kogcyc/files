@@ -1,0 +1,15 @@
+Smartphone
+Ballpoint
+Scissors
+Hammer
+Screwdriver
+Remote
+Pliers
+Wrench
+Tape
+PaperClips
+PostIts
+ChargingCable
+Earbuds
+PowerBank
+FlashDrive
