@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Single Page Site</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+      background: #fafafa;
+      color: #333;
+    }
+
+    nav, footer {
+      background: #eee;
+      padding: 1rem;
+    }
+
+    nav {
+      background: #e0e0e0;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem 1rem;
+    }
+
+    footer {
+      background: #ccc;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="#">Home</a> |
+      <a href="#about">About</a> |
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <h2 id="about">About This Page</h2>
+      <p>This is a clean HTML5 boilerplate for a single-page layout. It's structured using semantic tags and styled using modern CSS — with flexbox for layout and a max-width container for readability.</p>
+
+      <h2 id="contact">Contact</h2>
+      <p>Want to get in touch? Just pretend there's a form here. 😊</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Your Name or Company</p>
+    </div>
+  </footer>
+
+</body>
+</html>
