@@ -1,1239 +1,253 @@
-
-JSFiddle - Test your JavaScript, CSS, HTML or CoffeeScript online with JSFiddle.
-MG
-Matthew
-ads via Carbon
-Squarespace tools make it easy to create a beautiful and unique website.
-ads via Carbon
-HTML
-
-1
-
 <!doctype html>
-
-2
-
 <html lang="en">
-
-3
-
   <head>
-
-4
-
     <meta charset="UTF-8" />
-
-5
-
     <title>Layout Demonstration</title>
-
-6
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-7
-
     <style>
-
-8
-
       @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap");
-
-9
-
       @import url("https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&display=swap");
 
-10
-
-​
-
-11
-
       * {
-
-12
-
         box-sizing: border-box;
-
-13
-
         margin: 0;
-
-14
-
         padding: 0;
-
-15
-
       }
-
-16
-
-​
-
-17
 
       body {
-
-18
-
         font-family: "Work Sans", sans-serif;
-
-19
-
         background: #fff;
-
-20
-
         color: #333;
-
-21
-
         line-height: 1.6;
-
-22
-
       }
-
-23
-
-​
-
-24
 
       header,
-
-25
-
       footer {
-
-26
-
         background: #000;
-
-27
-
         color: #fff;
-
-28
-
         padding: 1rem;
-
-29
-
         text-align: center;
-
-30
-
       }
-
-31
-
-​
-
-32
 
       main {
-
-33
-
         display: flex;
-
-34
-
         flex-direction: column;
-
-35
-
         gap: 2rem;
-
-36
-
         padding: 2rem;
-
-37
-
       }
-
-38
-
-​
-
-39
 
       h2 {
-
-40
-
         font-family: "Crimson Text", serif;
-
-41
-
         font-size: 1.8rem;
-
-42
-
         margin-bottom: 1rem;
-
-43
-
       }
-
-44
-
-​
-
-45
 
       .section {
-
-46
-
         padding: 2rem;
-
-47
-
         border-radius: 0.5rem;
-
-48
-
       }
 
-49
-
-​
-
-50
-
-      .pink {
-
-51
-
-        background-color: #fba;
-
-52
-
+      .violet {
+        background-color: #c0b3d4;
       }
-
-53
-
       .green {
-
-54
-
-        background-color: #ce9;
-
-55
-
+        background-color: #c4dee5;
       }
-
-56
-
-      .blue {
-
-57
-
-        background-color: #ace;
-
-58
-
+      .tan {
+        background-color: #d9ccbf;
       }
-
-59
-
-​
-
-60
 
       /* Sample layouts */
-
-61
-
       .single-column,
-
-62
-
       .media-article,
-
-63
-
       .form-page,
-
-64
-
       .data-table,
-
-65
-
       .cta {
-
-66
-
         max-width: 600px;
-
-67
-
         margin: 0 auto;
-
-68
-
       }
-
-69
-
-​
-
-70
 
       .two-column,
-
-71
-
       .split-screen {
-
-72
-
         display: flex;
-
-73
-
         gap: 2rem;
-
-74
-
         flex-wrap: wrap;
-
-75
-
       }
-
-76
-
-​
-
-77
 
       .two-column > div,
-
-78
-
       .split-screen > div {
-
-79
-
         flex: 1;
-
-80
-
         min-width: 250px;
-
-81
-
       }
-
-82
-
-​
-
-83
 
       .grid-gallery,
-
-84
-
       .card-deck {
-
-85
-
         display: grid;
-
-86
-
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-
-87
-
         gap: 1rem;
-
-88
-
       }
-
-89
-
-​
-
-90
 
       .grid-gallery div,
-
-91
-
       .card-deck div {
-
-92
-
         background: #fff;
-
-93
-
         padding: 1rem;
-
-94
-
         border: 1px solid #ccc;
-
-95
-
         border-radius: 0.25rem;
-
-96
-
       }
-
-97
-
-​
-
-98
 
       .hero-features {
-
-99
-
         text-align: center;
-
-100
-
       }
-
-101
-
-​
-
-102
 
       .hero-features .features {
-
-103
-
         display: flex;
-
-104
-
         justify-content: center;
-
-105
-
         gap: 2rem;
-
-106
-
         margin-top: 1rem;
-
-107
-
         flex-wrap: wrap;
-
-108
-
       }
-
-109
-
-​
-
-110
 
       .hero-features .features div {
-
-111
-
         background: #fff;
-
-112
-
         padding: 1rem;
-
-113
-
         border-radius: 0.5rem;
-
-114
-
         min-width: 200px;
-
-115
-
         border: 1px solid #ccc;
-
-116
-
       }
-
-117
-
-​
-
-118
 
       table {
-
-119
-
         width: 100%;
-
-120
-
         border-collapse: collapse;
-
-121
-
         margin-top: 1rem;
-
-122
-
       }
-
-123
-
-​
-
-124
 
       th,
-
-125
-
       td {
-
-126
-
         padding: 0.5rem;
-
-127
-
         border: 1px solid #999;
-
-128
-
       }
-
-129
-
-​
-
-130
 
       form {
-
-131
-
         display: flex;
-
-132
-
         flex-direction: column;
-
-133
-
         gap: 1rem;
-
-134
-
       }
-
-135
-
-​
-
-136
 
       input,
-
-137
-
       textarea {
-
-138
-
         padding: 0.5rem;
-
-139
-
         font-size: 1rem;
-
-140
-
       }
-
-141
-
     </style>
-
-142
-
   </head>
-
-143
-
   <body>
-
-144
-
     <header>
-
-145
-
       <h1>Modular Layout Demonstration</h1>
-
-146
-
     </header>
-
-147
-
     <main>
-
-148
-
-      <section class="section pink single-column">
-
-149
-
+      <section class="section violet single-column">
         <h2>Single Column</h2>
-
-150
-
         <p>
-
-151
-
           This is a simple single-column layout for article content or
-
-152
-
           documentation.
-
-153
-
         </p>
-
-154
-
       </section>
-
-155
-
-​
-
-156
 
       <section class="section green two-column">
-
-157
-
         <div>
-
-158
-
           <h2>Main Content</h2>
-
-159
-
           <p>This is the main area of a two-column layout.</p>
-
-160
-
         </div>
-
-161
-
         <div>
-
-162
-
           <h2>Sidebar</h2>
-
-163
-
           <p>This is the sidebar with supplemental links or features.</p>
-
-164
-
         </div>
-
-165
-
       </section>
 
-166
-
-​
-
-167
-
-      <section class="section blue grid-gallery">
-
-168
-
+      <section class="section tan grid-gallery">
         <h2>Grid Gallery</h2>
-
-169
-
         <div>Item 1</div>
-
-170
-
         <div>Item 2</div>
-
-171
-
         <div>Item 3</div>
-
-172
-
         <div>Item 4</div>
-
-173
-
       </section>
 
-174
-
-​
-
-175
-
-      <section class="section pink hero-features">
-
-176
-
+      <section class="section violet hero-features">
         <h2>Hero + Features</h2>
-
-177
-
         <p>Hero text or image goes here.</p>
-
-178
-
         <div class="features">
-
-179
-
           <div>Feature 1</div>
-
-180
-
           <div>Feature 2</div>
-
-181
-
           <div>Feature 3</div>
-
-182
-
         </div>
-
-183
-
       </section>
-
-184
-
-​
-
-185
 
       <section class="section green card-deck">
-
-186
-
         <h2>Card Deck</h2>
-
-187
-
         <div>Card 1</div>
-
-188
-
         <div>Card 2</div>
-
-189
-
         <div>Card 3</div>
-
-190
-
       </section>
 
-191
-
-​
-
-192
-
-      <section class="section blue split-screen">
-
-193
-
+      <section class="section tan split-screen">
         <div>
-
-194
-
           <h2>Text Side</h2>
-
-195
-
           <p>Split layout with text content.</p>
-
-196
-
         </div>
-
-197
-
         <div>
-
-198
-
           <h2>Media Side</h2>
-
-199
-
           <p>Image or video content goes here.</p>
-
-200
-
         </div>
-
-201
-
       </section>
 
-202
-
-​
-
-203
-
-      <section class="section pink media-article">
-
-204
-
+      <section class="section violet media-article">
         <h2>Media Article</h2>
-
-205
-
         <p>Text content mixed with embedded media like charts or videos.</p>
-
-206
-
       </section>
-
-207
-
-​
-
-208
 
       <section class="section green form-page">
-
-209
-
         <h2>Form Page</h2>
-
-210
-
         <form>
-
-211
-
           <input type="text" placeholder="Name" />
-
-212
-
           <input type="email" placeholder="Email" />
-
-213
-
           <textarea placeholder="Your message"></textarea>
-
-214
-
           <button type="submit">Submit</button>
-
-215
-
         </form>
-
-216
-
       </section>
 
-217
-
-​
-
-218
-
-      <section class="section blue data-table">
-
-219
-
+      <section class="section tan data-table">
         <h2>Data Table</h2>
-
-220
-
         <table>
-
-221
-
           <thead>
-
-222
-
             <tr>
-
-223
-
               <th>Item</th>
-
-224
-
               <th>Quantity</th>
-
-225
-
               <th>Price</th>
-
-226
-
             </tr>
-
-227
-
           </thead>
-
-228
-
           <tbody>
-
-229
-
             <tr>
-
-230
-
               <td>Widget A</td>
-
-231
-
               <td>10</td>
-
-232
-
               <td>$5.00</td>
-
-233
-
             </tr>
-
-234
-
             <tr>
-
-235
-
               <td>Widget B</td>
-
-236
-
               <td>5</td>
-
-237
-
               <td>$8.00</td>
-
-238
-
             </tr>
-
-239
-
           </tbody>
-
-240
-
         </table>
-
-241
-
       </section>
 
-242
-
-​
-
-243
-
-      <section class="section pink cta">
-
-244
-
+      <section class="section violet cta">
         <h2>Call to Action</h2>
-
-245
-
         <p>Ready to get started? Click the button below.</p>
-
-246
-
         <button>Do the Thing</button>
-
-247
-
       </section>
-
-248
-
     </main>
-
-249
-
     <footer>
-
-250
-
       <p>&copy; 2025 Your Organization</p>
-
-251
-
     </footer>
-
-252
-
   </body>
-
-253
-
 </html>
-
-254
-
-​
-
-JavaScript
-
-1
-
-​
-
-CSS
-
-1
-
-​
-
-931px
-Console
-0
-0
-0
-0
-
-    JSFiddle Console (beta). Turn on/off in Editor settings.
-    ☁️ "Running fiddle"
-
-Code panel options
-Change code languages, preprocessors and plugins
-Language
-Doctype
-
-    This fiddle has previously unsaved changes. Apply changes Discard
-
-Keep JSFiddle running.
-Whitelist us in your content blocker.
-
-We've been providing web developers, educators, students, companies with JSFiddle free for many years.
-
-Your can help us in one of two ways:
-
-    Whitelist JSFiddle
-    in your content blocker
-    Go PRO
-    and get access to additional PRO features →
-
-Ad-free
-
-All ads in the editor and listing pages are turned completely off.
-Use pre-released features
-
-You get to try and use features (like the Palette Color Generator) months before everyone else.
-Fiddle collections
-
-Sort and categorize your Fiddles into multiple collections.
-Private collections and fiddles
-
-You can make as many Private Fiddles, and Private Collections as you wish!
-
-    Console
-
-    Debug your Fiddle with a minimal built-in JavaScript console.
-
-Join the 4+ million users, and keep the JSFiddle dream alive.
-
-Ad-free
-
-All ads in the editor and listing pages are turned completely off.
-Use pre-released features
-
-You get to try and use features (like the Palette Color Generator) months before everyone else.
-Fiddle collections
-
-Sort and categorize your Fiddles into multiple collections.
-Private collections and fiddles
-
-You can make as many Private Fiddles, and Private Collections as you wish!
-
-    Console
-
-    Debug your Fiddle with a minimal built-in JavaScript console.
-
-JSFiddle is used by you and 4+ million other developers, in many companies ...
-
-... and top educational institutions:
-
-              
-                
-                
-              
-              
-                
-                
-                
-              
-            
-Join as PRO
-Color Palette Generator
-Generate a cool color palette with a few clicks
-Share or embed fiddle
-Customize the embeddable experience for websites
-Tabs:
-JavaScript HTML CSS Result
-Visual:
-Light Dark
-Embed snippet
-Prefer iframe?
-:
-<script async src="{embedSrc}"></script>
-    
-Editor settings
-Customize the behavior and feel of the editor
-Behavior
-
-Auto-run code
-
-Only auto-run code that validates
-
-Auto-save code
-
-Auto-close HTML tags
-
-Auto-close brackets
-
-Live code validation
-
-Highlight matching tags
-
-Hot reload CSS NEW
-
-Hot reload HTML NEW
-General
-
-Line numbers
-
-Wrap lines
-
-Indent with tabs
-
-Code hinting (autocomplete)
-Indent size:
-Key map:
-Font size:
-Console
-
-Console in the editor
-
-Clear console on run
-Your recent fiddles
-Recentry created fiddles, including ones created while logged out
-JSFiddle changelog
-A log of all the changes made to JSFiddle – big and small.
-
-    New Ability to download a fiddle
-
-    We've added the ability to download a specific fiddle version from the Editor's interface. I'll be downloaded as a Zipped single HTML file.
-    New Your recent fiddles when logged out
-
-    Saving a fiddle, even when you're logged out, will put it under the Your recent fiddles modal in the sidebar. They will eventually disappear (since they're anonymous), but now you'll have time to save them under your user after logging in.
-    New Tailwind CSS
-
-    Added Tailwind CSS to the list of precompilers - even though it's really HTML, you can activate it from the dropdown in the CSS panel. Tailwind CSS would be best used with HTML Hot-reload enabled.
-    Update Code linting and formatting
-
-    We've replaced the dated code linter and formatted with more modern ones: Stylelint and Prettier.
-    New JSFiddle 3.0
-
-    The 3.0 updates brings a lot of changes, most notably a modern UI refresh.
-
-    There was an increadible amount of under-the-hood changes for the front-end, we've mostly moved away from pre-processors. The light/dark themes are using a modern light-dark() approach. The refactoring allows for more changes to be made in a spedier manner.
-
-        In the new sidebar you can find our mini-apps (right now the Color Palette Generator)
-
-        System theme follows your OS settings
-
-        CSS Hot-reload - styles update immidietly as you type
-
-        HTML Hot-reload (experimental) - update HTML immidietly as you type
-
-        Results panel color follows the selected theme
-
-        Title and description are now a single field
-
-        Public Profile page is completelty redesigned and can be easily used as your code showcase
-
-        Groups are now Collections and we have big plans for them
-
-        Collections are completely redesigned
-
-        Users can now add groups straight from the editor
-    New Import fiddles as modules
-
-    Import fiddle code into other fiddles with Modules and Imports.
-
-    JS Modules: import [name] from '@jsfiddle/[username]/[fiddle].js'
-
-    CSS Import: @import url('@jsfiddle/[username]/[fiddle].css')
-
-    See how this works in this fiddle.
-    Change Fiddle listing shows latest version
-
-    The fiddle listings (Public, Private, Titled, etc) will now display latest versions instead of the ones saved as Base versions - this was causing more confusion than good, so we decided to change this long-standing behavior.
-    Change Evaluate code into the console
-
-    Custom Console beta is getting more stable and feature-rich. Just added the ability to evaluate code in the console.
-    New Console in the editor
-
-    Introducing the first beta of the editor console - it's going to show you logs, warnings, errors without the need of opening full devtools.
-
-    Console is avaialble for all users during beta, after that it'll be available for JSFiddle supporters.
-    New More user's social links (Dev.to, Stack Overflow, Medium)
-
-    You can add more of your social links `Settings / Social Media`, for Dev.to, Stack Overflow and Medium. These will be displayed on the profile section in Editor's sidebar and your public profile.
-    Change Refactored Unsaved Drafts feature
-
-    Unsaved drafts feature is completely rewritten with 100% fewer bugs and 10x more maintainable codebase – as the author of the previous one, I had hard times figuring out what it does 🥴
-
-Add a new collection
-Collect your fiddles in collections
