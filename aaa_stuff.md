@@ -73,3 +73,14 @@ put it in .bashrc if you want it permanent
 ### add user to sudoers
 
     usermod -aG sudo username
+
+### make a copy of a repostory
+
+
+    git clone https://github.com/kogcyc/v3.git
+    cd v3
+    git remote remove origin
+    make new repository (v4)
+    git remote add origin https://github.com/kogcyc/v4.git
+    git push -u origin main
+ 2002  history
