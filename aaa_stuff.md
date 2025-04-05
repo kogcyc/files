@@ -83,4 +83,4 @@ put it in .bashrc if you want it permanent
     make new repository (v4)
     git remote add origin https://github.com/kogcyc/v4.git
     git push -u origin main
- 2002  history
+
