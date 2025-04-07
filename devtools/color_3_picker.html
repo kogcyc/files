@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB Color Picker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .color-box {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            background-color: #000;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .color-text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            position: absolute;
+        }
+        .color-text {
+            font-family: monospace;
+            font-weight: 400;
+            font-size: 24px;
+        }
+        .color-text.white {
+            color: white;
+        }
+        .color-text.black {
+            color: black;
+        }
+        .controls {
+            margin: 20px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="color-box" id="colorBox">
+            <div class="color-text-container">
+                <span class="color-text white" id="colorValueWhite">#000</span>
+                <span class="color-text black" id="colorValueBlack">#000</span>
+            </div>
+        </div>
+        <div class="button-container">
+            <button onclick="adjustColor('red', -1)">R -</button>
+            <button onclick="adjustColor('red', 1)">R +</button>
+        </div>
+        <div class="button-container">
+            <button onclick="adjustColor('green', -1)">G -</button>
+            <button onclick="adjustColor('green', 1)">G +</button>
+        </div>
+        <div class="button-container">
+            <button onclick="adjustColor('blue', -1)">B -</button>
+            <button onclick="adjustColor('blue', 1)">B +</button>
+        </div>
+        <div class="button-container">
+            <button onclick="scaleColor(-1)">Scaler -</button>
+            <button onclick="scaleColor(1)">Scaler +</button>
+        </div>
+    </main>
+    <script>
+        const hexValues = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+        let redValue = 0, greenValue = 0, blueValue = 0;
+        const colorBox = document.getElementById("colorBox");
+        const colorValueWhite = document.getElementById("colorValueWhite");
+        const colorValueBlack = document.getElementById("colorValueBlack");
+
+        function updateColor() {
+            let r = hexValues[redValue];
+            let g = hexValues[greenValue];
+            let b = hexValues[blueValue];
+            let hexColor = `#${r}${g}${b}`;
+            colorBox.style.backgroundColor = hexColor;
+            colorValueWhite.textContent = hexColor;
+            colorValueBlack.textContent = hexColor;
+        }
+
+        function adjustColor(color, direction) {
+            if (color === 'red') redValue = Math.max(0, Math.min(15, redValue + direction));
+            if (color === 'green') greenValue = Math.max(0, Math.min(15, greenValue + direction));
+            if (color === 'blue') blueValue = Math.max(0, Math.min(15, blueValue + direction));
+            updateColor();
+        }
+
+        function scaleColor(direction) {
+            redValue = Math.max(0, Math.min(15, redValue + direction));
+            greenValue = Math.max(0, Math.min(15, greenValue + direction));
+            blueValue = Math.max(0, Math.min(15, blueValue + direction));
+            updateColor();
+        }
+    </script>
+</body>
+</html>
