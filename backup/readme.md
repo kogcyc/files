@@ -22,7 +22,7 @@ This Python script recursively analyzes a given source directory, counts all fil
 
 ## MacOS version
 
-The MacOS version skips .DS_Store files as well as .local and .cache. .DS_Store files are hidden metadata files automatically created by Finder in every folder. They store view preferences (icon positions, sorting order, etc.) and are not necessary for backup.
+The MacOS version skips `.DS_Store` files as well as `.local` and `.cache`. `.DS_Store` files are hidden metadata files automatically created by Finder in every folder. They store view preferences (icon positions, sorting order, etc.) and are not necessary for backup.
 
 ## Usage
 
