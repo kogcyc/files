@@ -9,7 +9,8 @@ This Python script recursively analyzes a given source directory, counts all fil
 ## Usage
 
 ```bash
-    python3 backup_ubuntu.py 
+    python3 backup_ubuntu.py
+```
 
 ## Features
 
@@ -27,3 +28,4 @@ The MacOS version skips .DS_Store files as well as .local and .cache. .DS_Store 
 
 ```bash
     python3 backup_macos.py 
+```
