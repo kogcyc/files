@@ -2,9 +2,14 @@
   <img src="backup_logo.png" width="200" alt="backup_logo" />
 </span>
 
-## backup user files on Unix-y OSes ##
+# backup user files on Unix-y OSes #
 
-These Python scripts recursively analyzes a given source directory, counts all files (excluding `.local` and `.cache` directories), calculates the total disk space used, and copies the directory structure and files to a specified target directory.
+This Python script recursively analyzes a given source directory, counts all files (excluding `.local` and `.cache` directories), calculates the total disk space used, and copies the directory structure and files to a specified target directory.
+
+## Usage
+
+```bash
+    python3 backup_ubuntu.py 
 
 ## Features
 
@@ -14,9 +19,11 @@ These Python scripts recursively analyzes a given source directory, counts all f
 - Mirrors the source directory's structure and contents into a target directory
 - Displays a summary of the operation
 
+## MacOS version
+
+The MacOS version skips .DS_Store files as well as .local and .cache. .DS_Store files are hidden metadata files automatically created by Finder in every folder. They store view preferences (icon positions, sorting order, etc.) and are not necessary for backup.
+
 ## Usage
 
-Run the script from the command line:
-
 ```bash
-python3 script.py
+    python3 backup_macos.py 
