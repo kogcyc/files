@@ -84,3 +84,7 @@ put it in .bashrc if you want it permanent
     git remote add origin https://github.com/kogcyc/v4.git
     git push -u origin main
 
+### add custom actions to Thunar
+
+    xclip -selection clipboard -i %f
+    xclip -selection clipboard -o > %f
