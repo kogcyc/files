@@ -1,0 +1,167 @@
+
+  <!-- Cubic Bézier Curve -->
+  <path d="M 100 0 C 200 -100, 300 100, 400 0"
+        stroke="red" fill="none" stroke-width="2"/>
+  <text x="50" y="145" font-size="12" fill="red">Cubic</text>
+
+
+<svg
+  baseProfile="full"
+  height="400px"
+  version="1.1"
+  viewBox="0 -200 700 400"
+  width="700px"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:ev="http://www.w3.org/2001/xml-events"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+>
+  <defs />
+  <rect fill="white" height="400" width="700" x="0" y="-200" />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="0"
+    x2="700"
+    y1="-200"
+    y2="-200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="0"
+    x2="700"
+    y1="-150"
+    y2="-150"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="0"
+    x2="700"
+    y1="-100"
+    y2="-100"
+  />
+  <line stroke="lightgray" stroke-width="1" x1="0" x2="700" y1="-50" y2="-50" />
+  <line stroke="lightgray" stroke-width="1" x1="0" x2="700" y1="0" y2="0" />
+  <line stroke="lightgray" stroke-width="1" x1="0" x2="700" y1="50" y2="50" />
+  <line stroke="lightgray" stroke-width="1" x1="0" x2="700" y1="100" y2="100" />
+  <line stroke="lightgray" stroke-width="1" x1="0" x2="700" y1="150" y2="150" />
+  <line stroke="lightgray" stroke-width="1" x1="0" x2="700" y1="200" y2="200" />
+  <line stroke="lightgray" stroke-width="1" x1="0" x2="0" y1="-200" y2="200" />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="50"
+    x2="50"
+    y1="-200"
+    y2="200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="100"
+    x2="100"
+    y1="-200"
+    y2="200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="150"
+    x2="150"
+    y1="-200"
+    y2="200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="200"
+    x2="200"
+    y1="-200"
+    y2="200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="250"
+    x2="250"
+    y1="-200"
+    y2="200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="300"
+    x2="300"
+    y1="-200"
+    y2="200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="350"
+    x2="350"
+    y1="-200"
+    y2="200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="400"
+    x2="400"
+    y1="-200"
+    y2="200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="450"
+    x2="450"
+    y1="-200"
+    y2="200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="500"
+    x2="500"
+    y1="-200"
+    y2="200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="550"
+    x2="550"
+    y1="-200"
+    y2="200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="600"
+    x2="600"
+    y1="-200"
+    y2="200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="650"
+    x2="650"
+    y1="-200"
+    y2="200"
+  />
+  <line
+    stroke="lightgray"
+    stroke-width="1"
+    x1="700"
+    x2="700"
+    y1="-200"
+    y2="200"
+  />
+  <!-- Cubic Bézier Curve -->
+  <path d="M 100 0 C 200 -100, 300 100, 400 0"
+        stroke="red" fill="none" stroke-width="2"/>
+  <text x="50" y="145" font-size="12" fill="red">Cubic</text>
+</svg>
