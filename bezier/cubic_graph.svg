@@ -1,3 +1,10 @@
+
+  <!-- Cubic Bézier Curve -->
+  <path d="M 100 0 C 200 -100, 300 100, 400 0"
+        stroke="red" fill="none" stroke-width="2"/>
+  <text x="50" y="145" font-size="12" fill="red">Cubic</text>
+
+
 <svg
   baseProfile="full"
   height="400px"
@@ -156,5 +163,12 @@
   <!-- Cubic Bézier Curve -->
   <path d="M 100 0 C 200 -100, 300 100, 400 0"
         stroke="red" fill="none" stroke-width="2"/>
-  <text x="50" y="145" font-size="12" fill="red">Cubic</text>
+  <text x="50" y="70" font-size="12" fill="red">Cubic</text>
+
+
+  <!-- Quadratic Bézier Curve -->
+  <path d="M 100 0 Q 100 -100, 400 0"
+        stroke="green" fill="none" stroke-width="2"/>
+  <text x="50" y="45" font-size="12" fill="green">Quadratic</text>
+
 </svg>
