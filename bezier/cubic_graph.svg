@@ -154,9 +154,9 @@
     y2="200"
   />
 
+  <circle cx="100" cy="0" r="6" fill="#000"/>
+  <circle cx="600" cy="0" r="6" fill="#000"/>
 
-  <circle cx=100 cy=0 <circle cx="150" cy="50" r="6" fill="#000"/>
-  <circle cx=600 cy=0 <circle cx="150" cy="50" r="6" fill="#000"/>
   <!-- Cubic Bézier Curve -->
   <path d="M 100 0 C 200 -100, 500 100, 600 0"
         stroke="red" fill="none" stroke-width="6"/>
@@ -167,9 +167,9 @@
         stroke="#088" fill="none" stroke-width="6"/>
   <text x="50" y="45" font-size="15" fill="#088" font-weight="bold">Quadratic</text>
 
-  <circle cx=100 cy=-100 <circle cx="150" cy="50" r="6" fill="#088"/>
-  <circle cx=200 cy=-100 <circle cx="150" cy="50" r="6" fill="red"/>
-  <circle cx=500 cy=100 <circle cx="150" cy="50" r="6" fill="red"/>
+  <circle cx="100" cy="-100" r="6" fill="#088"/>
+  <circle cx="200" cy="-100" r="6" fill="red"/>
+  <circle cx="500" cy="100" r="6" fill="red"/>
 
   <line x1="100" y1="0" x2="100" y2="-100" stroke="#088" stroke-width="1" stroke-dasharray="6, 6" />
   <line x1="100" y1="-100" x2="600" y2="0" stroke="#088" stroke-width="1" stroke-dasharray="6, 6" />
