@@ -72,10 +72,9 @@ put it in .bashrc if you want it permanent
     
 ### add user to sudoers
 
-    usermod -aG sudo username
+    sudo usermod -aG sudo username
 
 ### make a copy of a repostory
-
 
     git clone https://github.com/kogcyc/v3.git
     cd v3
@@ -88,3 +87,11 @@ put it in .bashrc if you want it permanent
 
     xclip -selection clipboard -i %f
     xclip -selection clipboard -o > %f
+
+### install Handbrake
+
+    sudo apt install handbrake 
+    sudo apt install libdvdcss2 
+    sudo dpkg-reconfigure libdvd-pkg
+
+
