@@ -1,3 +1,7 @@
+### install color-picker
+
+    sudo apt install color-picker
+
 ### make a transparent PNG ###
 
     convert -size 1920x1080 xc:none transparent_image.png
