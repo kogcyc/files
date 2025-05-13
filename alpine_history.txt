@@ -1,0 +1,160 @@
+~ # history
+   0 apk add nano
+   1 nano /etc/apk/repositories 
+   2 reboot
+   3 apk add xorg-server xfce4 xfce4-terminal dbus elogind
+   4 startx
+   5 apk add xf86-video-vesa xf86-input-libinput
+   6 rc-update add dbus
+   7 rc-update add elogind
+   8 startx
+   9 reboot
+  10 startxfce4
+  11 echo "exec startxfce4" > ~/.xinitrc
+  12 startxfce4
+  13 echo "exec startxfce4" > .xinitrc
+  14 startxfce4
+  15 apk add xinit
+  16 startxfce4
+  17 xorg-setup-base
+  18 setup-xorg-base 
+  19 startxfce4
+  20 apk search Greybird
+  21 apk search papirus
+  22 apk install papirus-icon-theme
+  23 apk add papirus-icon-theme
+  24 apk search firefox
+  25 apk add firefox-136
+  26 apk add firefox-esr-128
+  27 apk add firefox-esr-128.9.0-r0
+  28 apk add firefox
+  29 history
+  30 history | grep apx
+  31 history | grep apk
+  32 apk search Greybird
+  33 apk add Greybird-themes
+  34 apk add greybird-themes
+  35 apk add greybird-themes-gtk3
+  36 apk add greybird-themes-xfce4
+  37 apk add greybird-themes-xfwm4
+  38 apk add greybird-themes-xfce4-notifyd
+  39 ls
+  40 gimp
+  41 apk search gimp
+  42 apk add gimp
+  43 apk add git galculator
+  44 apk search icker
+  45 apk search olor
+  46 apk add gcolor3
+  47 gimp
+  48 python3
+  49 apk add python3
+  50 pip3
+  51 apk add python3-pip
+  52 apk search pip
+  53 apk add py3-pip
+  54 pip3
+  55 ll
+  56 ls
+  57 ls -la
+  58 cat .xinitrc 
+  59 echo $SHELL
+  60 apk add mousepad
+  61 mousepad .profile
+  62 ll
+  63 ls
+  64 ls -la
+  65 exit
+  66 ll
+  67 cat .profile
+  68 mousepad .profile
+  69 source .profile
+  70 mousepad .profile
+  71 source .profile
+  72 cat .profile 
+  73 mousepad .profile
+  74 source .profile
+  75 ll
+  76 echo $SHELL
+  77 ll
+  78 ls
+  79 ls -la
+  80 cat .profile
+  81 ll
+  82 source .profile
+  83 ll
+  84 git clone https://github.com/themix-project/oomox-gtk-theme.git
+  85 apk search glib
+  86 apk search glib-c
+  87 apk search glib | grep compile
+  88 apk search glib | grep schemas
+  89 apk search pixbuf
+  90 apk install sassc
+  91 apk add sassc
+  92 ll
+  93 cd oomox-gtk-theme/
+  94 ./change_color.sh -o my-test-theme <(echo -e "BG=888a85\nBTN_BG=85509b\nBTN_FG=0e0021\nFG=0e0021\nGRADIENT=0.0\nHDR_BTN_BG=85509b\nHDR_BTN_FG=0e0021\nHDR_BG=0e0021\nHDR_FG=888a85\nROUNDNESS=4\nSEL_BG=dc5e86\nSEL_FG=000000\nSPACING=3\nTXT_BG=c0bbbb\nTXT_FG=000000\nWM_BORDER_FOCUS=9edc60\nWM_BORDER_UNFOCUS=0e0021\n")
+  95 ll
+  96 cat > cc.color
+  97 ll
+  98 mousepad cc.color 
+  99 ./change_color.sh -o my-test-theme cc.color 
+ 100 sh
+ 101 exit
+ 102 apk install bash
+ 103 apk addbash
+ 104 apk add bash
+ 105 ./change_color.sh -o my-test-theme cc.color 
+ 106 apk add build-base
+ 107 ./change_color.sh -o my-test-theme cc.color 
+ 108 apk add glib-dev
+ 109 ./change_color.sh -o my-test-theme cc.color 
+ 110 apk add librsvg-utils
+ 111 apk search svg
+ 112 apk add librsvg
+ 113 ./change_color.sh -o my-test-theme cc.color 
+ 114 apk search svg
+ 115 apk add librsvg-dev
+ 116 apk search svg
+ 117 rsvg-convert --version
+ 118 apk add librsvg-utils
+ 119 apk add librsvg | grep ut
+ 120 apk add librsvg
+ 121 apk search librsvg
+ 122 apk add librsvg-deg
+ 123 apk add librsvg-dev
+ 124 mkdir .themes
+ 125 ll
+ 126 rmdir .themes
+ 127 cd ~
+ 128 ll
+ 129 cd .tj
+ 130 cd .themes/
+ 131 ll
+ 132 wget
+ 133 wget kogcyc.github.io/files/green.tgz
+ 134 ll
+ 135 tar -xzvf green.tgz 
+ 136 ll
+ 137 thunar &
+ 138 rm -rf oomox-gtk-theme/
+ 139 bluetoothctl
+ 140 apk add bluetoothctl
+ 141 apk search uetoo
+ 142 apk add networkmanager-bluetooth
+ 143 apk add networkmanager networkmanager-bluetooth bluez bluez-deprecated openrc
+ 144 apk add networkmanager-wifi
+ 145 apk add networkmanager-bluetooth
+ 146 bluetoothctl
+ 147 rc-update add bluetooth default
+ 148 rc-update add NetworkManager default
+ 149 apk add networkmanager
+ 150 apk add networkmanager-bluetooth
+ 151 rc-update add NetworkManager default
+ 152 rc-service bluetooth start
+ 153 rc-service NetworkManager start
+ 154 rc-service networkmanager start
+ 155 bluetoothctl
+ 156 history
+ 157 startxfce4
+ 158 history
