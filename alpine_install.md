@@ -27,83 +27,67 @@ Update everything:
 
 Enable community repo:
 
-nano /etc/apk/repositories
+    nano /etc/apk/repositories
 
 Uncomment the line like:
 
-http://dl-cdn.alpinelinux.org/alpine/v3.19/community
+    http://dl-cdn.alpinelinux.org/alpine/v3.19/community
 
 Save + exit. Then:
 
-apk update
+    apk update
 
 🔹 Step 4: Create your user
 
-adduser matt
-addgroup matt wheel audio video input tty uinput
-apk add doas
-echo "permit persist :wheel" > /etc/doas.d/doas.conf
+    adduser matt
+    addgroup matt wheel audio video input tty uinput
+    apk add doas
+    echo "permit persist :wheel" > /etc/doas.d/doas.conf
 
 🔹 Step 5: Install X11 and XFCE (no display manager)
 
-setup-xorg-base
-apk add xfce4 xfce4-terminal dbus elogind gvfs udisks2
-rc-update add dbus
-rc-update add elogind
-rc-update add udisks2
+    setup-xorg-base
+    apk add xfce4 xfce4-terminal dbus elogind gvfs udisks2
+    rc-update add dbus
+    rc-update add elogind
+    rc-update add udisks2
 
 🔹 Step 6: Install sound system
 
-apk add alsa-utils alsa-ucm-conf pulseaudio pulseaudio-alsa pavucontrol
+    apk add alsa-utils alsa-ucm-conf pulseaudio pulseaudio-alsa pavucontrol
 
 🔹 Step 7: Configure XFCE launch for matt
 
 Switch to your user:
 
-su - matt
+    su - matt
 
 Create .xinitrc:
 
-echo "pulseaudio --start &" > ~/.xinitrc
-echo "exec startxfce4" >> ~/.xinitrc
-chmod +x ~/.xinitrc
+    echo "pulseaudio --start &" > ~/.xinitrc
+    echo "exec startxfce4" >> ~/.xinitrc
+    chmod +x ~/.xinitrc
 
 🔹 Step 8: (Optional) Add swap file for 1GB RAM
 
 As root:
 
-dd if=/dev/zero of=/swapfile bs=1M count=512
-chmod 600 /swapfile
-mkswap /swapfile
-swapon /swapfile
-echo "/swapfile none swap sw 0 0" >> /etc/fstab
+    dd if=/dev/zero of=/swapfile bs=1M count=512
+    chmod 600 /swapfile
+    mkswap /swapfile
+    swapon /swapfile
+    echo "/swapfile none swap sw 0 0" >> /etc/fstab
 
 🔹 Step 9: Reboot and log in as matt
 
-reboot
+    reboot
 
 Log in as matt, then run:
 
-startx
+    startx
 
 You should see XFCE, PulseAudio running, and pavucontrol ready.
-🔹 Step 10: (Optional) Auto-login and auto-start XFCE
 
-Ask me if you want to configure:
 
-    Automatic login on boot
 
-    XFCE auto-start
-
-    Volume keys, browser install, or a "chirp on login" 🎶
-
-🧠 You now have:
-
-✅ XFCE Desktop
-✅ Working input devices
-✅ Sound stack with PulseAudio
-✅ Wi-Fi config
-✅ Non-root user with GUI
-✅ Startup-friendly config
-
-Let me know if you want this as a printable .txt or .sh script!
+ 
