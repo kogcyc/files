@@ -6,30 +6,24 @@ Login as root (no password).
 
 🔹 Step 2: Run the installer
 
-setup-alpine
+    setup-alpine
 
 Follow prompts:
 
-    Keymap: us or your choice
-
-    Hostname: e.g. tricorder
-
-    Network: use wlan0, provide SSID/pass
-
-    Mirror: choose closest
-
-    Timezone: e.g. America/Los_Angeles
-
-    Disk: choose sys mode to install to disk
-
-    At end: reboot
+- Keymap: us or your choice
+- Hostname: e.g. tricorder
+- Network: use wlan0, provide SSID/pass
+- Mirror: choose closest
+- Timezone: e.g. America/Los_Angeles
+- Disk: choose sys mode to install to disk
+- At end: reboot
 
 🔹 Step 3: After reboot, log in as root
 
 Update everything:
 
-apk update
-apk upgrade
+    apk update
+    apk upgrade
 
 Enable community repo:
 
