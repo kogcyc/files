@@ -29,7 +29,7 @@ Enable community repo:
 
     nano /etc/apk/repositories
 
-Uncomment the line like:
+Uncomment the ***community*** line like:
 
     http://dl-cdn.alpinelinux.org/alpine/v3.19/community
 
