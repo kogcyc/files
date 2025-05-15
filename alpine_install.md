@@ -55,14 +55,14 @@ Save + exit. Then:
 🔹 Step 5: Install X11 and XFCE (no display manager)
 
     setup-xorg-base
-    apk add xfce4 xfce4-terminal dbus elogind gvfs udisks2
+    apk add xfce4 xfce4-terminal dbus elogind gvfs udisks2 polkit thunar-volman
     rc-update add dbus
     rc-update add elogind
-    rc-update add udisks2
+    rc-update add polkit
 
 🔹 Step 6: Install sound system
 
-    apk add alsa-utils alsa-ucm-conf pulseaudio pulseaudio-alsa pavucontrol
+    apk add alsa-utils alsa-ucm-conf pulseaudio pulseaudio-alsa pavucontrol xfce4-pulseaudio-plugin 
 
 🔹 Step 7: Configure XFCE launch for matt
 
