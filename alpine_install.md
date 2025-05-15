@@ -43,7 +43,7 @@ Save + exit. Then:
 
 🔹 Step 4: Create your user
 
-    adduser matt
+    adduser matt (may have been done during setup-alpine)
     addgroup matt wheel 
     addgroup matt audio 
     addgroup matt video 
