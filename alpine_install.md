@@ -44,7 +44,11 @@ Save + exit. Then:
 🔹 Step 4: Create your user
 
     adduser matt
-    addgroup matt wheel audio video input tty uinput
+    addgroup matt wheel 
+    addgroup matt audio 
+    addgroup matt video 
+    addgroup matt input 
+    addgroup matt tty
     apk add doas
     echo "permit persist :wheel" > /etc/doas.d/doas.conf
 
