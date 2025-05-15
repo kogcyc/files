@@ -62,7 +62,7 @@ Save + exit. Then:
 
 🔹 Step 6: Install sound system
 
-    apk add alsa-utils alsa-ucm-conf pulseaudio pulseaudio-alsa pavucontrol xfce4-pulseaudio-plugin mesa-gles
+    apk add alsa-utils alsa-ucm-conf pulseaudio pulseaudio-alsa pavucontrol xfce4-pulseaudio-plugin mesa-gles mesa-egl
 
 🔹 Step 7: Configure XFCE launch for matt
 
