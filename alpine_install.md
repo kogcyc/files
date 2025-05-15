@@ -27,6 +27,10 @@ Update everything:
 
 Enable community repo:
 
+this might require installing nano, so that is included here:
+
+    apk add nano
+
     nano /etc/apk/repositories
 
 Uncomment the ***community*** line like:
