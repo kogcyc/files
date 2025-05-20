@@ -1,0 +1,22 @@
+apk update
+apk upgrade
+apk add nano
+nano /etc/apk/repositories
+apk update
+addgroup user wheel 
+addgroup user audio 
+addgroup user video 
+addgroup user input 
+addgroup user tty
+apk add doas
+echo "permit persist :wheel" > /etc/doas.d/doas.conf
+setup-xorg-base
+apk add xfce4 xfce4-terminal dbus elogind gvfs udisks2 polkit thunar-volman
+rc-update add dbus
+rc-update add elogind
+rc-update add polkit
+apk add alsa-utils alsa-ucm-conf pulseaudio pulseaudio-alsa pavucontrol xfce4-pulseaudio-plugin mesa-gles mesa-egl
+su - user
+echo "pulseaudio --start &" > ~/.xinitrc
+echo "exec startxfce4" >> ~/.xinitrc
+chmod +x ~/.xinitrc
