@@ -1,3 +1,11 @@
+
+### install python modules
+
+    pip3 install markdown --break-system-packages
+    pip3 install python-frontmatter --break-system-packages
+    pip3 install jinja2 --break-system-packages
+    pip3 install rich --break-system-packages
+
 ### install color-picker
 
     sudo apt install color-picker
