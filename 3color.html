@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hex Digit Color Adjuster</title>
+</head>
+<body>
+<h2>Hex Digit Color Adjuster</h2>
+<input type="text" id="colorInput" value="#aaccee" maxlength="7">
+<button onclick="scaleHex(-1)">Scale -</button>
+<button onclick="scaleHex(1)">Scale +</button><br><br>
+<button onclick="adjustChannel('r', -1)">R-</button>
+<button onclick="adjustChannel('r', 1)">R+</button>
+<button onclick="adjustChannel('g', -1)">G-</button>
+<button onclick="adjustChannel('g', 1)">G+</button>
+<button onclick="adjustChannel('b', -1)">B-</button>
+<button onclick="adjustChannel('b', 1)">B+</button><br><br>
+<div id="colorDisplay" style="width:200px;height:200px;margin-top:10px;"></div>
+
+<script>
+function adjustHexDigit(digit, delta) {
+    let val = parseInt(digit, 16);
+    val = Math.max(0, Math.min(15, val + delta));
+    return val.toString(16);
+}
+
+function scaleHex(delta) {
+    let input = document.getElementById('colorInput').value;
+    if (/^#([0-9a-fA-F]{6})$/.test(input)) {
+        let hex = input.substring(1).split('');
+        for (let i = 0; i < 6; i++) {
+            hex[i] = adjustHexDigit(hex[i], delta);
+        }
+        let newHex = "#" + hex.join('');
+        updateDisplay(newHex);
+    } else {
+        alert("Invalid 6-hex color format (e.g. #aaccee)");
+    }
+}
+
+function adjustChannel(channel, delta) {
+    let input = document.getElementById('colorInput').value;
+    if (/^#([0-9a-fA-F]{6})$/.test(input)) {
+        let hex = input.substring(1).split('');
+        let indices = { r: [0,1], g: [2,3], b: [4,5] };
+        indices[channel].forEach(i => hex[i] = adjustHexDigit(hex[i], delta));
+        let newHex = "#" + hex.join('');
+        updateDisplay(newHex);
+    } else {
+        alert("Invalid 6-hex color format (e.g. #aaccee)");
+    }
+}
+
+function updateDisplay(hex) {
+    document.getElementById('colorInput').value = hex;
+    document.getElementById('colorDisplay').style.backgroundColor = hex;
+}
+</script>
+</body>
+</html>
