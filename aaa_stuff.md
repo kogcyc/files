@@ -96,6 +96,7 @@ put it in .bashrc if you want it permanent
 
     xclip -selection clipboard -i %f
     xclip -selection clipboard -o > %f
+    xclip -selection clipboard -t $(file -b --mime-type %f) -i %f
 
 ### install Handbrake
 
