@@ -1,19 +1,5 @@
 // d2.js
 
-export function degreesToRadians(deg) {
-  return (deg * Math.PI) / 180;
-}
-
-export function radiansToDegrees(rad) {
-  return (rad * 180) / Math.PI;
-}
-
-export function quadrant(p, q) {
-  let x = (q === 2 || q === 3) ? -p.x : p.x;
-  let y = (q === 3 || q === 4) ? -p.y : p.y;
-  return new D2(x, y);
-}
-
 export class D2 {
   constructor(x = 0.0, y = 0.0) {
     this.x = parseFloat(x);
