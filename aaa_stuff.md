@@ -74,6 +74,19 @@ put it in .bashrc if you want it permanent
     papirus-folders -C brown --theme Papirus-Dark
 
 
+    cd ~/.themes/
+    cd black/
+    cd xfwm4/
+    cp close-active.xpm safe.store
+
+    for f in close-inactive.xpm close-prelight.xpm close-pressed.xpm; do     cp -v close-active.xpm "$f"; done
+
+    for f in maximize-*.xpm; do     [ "$f" != "maximize-active.xpm" ] && cp -v maximize-active.xpm "$f"; done
+
+    for f in hide-*.xpm; do     [ "$f" != "hide-active.xpm" ] && cp -v hide-active.xpm "$f"; done
+
+
+
 ### git name email
 
     git config --global user.email "kogcyc@gmail.com"
