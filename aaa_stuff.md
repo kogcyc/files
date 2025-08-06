@@ -77,7 +77,38 @@ put it in .bashrc if you want it permanent
     cd ~/.themes/
     cd black/
     cd xfwm4/
-    cp close-active.xpm safe.store
+
+    import subprocess
+    from sys import argv
+
+    rgy = ['bb0000', '009700', '999900']
+    buttons = ["close-active.svg", "maximize-active.svg", "hide-active.svg"]
+
+    button = '''
+    <svg width="24" height="26">
+      <rect x="0" y="0" width="24" height="26" fill="#rectfill" />
+      <circle cx="13" cy="14" r="7" stroke="#fff" stroke-width="0" fill="#cfill" />
+    </svg>
+    '''
+
+    for i, t in enumerate(rgy):
+        svg_file = buttons[i]
+        xpm_file = svg_file.replace(".svg", ".xpm")
+
+        # Write SVG
+        newbutton = button.replace('cfill', t).replace('rectfill', argv[1])
+        with open(svg_file, 'w') as f:
+            f.write(newbutton)
+        print(f"Wrote: {svg_file}")
+
+        # Convert SVG to XPM
+        try:
+            subprocess.run(['convert', svg_file, xpm_file], check=True)
+             print(f"Converted to: {xpm_file}")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to convert {svg_file}: {e}")
+
+
 
     for f in close-inactive.xpm close-prelight.xpm close-pressed.xpm; do     cp -v close-active.xpm "$f"; done
 
