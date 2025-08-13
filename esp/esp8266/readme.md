@@ -1,23 +1,77 @@
-### add your user to dialout
+# ESP8266 MicroPython Quickstart (Ubuntu)
 
-    sudo usermod -aG dialout $USER
+This guide gets a WeMos D1 mini (or any ESP8266) running MicroPython on Ubuntu/Debian with the commands you provided.
 
-    NOTE: on my Ubuntu system this only works if I reboot
+> **Hardware prep (bootloader mode)**
+> - If your board has **FLASH** and **RESET** buttons: **Hold FLASH (GPIO0)**, **tap RESET**, keep holding FLASH ~1s, then release.
+> - If no buttons: connect **GPIO0 → GND** while resetting/powering the board.
 
-    running the command:
+---
 
-       groups
+## 1) Add user to `dialout` group
+```bash
+sudo usermod -aG dialout $USER
+```
+Log out/in or reboot for changes.
 
-    will confirm that
+---
 
-## erase your ESP8266
+## 2) Install `esptool`
+```bash
+pip3 install esptool --break-system-packages
+```
 
-    esptool.py --chip esp8266 erase_flash
-    -OR-
-    esptool.py --port /dev/tty??? erase_flash
+---
 
-    I like the first way when I'm getting started because it looks for a working port
-    
-### write the MicroPython bin file to your ESP8266
+## 3) Find the serial port
+```bash
+ls /dev/tty* | grep USB
+```
+Example: `/dev/ttyUSB0`.
 
-    esptool.py --chip esp8266 --baud 460800 write_flash --flash_size=detect 0 some_file_name.bin
+---
+
+## 4) Erase flash
+```bash
+esptool -p /dev/ttyUSB0 erase_flash
+```
+
+---
+
+## 5) Flash MicroPython firmware
+Firmware file: `ESP8266_GENERIC-FLASH_2M_ROMFS-20250809-v1.26.0.bin`
+```bash
+esptool -p /dev/ttyUSB0 write-flash --flash-size=detect 0x00000 ESP8266_GENERIC-FLASH_2M_ROMFS-20250809-v1.26.0.bin
+```
+Reset or power cycle the board after flashing.
+
+---
+
+## 6) Install Thonny
+```bash
+sudo apt install thonny
+```
+Select **MicroPython (ESP8266)** in Thonny and the correct port.
+
+---
+
+## 7) Blink test
+```python
+import machine
+import time
+
+led = machine.Pin(2, machine.Pin.OUT)
+
+while True:
+    led.value(1)
+    time.sleep(0.5)
+    led.value(0)
+    time.sleep(0.5)
+```
+
+---
+
+## Troubleshooting
+- **Permission denied**: re-login after adding `dialout`.
+- **No connection**: confirm bootloader mode, check wiring.
+- **Wrong firmware size**: use the correct build for your flash size.
