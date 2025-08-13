@@ -35,10 +35,15 @@ Example: `/dev/ttyUSB0`.
 ```bash
 esptool -p /dev/ttyUSB0 erase_flash
 ```
-
 ---
 
-## 5) Flash MicroPython firmware
+## 5) Find flash size
+```bash
+esptool -p /dev/ttyUSB0 flash-id
+```
+---
+
+## 6) Flash MicroPython firmware
 Firmware file: `ESP8266_GENERIC-FLASH_2M_ROMFS-20250809-v1.26.0.bin`
 ```bash
 esptool -p /dev/ttyUSB0 write-flash --flash-size=detect 0x00000 ESP8266_GENERIC-FLASH_2M_ROMFS-20250809-v1.26.0.bin
@@ -47,7 +52,7 @@ Reset or power cycle the board after flashing.
 
 ---
 
-## 6) Install Thonny
+## 7) Install Thonny
 ```bash
 sudo apt install thonny
 ```
@@ -55,7 +60,7 @@ Select **MicroPython (ESP8266)** in Thonny and the correct port.
 
 ---
 
-## 7) Blink test
+## 8) Blink test
 ```python
 import machine
 import time
