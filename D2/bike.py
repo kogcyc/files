@@ -9,8 +9,8 @@ bb = D2()
 
 # construct the seat tube
 
-stc  = bb.polar(117,580)
-sttt = stc.polar(117,20)
+stc  = bb.polar(180-73,580)
+sttt = stc.polar(180-73,20)
 
 stline = D2line(bb,stc)
 p.add_line(stline,stroke="#fff",stroke_width=28)
@@ -32,13 +32,19 @@ p.add_dot(bb,r=17,fill="#5e5c64")
 
 # make a rear dropout
 
-chainstay_length = 435.0
-bottom_bracket_drop = 90.0
-angle = math.degrees(math.asin(bottom_bracket_drop / chainstay_length))
-axle_point = D2((chainstay_length*math.cos(angle)) * -1.0, bottom_bracket_drop)
-print(axle_point)
+# place the rear axle
+
+chainstay_length = 435
+bottom_bracket_drop = 90
+frac = bottom_bracket_drop / chainstay_length
+ang = math.degrees(math.asin(frac))
+portion = math.cos(math.radians(ang))
+axle_point_x = 0 - (chainstay_length * portion)
+
+axle_point = D2(axle_point_x,bottom_bracket_drop)
+
 p.add_dot(axle_point,r=5,fill="#ace")
-rear_wheel_circle = D2circle(axle_point,322)
+rear_wheel_circle = D2circle(axle_point,311)
 p.add_circle(rear_wheel_circle)
 
 p.saveas("bike.svg")
