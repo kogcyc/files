@@ -112,7 +112,6 @@ class D2circle:
     def __repr__(self):
         return f"D2circle(center={self.center}, radius={self.radius})"
 
-
 class D2svg:
     def __init__(self, width=400, height=400, units=None):
         """
@@ -144,6 +143,62 @@ class D2svg:
             )
         )
 
+    def add_trapezoid(self, base_line, width_one, width_two, centered=True, **style):
+        """
+        Add a trapezoid given a baseline (D2line) and two widths.
+
+        width_one: trapezoid thickness at base_line.p1
+        width_two: trapezoid thickness at base_line.p2
+        centered: if True, baseline is the midline (two parallel edges on both sides).
+                  if False (default), baseline is one edge, offset outward.
+        """
+        if not isinstance(base_line, D2line):
+            raise TypeError("base_line must be a D2line")
+
+        # Direction vector of baseline
+        dx = base_line.p2.x - base_line.p1.x
+        dy = base_line.p2.y - base_line.p1.y
+        length = math.hypot(dx, dy)
+        if length < 1e-12:
+            raise ValueError("Baseline has zero length")
+
+        # Unit perpendicular (rotate (dx,dy) by 90°)
+        perp_x = -dy / length
+        perp_y = dx / length
+
+        if centered:
+            # Half-offsets in both directions
+            p1_offset_pos = D2(base_line.p1.x + perp_x * (width_one / 2),
+                               base_line.p1.y + perp_y * (width_one / 2))
+            p2_offset_pos = D2(base_line.p2.x + perp_x * (width_two / 2),
+                               base_line.p2.y + perp_y * (width_two / 2))
+            p1_offset_neg = D2(base_line.p1.x - perp_x * (width_one / 2),
+                               base_line.p1.y - perp_y * (width_one / 2))
+            p2_offset_neg = D2(base_line.p2.x - perp_x * (width_two / 2),
+                               base_line.p2.y - perp_y * (width_two / 2))
+            points = [
+                (p1_offset_neg.x, p1_offset_neg.y),
+                (p2_offset_neg.x, p2_offset_neg.y),
+                (p2_offset_pos.x, p2_offset_pos.y),
+                (p1_offset_pos.x, p1_offset_pos.y),
+            ]
+        else:
+            # Offset in +perpendicular direction only
+            p1_offset = D2(base_line.p1.x + perp_x * width_one,
+                           base_line.p1.y + perp_y * width_one)
+            p2_offset = D2(base_line.p2.x + perp_x * width_two,
+                           base_line.p2.y + perp_y * width_two)
+            points = [
+                (base_line.p1.x, base_line.p1.y),
+                (base_line.p2.x, base_line.p2.y),
+                (p2_offset.x, p2_offset.y),
+                (p1_offset.x, p1_offset.y),
+            ]
+
+        default_style = dict(fill="none", stroke="white", stroke_width=2)
+        default_style.update(style)
+        self.group.add(self.dwg.polygon(points, **default_style))
+
     def add_circle(self, circle, **style):
         """Add a circle from a D2circle"""
         default_style = dict(stroke="white", stroke_width=2, fill="none")
@@ -167,3 +222,4 @@ class D2svg:
 
     def saveas(self, filename):
         self.dwg.saveas(filename)
+
