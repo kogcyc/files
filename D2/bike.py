@@ -25,10 +25,7 @@ httc = stc.polar(0,570)
 ttline = D2line(stc,httc)
 p.add_line(ttline,stroke="#fff",stroke_width=25)
 
-# construct the bottom bracket
 
-p.add_dot(bb,r=21,fill="#fff")
-p.add_dot(bb,r=17,fill="#5e5c64")
 
 # make a rear dropout
 
@@ -43,9 +40,17 @@ rear_axle_point_x = 0 - (chainstay_length * portion)
 
 rear_axle_point = D2(rear_axle_point_x,bottom_bracket_drop)
 
-# conasruct rear wheel bsd
 
-rear_wheel_circle = D2circle(rear_axle_point,311)
+# construct rear tire bsd
+
+rear_tire_circle = D2circle(rear_axle_point,584/2+19)
+p.add_circle(rear_tire_circle,stroke="#222",stroke_width=40)
+rear_sidewall_circle = D2circle(rear_axle_point,584/2+10)
+p.add_circle(rear_sidewall_circle,stroke="#5f4433",stroke_width=20)
+
+# construct rear wheel bsd
+
+rear_wheel_circle = D2circle(rear_axle_point,584/2-3)
 p.add_circle(rear_wheel_circle)
 
 # construct rear dropout
@@ -62,4 +67,21 @@ p.add_line(dropout_slot,stroke="#5e5c64",stroke_width=10)
 
 p.add_dot(rear_axle_point,r=5,fill="#f00")
 
+# construct chainstay
+
+base = D2line(bb, rear_axle_point.translate(13.6,-6.9))
+p.add_trapezoid(base, width_one=28, width_two=12, fill="#fff")
+
+# construct seatstay
+
+base = D2line(stc, rear_axle_point.translate(-7,9))
+p.add_trapezoid(base, width_one=16, width_two=10, fill="#fff")
+
+
+# construct the bottom bracket
+
+p.add_dot(bb,r=21,fill="#fff")
+p.add_dot(bb,r=17,fill="#5e5c64")
+
 p.saveas("bike.svg")
+
