@@ -1,1 +1,3 @@
-**D2**
+## D2
+
+A Cartesian point module
