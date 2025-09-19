@@ -8,7 +8,7 @@ p = D2svg(width=2000, height=1300)
 sta = 73 # seat tube angle
 stl = 580 # seat tube length
 ste = 20 # seat tube extension above the top tube center
-ttl=0.5 * stl+275
+ttl = 0.5 * stl + 275
 print(ttl)
 
 # set tbe bottom bracket location
