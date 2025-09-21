@@ -1,0 +1,58 @@
+<!-- A text input to show the slider's value -->
+<input id="val" type="text" />
+
+<!-- The slider -->
+<input id="slide1" type="range" min="50" max="64" value="55" />
+
+<style>
+  #val {
+    width: 30px;}
+  #slide1 {
+    -webkit-appearance: none; /* remove default */
+    width: 200px;
+    height: 8px;
+    background: #c8a;
+    border-radius: 5px;
+    outline: none;
+  }
+
+  /* The draggable thumb */
+  #slide1::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #735;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  #slide1::-moz-range-thumb {
+    width: 16px;
+    height: 20px;
+    background: #735;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const val = document.getElementById("val");
+    const slide1 = document.getElementById("slide1");
+
+    function update() {
+      val.value = slide1.value;
+    }
+
+    // set initial value
+    update();
+
+    // update on slider move
+    slide1.addEventListener("input", update);
+  });
+</script>
