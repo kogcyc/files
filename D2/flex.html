@@ -1,0 +1,39 @@
+<div class="flex-container">
+  <div class="left">
+
+    <svg viewBox="0 0 2200 1700" preserveAspectRatio="xMidYMid meet">
+      <circle cx="1100" cy="850" r="600" stroke="yellow" fill="none" stroke-width="34"/>
+    </svg>
+
+  </div>
+  <div class="right">TOP TUBE LENGTH</div>
+</div>
+
+html { font-family: monospace;
+font-weight: 900; 
+font-size: 0.8em;
+letter-spacing: 1px;}
+
+.flex-container {
+  display: flex;         /* turn on flexbox */
+  flex-direction: row;   /* default, left-to-right */
+  gap: 10px;             /* space between columns */
+}
+
+.right {
+  flex: 0 0 240px;       /* fixed 200px width */
+  background: rgb(255, 255, 255);
+  color: rgb(47, 38, 21);
+}
+
+.left {
+  flex: 1;               /* take up remaining space */
+  background: #357;
+  color: white;
+}
+
+.left svg {
+  width: 100%;    /* expand to column width */
+  height: auto;   /* preserve aspect ratio */
+  max-height: 100%; /* keep inside the column */
+}
