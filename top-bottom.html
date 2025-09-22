@@ -59,6 +59,10 @@
     margin-top: 1rem;  /* put controls BELOW svg */
 font-size: 500%;         /* text scales up */
   }
+  .controls input[type="range"] {
+  transform: scale(2.5);       /* make it 150% bigger */
+  transform-origin: left center; /* anchor so it grows to the right */
+}
   svg {
     width: 96%;        /* take 90% of device width */
     max-width: none;   /* remove desktop cap */
