@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body {
+      background: #5e5c64;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+    }
+    svg {
+      width: 100%;
+      height: auto;
+      max-width: 900px; /* optional cap */
+      display: block;
+      margin: auto;
+      background: #334;
+    }
+  </style>
+</head>
+<body>
+  <h2>D2JS Responsive Intersection Demo</h2>
+
+  <!-- Responsive SVG with viewBox -->
+  <svg id="svg" viewBox="-300 -200 600 400" preserveAspectRatio="xMidYMid meet">
+    <g id="scene" transform="scale(1,-1)"></g>
+  </svg>
+
+  <script>
+    // --- 2D Point ---
+    class D2 {
+      constructor(x=0, y=0) { this.x=x; this.y=y; }
+      distanceTo(o) { return Math.hypot(this.x-o.x, this.y-o.y); }
+      translate(dx,dy) { return new D2(this.x+dx, this.y+dy); }
+      polar(angleDeg, dist) {
+        const rad = angleDeg * Math.PI/180;
+        return this.translate(dist*Math.cos(rad), dist*Math.sin(rad));
+      }
+      copy() { return new D2(this.x,this.y); }
+      toString() { return `D2(${this.x.toFixed(1)},${this.y.toFixed(1)})`; }
+    }
+
+    // --- Line ---
+    class D2line {
+      constructor(p1,p2){ this.p1=p1.copy(); this.p2=p2.copy(); }
+      length(){ return this.p1.distanceTo(this.p2); }
+      midpoint(){ return new D2((this.p1.x+this.p2.x)/2,(this.p1.y+this.p2.y)/2); }
+      slope(){ return Math.abs(this.p2.x-this.p1.x)<1e-10?null:(this.p2.y-this.p1.y)/(this.p2.x-this.p1.x); }
+      intersect(other){
+        const [x1,y1,x2,y2,x3,y3,x4,y4]=[this.p1.x,this.p1.y,this.p2.x,this.p2.y,other.p1.x,other.p1.y,other.p2.x,other.p2.y];
+        const denom=(x1-x2)*(y3-y4)-(y1-y2)*(x3-x4);
+        if(Math.abs(denom)<1e-12) return null;
+        const px=((x1*y2-y1*x2)*(x3-x4)-(x1-x2)*(x3*y4-y3*x4))/denom;
+        const py=((x1*y2-y1*x2)*(y3-y4)-(y1-y2)*(x3*y4-y3*x4))/denom;
+        const within1=Math.min(x1,x2)-1e-10<=px&&px<=Math.max(x1,x2)+1e-10&&Math.min(y1,y2)-1e-10<=py&&py<=Math.max(y1,y2)+1e-10;
+        const within2=Math.min(x3,x4)-1e-10<=px&&px<=Math.max(x3,x4)+1e-10&&Math.min(y3,y4)-1e-10<=py&&py<=Math.max(y3,y4)+1e-10;
+        return(within1&&within2)?new D2(px,py):null;
+      }
+    }
+
+    // --- Circle ---
+    class D2circle {
+      constructor(center,r){ if(!(center instanceof D2))throw new TypeError("Center must be D2"); if(r<0)throw new RangeError("Radius >=0"); this.center=center.copy(); this.radius=r; }
+      intersect(line){
+        const p1x=line.p1.x-this.center.x, p1y=line.p1.y-this.center.y, p2x=line.p2.x-this.center.x, p2y=line.p2.y-this.center.y;
+        const dx=p2x-p1x, dy=p2y-p1y, a=dx*dx+dy*dy, b=2*(p1x*dx+p1y*dy), c=p1x*p1x+p1y*p1y-this.radius*this.radius;
+        const disc=b*b-4*a*c; if(disc<-1e-12) return[];
+        const sqrtD=Math.sqrt(Math.max(disc,0));
+        const t1=(-b-sqrtD)/(2*a), t2=(-b+sqrtD)/(2*a);
+        const pts=[]; [t1,t2].forEach(t=>{ if(t>=0&&t<=1) pts.push(new D2(line.p1.x+t*dx,line.p1.y+t*dy)); });
+        return pts;
+      }
+    }
+
+    // --- SVG helpers ---
+    const NS="http://www.w3.org/2000/svg";
+    function svgLine(line,style={}){const el=document.createElementNS(NS,"line");el.setAttribute("x1",line.p1.x);el.setAttribute("y1",line.p1.y);el.setAttribute("x2",line.p2.x);el.setAttribute("y2",line.p2.y);Object.entries(style).forEach(([k,v])=>el.setAttribute(k,v));return el;}
+    function svgCircle(circle,style={}){const el=document.createElementNS(NS,"circle");el.setAttribute("cx",circle.center.x);el.setAttribute("cy",circle.center.y);el.setAttribute("r",circle.radius);Object.entries(style).forEach(([k,v])=>el.setAttribute(k,v));return el;}
+    function svgDot(pt,r=5,style={fill:"red"}){const el=document.createElementNS(NS,"circle");el.setAttribute("cx",pt.x);el.setAttribute("cy",pt.y);el.setAttribute("r",r);Object.entries(style).forEach(([k,v])=>el.setAttribute(k,v));return el;}
+
+    // --- Demo drawing ---
+    const scene=document.getElementById("scene");
+    const l1=new D2line(new D2(-200,-100),new D2(200,100));
+    const l2=new D2line(new D2(-200,100),new D2(200,-100));
+    const circ=new D2circle(new D2(0,0),120);
+
+    scene.appendChild(svgLine(l1,{stroke:"white","stroke-width":3}));
+    scene.appendChild(svgLine(l2,{stroke:"white","stroke-width":3}));
+    scene.appendChild(svgCircle(circ,{stroke:"yellow","stroke-width":3,fill:"none"}));
+
+    const llInt=l1.intersect(l2);
+    if(llInt) scene.appendChild(svgDot(llInt,6,{fill:"lime"}));
+
+    const clInts=circ.intersect(l1);
+    clInts.forEach(pt=>scene.appendChild(svgDot(pt,6,{fill:"cyan"})));
+  </script>
+</body>
+</html>

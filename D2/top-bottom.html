@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Responsive SVG Circle App</title>
+  <style>
+    body {
+      background: #5e5c64;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 1rem;
+    }
+
+    .app {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.0rem;
+    }
+
+
+
+    .view {
+      flex: 1;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+      max-width: 600px;
+      background: #334;
+      display: block;
+      margin: auto;
+    }
+
+.controls {
+      flex: 0 0 250px;
+  font-size: 100%;         /* text scales up */
+}
+
+.controls input[type="range"] {
+  transform: scale(1.0);   /* slider track + thumb scale */
+  transform-origin: left center; /* anchor scaling so it grows outward */
+}
+
+@media (max-width: 700px), (orientation: portrait) {
+  .app {
+    flex-direction: column; /* stack */
+    align-items: center;
+  }
+  .view {
+    width: 100%;       /* let SVG expand */
+    display: flex;     /* center the SVG */
+    justify-content: center;
+  }
+  .controls {
+    width: 90%;
+    text-align: center;
+    margin-top: 1rem;  /* put controls BELOW svg */
+font-size: 300%;         /* text scales up */
+  }
+.controls input[type="range"] {
+  transform: scale(2.5);       /* make it 150% bigger */
+  transform-origin: left center; /* anchor so it grows to the right */
+}
+  svg {
+    width: 96%;        /* take 90% of device width */
+    max-width: none;   /* remove desktop cap */
+  }
+}
+
+  </style>
+</head>
+<body>
+  <h2>Responsive SVG Circle App</h2>
+  <div class="app">
+    <div class="view">
+      <svg id="svg" viewBox="-300 -200 600 400" preserveAspectRatio="xMidYMid meet">
+        <g id="scene" transform="scale(1,-1)"></g>
+      </svg>
+    </div>
+
+    <div class="controls">
+      <label>
+        Circle radius:
+        <input type="range" id="radius" min="10" max="160" value="120" step="10" />
+      </label>
+      <div id="radiusValue">120</div>
+    </div>
+  </div>
+
+  <script>
+    // geometry class
+    class D2 {
+      constructor(x=0,y=0){ this.x=x; this.y=y; }
+      copy(){ return new D2(this.x,this.y); }
+    }
+    class D2circle {
+      constructor(center,r){ this.center=center.copy(); this.radius=r; }
+    }
+
+    // svg helpers
+    const NS="http://www.w3.org/2000/svg";
+    function svgCircle(circle, style={}) {
+      const el=document.createElementNS(NS,"circle");
+      el.setAttribute("cx",circle.center.x);
+      el.setAttribute("cy",circle.center.y);
+      el.setAttribute("r",circle.radius);
+      Object.entries(style).forEach(([k,v])=>el.setAttribute(k,v));
+      return el;
+    }
+
+    // elements
+    const scene=document.getElementById("scene");
+    const radiusSlider=document.getElementById("radius");
+    const radiusValue=document.getElementById("radiusValue");
+
+    function redraw() {
+      const r=parseFloat(radiusSlider.value);
+      radiusValue.textContent=r;
+
+      scene.innerHTML=""; // clear
+      const c=new D2circle(new D2(0,0),r);
+      scene.appendChild(svgCircle(c,{stroke:"yellow","stroke-width":4,fill:"none"}));
+    }
+
+    radiusSlider.addEventListener("input",redraw);
+    redraw();
+  </script>
+</body>
+</html>

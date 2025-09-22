@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body {
+      background: #5e5c64;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- SVG with centered + flipped coordinate system -->
+  <svg id="bike" width="1200" height="800" style="background:#5e5c64">
+    <g id="scene" transform="translate(600,700) scale(1,-1)">
+    </g>
+  </svg>
+
+  <script>
+    // --- Geometry classes ---
+    class D2 {
+      constructor(x = 0, y = 0) {
+        this.x = x;
+        this.y = y;
+      }
+
+      distanceTo(other) {
+        return Math.hypot(this.x - other.x, this.y - other.y);
+      }
+
+      translate(dx, dy) {
+        return new D2(this.x + dx, this.y + dy);
+      }
+
+      polar(angleDegrees, distance) {
+        const rad = angleDegrees * Math.PI / 180;
+        return this.translate(
+          distance * Math.cos(rad),
+          distance * Math.sin(rad)
+        );
+      }
+
+      copy() {
+        return new D2(this.x, this.y);
+      }
+    }
+
+    class D2line {
+      constructor(p1, p2) {
+        this.p1 = p1.copy();
+        this.p2 = p2.copy();
+      }
+
+      length() {
+        return this.p1.distanceTo(this.p2);
+      }
+    }
+
+    // --- Drawing / Redraw ---
+    const scene = document.getElementById("scene");
+
+    function redraw() {
+      // clear old geometry, add background rect
+      scene.innerHTML = '<rect width="1200" height="800" x="-600" y="-100" fill="#335" />';
+
+      const sta = 73;
+      const stl = 550;
+
+      // bottom bracket at origin
+      const bb = new D2(0, 0);
+      const stttc = bb.polar(180 - sta, stl);
+
+      // seat tube
+      const seatTube = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      seatTube.setAttribute("x1", bb.x);
+      seatTube.setAttribute("y1", bb.y);
+      seatTube.setAttribute("x2", stttc.x);
+      seatTube.setAttribute("y2", stttc.y);
+      seatTube.setAttribute("stroke", "white");
+      seatTube.setAttribute("stroke-width", "18");
+      scene.appendChild(seatTube);
+
+      // top tube (fixed length for demo)
+      const httc = stttc.polar(0, stl / 2 + 275);
+      const topTube = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      topTube.setAttribute("x1", stttc.x);
+      topTube.setAttribute("y1", stttc.y);
+      topTube.setAttribute("x2", httc.x);
+      topTube.setAttribute("y2", httc.y);
+      topTube.setAttribute("stroke", "yellow");
+      topTube.setAttribute("stroke-width", "18");
+      scene.appendChild(topTube);
+
+      // bottom bracket dots
+      const bbCircle1 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      bbCircle1.setAttribute("cx", bb.x);
+      bbCircle1.setAttribute("cy", bb.y);
+      bbCircle1.setAttribute("r", 16);
+      bbCircle1.setAttribute("fill", "white");
+      scene.appendChild(bbCircle1);
+
+      const bbCircle2 = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      bbCircle2.setAttribute("cx", bb.x);
+      bbCircle2.setAttribute("cy", bb.y);
+      bbCircle2.setAttribute("r", 12);
+      bbCircle2.setAttribute("fill", "#335");
+      scene.appendChild(bbCircle2);
+    }
+
+    // initial draw
+    redraw();
+  </script>
+</body>
+</html>

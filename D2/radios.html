@@ -1,0 +1,22 @@
+<label><input type="radio" name="bsr" value="311" checked>622</label>
+<label><input type="radio" name="bsr" value="292">584</label>
+<label><input type="radio" name="bsr" value="279.5">559</label>
+<label><input type="radio" name="bsr" value="203">406</label>
+
+
+<script>
+
+  var bsr = 0;
+  // Get all radio buttons in the "choice" group
+  const bsr_radios = document.querySelectorAll('input[name="bsr"]');
+
+  // Attach listener to each one
+  bsr_radios.forEach(bsr => {
+    bsr.addEventListener("change", event => {
+      if (event.target.checked) {
+        bsr = event.target.value;  // bead set radius
+        console.log("bsr radio-ed", bsr);
+      }
+    });
+  });
+</script>
