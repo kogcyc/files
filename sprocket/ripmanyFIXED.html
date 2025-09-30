@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>D2 + SVG Demo</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    #drawing {
+      border: 1px solid #ccc;
+      width: 400px;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>D2 + SVG Demo</h2>
+
+<svg id="drawing" viewBox="-100 -100 200 200">
+
+<!-- sprocket drawn here -->
+
+<script type="module">
+
+// ----- origin_to_vertex -----
+
+function originToVertex(n, l=12.7) {
+  return l / (2 * Math.sin(Math.PI / n));
+}
+
+  import { D2 } from "./D2.js";
+
+  const svg = document.getElementById("drawing");
+
+  const teeth = 15;
+  const rivitRadius = originToVertex(teeth);
+  const toothRadian = 360 / teeth;
+  const toothAngle = 22;
+  // make some points with D2
+  const origin = new D2(0, 0);
+  const pConstruct = origin.polar(0,rivitRadius);
+  //console.log(pConstruct)    
+  const p1 = pConstruct.polar(-90-toothAngle, 3.97);  // 
+  const p0 = p1.polar(-toothAngle, 4);  // 
+  const p2 = p1.mirrorY();  // 
+  const p3 = p0.mirrorY();
+  const pminus = p0.rotate(origin,360/teeth)
+
+  //console.log(p0)
+  //console.log(p1)
+
+  // draw a sprocket
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+  var pathString = `M ${p0.x.toFixed(2)} ${p0.y.toFixed(2)} L ${p1.x.toFixed(2)} ${p1.y.toFixed(2)} A 3.97 3.97 0 0 0 ${p2.x.toFixed(2)} ${p2.y.toFixed(2)} L ${p3.x.toFixed(2)} ${p3.y.toFixed(2)} L ${pminus.x.toFixed(2)} ${pminus.y.toFixed(2)} `
+
+  for (let t = 0; t < teeth-2; t++) {
+    var a = toothRadian * (t + 1);
+    let p1p = p1.rotate(origin, a);
+    let p0p = p0.rotate(origin, a);
+    let p2p = p2.rotate(origin, a);
+    let p3p = p3.rotate(origin, a);
+    let pminusp = pminus.rotate(origin, a);
+    pathString = pathString + `L ${p0p.x.toFixed(2)} ${p0p.y.toFixed(2)} L ${p1p.x.toFixed(2)} ${p1p.y.toFixed(2)} A 3.97 3.97 0 0 0 ${p2p.x.toFixed(2)} ${p2p.y.toFixed(2)} L ${p3p.x.toFixed(2)} ${p3p.y.toFixed(2)} L ${pminusp.x.toFixed(2)} ${pminusp.y.toFixed(2)} `
+  }
+
+  
+    a = a+toothRadian;
+    let p1p = p1.rotate(origin, a);
+    let p0p = p0.rotate(origin, a);
+    let p2p = p2.rotate(origin, a);
+    let p3p = p3.rotate(origin, a);
+    let pminusp = pminus.rotate(origin, a);
+    pathString = pathString + `L ${p0p.x.toFixed(2)} ${p0p.y.toFixed(2)} L ${p1p.x.toFixed(2)} ${p1p.y.toFixed(2)} A 3.97 3.97 0 0 0 ${p2p.x.toFixed(2)} ${p2p.y.toFixed(2)} L ${p3p.x.toFixed(2)} ${p3p.y.toFixed(2)} Z`
+
+
+
+  path.setAttribute("d",pathString);
+  path.setAttribute("stroke", "none");
+  path.setAttribute("fill", "red");
+  svg.appendChild(path);
+
+  // draw a circle at the origin
+  const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+  circle.setAttribute("cx", origin.x);
+  circle.setAttribute("cy", origin.y);
+  circle.setAttribute("r", rivitRadius-10);
+  circle.setAttribute("fill", "#fff");
+  circle.setAttribute("stroke", "none");
+  circle.setAttribute("stroke-width", "0");
+  svg.appendChild(circle);
+
+console.log(svg)
+</script>
+
+</body>
+</html>
+
