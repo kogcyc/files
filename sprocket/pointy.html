@@ -190,17 +190,17 @@
     circle.setAttribute("stroke", "none");
     svg.appendChild(circle);
 
-    // add overlays between p0 and pminus
+    // add overlays between p3 and pminus
     if (rounding === "circle") {
       for (let t = 0; t < teeth; t++) {
         const a = toothRadian * t;
-        const p0p = p0.rotate(origin, a);
+        const p3p = p3.rotate(origin, a);
         const pminusp = pminus.rotate(origin, a);
 
-        const mx = (p0p.x + pminusp.x) / 2;
-        const my = (p0p.y + pminusp.y) / 2;
-        const dx = pminusp.x - p0p.x;
-        const dy = pminusp.y - p0p.y;
+        const mx = (p3p.x + pminusp.x) / 2;
+        const my = (p3p.y + pminusp.y) / 2;
+        const dx = pminusp.x - p3p.x;
+        const dy = pminusp.y - p3p.y;
         const dist = Math.sqrt(dx*dx + dy*dy);
         const r = dist / 2;
 
