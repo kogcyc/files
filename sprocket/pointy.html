@@ -80,8 +80,8 @@
   <div class="row">
     <input type="color" id="colorPicker" value="#ff0000">
     <select id="roundingSelect">
-      <option value="none">None</option>
-      <option value="circle">Circle</option>
+      <option value="none">Flat</option>
+      <option value="circle">Rounded</option>
     </select>
     <button id="downloadSvgBtn">Download SVG</button>
   </div>
@@ -190,7 +190,7 @@
     circle.setAttribute("stroke", "none");
     svg.appendChild(circle);
 
-    // add overlays between p3 and pminus
+    // add overlay ellipses between p3 and pminus
     if (rounding === "circle") {
       for (let t = 0; t < teeth; t++) {
         const a = toothRadian * t;
@@ -202,15 +202,20 @@
         const dx = pminusp.x - p3p.x;
         const dy = pminusp.y - p3p.y;
         const dist = Math.sqrt(dx*dx + dy*dy);
-        const r = dist / 2;
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
 
-        const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        c.setAttribute("cx", mx);
-        c.setAttribute("cy", my);
-        c.setAttribute("r", r.toFixed(2));
-        c.setAttribute("fill", fillColor);
-        c.setAttribute("stroke", "none");
-        svg.appendChild(c);
+        const rx = dist / 2;        // major axis
+        const ry = rx * 0.8;        // minor axis at 80%
+
+        const e = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
+        e.setAttribute("cx", mx);
+        e.setAttribute("cy", my);
+        e.setAttribute("rx", rx.toFixed(2));
+        e.setAttribute("ry", ry.toFixed(2));
+        e.setAttribute("fill", fillColor);
+        e.setAttribute("stroke", "none");
+        e.setAttribute("transform", `rotate(${angle} ${mx} ${my})`);
+        svg.appendChild(e);
       }
     }
   }
@@ -256,7 +261,7 @@
     link.href = url;
 
     const toothLenStr = currentToothLength.toFixed(1).replace('.', '-');
-    const roundStr = currentRounding === "circle" ? "_circle" : "";
+    const roundStr = currentRounding === "circle" ? "_oval" : "";
     link.download = `sprocket_${currentTeeth}_${toothLenStr}${roundStr}.svg`;
 
     document.body.appendChild(link);
