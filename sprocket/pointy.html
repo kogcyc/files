@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +55,7 @@
       align-items: center;
       gap: 10px;
       margin-top: 0.5em;
+      flex-wrap: wrap;
     }
   </style>
 </head>
@@ -77,18 +77,12 @@
   </label>
   <input type="range" id="circleSlider" min="2" max="20" step="0.1" value="2">
 
-  <label for="roundingSelect">
-    Tooth Rounding:
-  </label>
-  <select id="roundingSelect">
-    <option value="none">None</option>
-    <option value="circle">Circle</option>
-    <option value="oval1">Oval 1 (major along flank)</option>
-    <option value="oval2">Oval 2 (minor along flank)</option>
-  </select>
-
   <div class="row">
     <input type="color" id="colorPicker" value="#ff0000">
+    <select id="roundingSelect">
+      <option value="none">None</option>
+      <option value="circle">Circle</option>
+    </select>
     <button id="downloadSvgBtn">Download SVG</button>
   </div>
 </div>
@@ -196,50 +190,27 @@
     circle.setAttribute("stroke", "none");
     svg.appendChild(circle);
 
-    // add overlays depending on rounding
-    if (rounding !== "none") {
+    // add overlays between p0 and pminus
+    if (rounding === "circle") {
       for (let t = 0; t < teeth; t++) {
         const a = toothRadian * t;
         const p0p = p0.rotate(origin, a);
-        const p3p = p3.rotate(origin, a);
+        const pminusp = pminus.rotate(origin, a);
 
-        const mx = (p0p.x + p3p.x) / 2;
-        const my = (p0p.y + p3p.y) / 2;
-        const dx = p3p.x - p0p.x;
-        const dy = p3p.y - p0p.y;
+        const mx = (p0p.x + pminusp.x) / 2;
+        const my = (p0p.y + pminusp.y) / 2;
+        const dx = pminusp.x - p0p.x;
+        const dy = pminusp.y - p0p.y;
         const dist = Math.sqrt(dx*dx + dy*dy);
-        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        const r = dist / 2;
 
-        if (rounding === "circle") {
-          const r = dist / 2;
-          const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-          c.setAttribute("cx", mx);
-          c.setAttribute("cy", my);
-          c.setAttribute("r", r.toFixed(2));
-          c.setAttribute("fill", fillColor);
-          c.setAttribute("stroke", "none");
-          svg.appendChild(c);
-        } else if (rounding === "oval1") {
-          const e = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
-          e.setAttribute("cx", mx);
-          e.setAttribute("cy", my);
-          e.setAttribute("rx", (dist/2).toFixed(2));
-          e.setAttribute("ry", (dist/4).toFixed(2));
-          e.setAttribute("fill", fillColor);
-          e.setAttribute("stroke", "none");
-          e.setAttribute("transform", `rotate(${angle} ${mx} ${my})`);
-          svg.appendChild(e);
-        } else if (rounding === "oval2") {
-          const e = document.createElementNS("http://www.w3.org/2000/svg", "ellipse");
-          e.setAttribute("cx", mx);
-          e.setAttribute("cy", my);
-          e.setAttribute("rx", (dist/4).toFixed(2));
-          e.setAttribute("ry", (dist/2).toFixed(2));
-          e.setAttribute("fill", fillColor);
-          e.setAttribute("stroke", "none");
-          e.setAttribute("transform", `rotate(${angle} ${mx} ${my})`);
-          svg.appendChild(e);
-        }
+        const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        c.setAttribute("cx", mx);
+        c.setAttribute("cy", my);
+        c.setAttribute("r", r.toFixed(2));
+        c.setAttribute("fill", fillColor);
+        c.setAttribute("stroke", "none");
+        svg.appendChild(c);
       }
     }
   }
@@ -285,7 +256,8 @@
     link.href = url;
 
     const toothLenStr = currentToothLength.toFixed(1).replace('.', '-');
-    link.download = `sprocket_${currentTeeth}_${toothLenStr}.svg`;
+    const roundStr = currentRounding === "circle" ? "_circle" : "";
+    link.download = `sprocket_${currentTeeth}_${toothLenStr}${roundStr}.svg`;
 
     document.body.appendChild(link);
     link.click();
