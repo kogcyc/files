@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>D2 + SVG Demo with Teeth Slider & Download</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    #drawing {
+      border: 1px solid #ccc;
+      width: 400px;
+      height: 400px;
+    }
+    .controls {
+      margin-bottom: 1em;
+    }
+  </style>
+</head>
+<body>
+
+<h2>D2 + SVG Demo</h2>
+
+<div class="controls">
+  <label for="teethSlider">Teeth: <span id="teethValue">15</span></label><br>
+  <input type="range" id="teethSlider" min="9" max="21" value="15">
+  <button id="downloadBtn">Download SVG</button>
+</div>
+
+<svg id="drawing" viewBox="-100 -100 200 200"></svg>
+
+<script type="module">
+  import { D2 } from "./D2.js";
+
+  function originToVertex(n, l = 12.7) {
+    return l / (2 * Math.sin(Math.PI / n));
+  }
+
+  const svg = document.getElementById("drawing");
+  const teethSlider = document.getElementById("teethSlider");
+  const teethValue = document.getElementById("teethValue");
+  const downloadBtn = document.getElementById("downloadBtn");
+
+  let currentTeeth = parseInt(teethSlider.value, 10);
+
+  function drawSprocket(teeth) {
+    // clear previous contents
+    svg.innerHTML = "";
+    currentTeeth = teeth;
+
+    const rivitRadius = originToVertex(teeth);
+    const toothRadian = 360 / teeth;  // degrees
+    const toothAngle = 22;
+
+    const origin = new D2(0, 0);
+    const pConstruct = origin.polar(0, rivitRadius);
+    const p1 = pConstruct.polar(-90 - toothAngle, 3.97);
+    const p0 = p1.polar(-toothAngle, 4);
+    const p2 = p1.mirrorY();
+    const p3 = p0.mirrorY();
+    const pminus = p0.rotate(origin, 360/teeth);
+
+    let pathString = `M ${p0.x.toFixed(2)} ${p0.y.toFixed(2)} 
+                      L ${p1.x.toFixed(2)} ${p1.y.toFixed(2)} 
+                      A 3.97 3.97 0 0 0 ${p2.x.toFixed(2)} ${p2.y.toFixed(2)} 
+                      L ${p3.x.toFixed(2)} ${p3.y.toFixed(2)} 
+                      L ${pminus.x.toFixed(2)} ${pminus.y.toFixed(2)} `;
+
+    for (let t = 0; t < teeth-2; t++) {
+      let a = toothRadian * (t + 1);
+      let p1p = p1.rotate(origin, a);
+      let p0p = p0.rotate(origin, a);
+      let p2p = p2.rotate(origin, a);
+      let p3p = p3.rotate(origin, a);
+      let pminusp = pminus.rotate(origin, a);
+      pathString += `L ${p0p.x.toFixed(2)} ${p0p.y.toFixed(2)} 
+                     L ${p1p.x.toFixed(2)} ${p1p.y.toFixed(2)} 
+                     A 3.97 3.97 0 0 0 ${p2p.x.toFixed(2)} ${p2p.y.toFixed(2)} 
+                     L ${p3p.x.toFixed(2)} ${p3p.y.toFixed(2)} 
+                     L ${pminusp.x.toFixed(2)} ${pminusp.y.toFixed(2)} `;
+    }
+
+    let a = toothRadian * (teeth-1);
+    let p1p = p1.rotate(origin, a);
+    let p0p = p0.rotate(origin, a);
+    let p2p = p2.rotate(origin, a);
+    let p3p = p3.rotate(origin, a);
+    let pminusp = pminus.rotate(origin, a);
+    pathString += `L ${p0p.x.toFixed(2)} ${p0p.y.toFixed(2)} 
+                   L ${p1p.x.toFixed(2)} ${p1p.y.toFixed(2)} 
+                   A 3.97 3.97 0 0 0 ${p2p.x.toFixed(2)} ${p2p.y.toFixed(2)} 
+                   L ${p3p.x.toFixed(2)} ${p3p.y.toFixed(2)} Z`;
+
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("d", pathString);
+    path.setAttribute("stroke", "none");
+    path.setAttribute("fill", "red");
+    svg.appendChild(path);
+
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("cx", origin.x);
+    circle.setAttribute("cy", origin.y);
+    circle.setAttribute("r", rivitRadius - 10);
+    circle.setAttribute("fill", "#fff");
+    circle.setAttribute("stroke", "none");
+    svg.appendChild(circle);
+  }
+
+  // initial draw
+  drawSprocket(currentTeeth);
+
+  // slider handler
+  teethSlider.addEventListener("input", (e) => {
+    const val = parseInt(e.target.value, 10);
+    teethValue.textContent = val;
+    drawSprocket(val);
+  });
+
+  // download handler
+  downloadBtn.addEventListener("click", () => {
+    // Build a full SVG string (including outer <svg>)
+    const svgData = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200">${svg.innerHTML}</svg>`;
+    const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `sprocket${currentTeeth}.svg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  });
+</script>
+
+</body>
+</html>
