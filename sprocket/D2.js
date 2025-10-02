@@ -35,6 +35,19 @@ export class D2 {
     return Math.hypot(this.x - other.x, this.y - other.y);
   }
 
+  midpoint(other) {
+    return new D2(
+      (this.x + other.x) / 2,
+      (this.y + other.y) / 2
+    );
+  }
+
+  angleTo(other) {
+    const dx = other.x - this.x;
+    const dy = other.y - this.y;
+    return Math.atan2(dy, dx) * 180 / Math.PI;  // returns angle in degrees
+  }
+
   toString() {
     return `(${this.x.toFixed(2)}, ${this.y.toFixed(2)})`;
   }
