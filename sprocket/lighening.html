@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sprocket Generator</title>
+  <style>
+    body { font-family: monospace; margin: 20px; }
+    #drawing {
+      border: 1px solid #ccc;
+      width: 100%; max-width: 400px;
+      aspect-ratio: 1/1; display: block;
+    }
+    .controls { margin-bottom: 1em; }
+    .controls label { display: block; margin-top: 0.5em; }
+    input[type="range"] { width: 100%; }
+    .row {
+      display: flex; flex-wrap: wrap;
+      align-items: center; gap: 10px;
+      margin-top: 0.5em;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Sprocket Generator</h2>
+
+<div class="controls">
+  <label>Teeth: <span id="teethValue">15</span></label>
+  <input type="range" id="teethSlider" min="9" max="45" value="15">
+
+  <label>Tooth Length: <span id="toothLengthValue">2.000</span></label>
+  <input type="range" id="toothLengthSlider" min="0" max="4" step="0.1" value="2">
+
+  <label>Tooth Roundoff: <span id="roundoffValue">0</span></label>
+  <input type="range" id="roundoffSlider" min="-1" max="5" step="1" value="0">
+
+  <div class="row">
+    <input type="color" id="colorPicker" value="#ff0000">
+    <button id="downloadSvgBtn">Download SVG</button>
+  </div>
+</div>
+
+<svg id="drawing" viewBox="-100 -100 200 200"></svg>
+
+<div class="controls">
+  <div class="row">
+    <label><input type="checkbox" id="circleToggle" checked> Show Center Circle</label>
+    <label>Radius: <span id="circleValue">2.000</span></label>
+    <input type="range" id="circleSlider" min="2" step="0.1" value="2">
+  </div>
+
+  <div class="row">
+    <label><input type="checkbox" id="holesToggle"> Show Bolt Holes</label>
+    <label>Count:</label>
+    <select id="holesCount">
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5" selected>5</option>
+      <option value="6">6</option>
+    </select>
+    <label>BCD: <span id="holesBCDValue">110</span></label>
+    <input type="range" id="holesBCD" min="50" max="160" step="1" value="110">
+    <span>Radius:</span>
+    <label><input type="radio" name="holesRadius" value="5.05" checked>5.05</label>
+    <label><input type="radio" name="holesRadius" value="5.10">5.10</label>
+  </div>
+
+  <div class="row">
+    <label><input type="checkbox" id="lighteningToggle"> Show Lightening Holes</label>
+  </div>
+  <label>Lightening Radius: <span id="lightCircleValue">30.000</span></label>
+  <input type="range" id="lightCircle" min="2" max="90" step="0.5" value="30">
+
+  <label>Major Axis: <span id="lightMajorValue">20.000</span></label>
+  <input type="range" id="lightMajor" min="2" max="100" step="0.5" value="20">
+
+  <label>Minor Axis: <span id="lightMinorValue">10.000</span></label>
+  <input type="range" id="lightMinor" min="2" max="100" step="0.5" value="10">
+</div>
+
+<script type="module">
+  import { D2 } from "./D2.js";
+
+  function originToVertex(n, l = 12.7) { return l / (2 * Math.sin(Math.PI / n)); }
+  function mapRoundoff(uiVal) { return -uiVal; }
+
+  const svg = document.getElementById("drawing");
+
+  // UI refs
+  const teethSlider = document.getElementById("teethSlider");
+  const teethValue = document.getElementById("teethValue");
+  const toothLengthSlider = document.getElementById("toothLengthSlider");
+  const toothLengthValue = document.getElementById("toothLengthValue");
+  const roundoffSlider = document.getElementById("roundoffSlider");
+  const roundoffValue = document.getElementById("roundoffValue");
+  const circleSlider = document.getElementById("circleSlider");
+  const circleValue = document.getElementById("circleValue");
+  const circleToggle = document.getElementById("circleToggle");
+  const colorPicker = document.getElementById("colorPicker");
+  const downloadSvgBtn = document.getElementById("downloadSvgBtn");
+
+  const holesToggle = document.getElementById("holesToggle");
+  const holesCount = document.getElementById("holesCount");
+  const holesBCD = document.getElementById("holesBCD");
+  const holesBCDValue = document.getElementById("holesBCDValue");
+  const holesRadiusInputs = document.querySelectorAll("input[name='holesRadius']");
+
+  const lighteningToggle = document.getElementById("lighteningToggle");
+  const lightCircle = document.getElementById("lightCircle");
+  const lightCircleValue = document.getElementById("lightCircleValue");
+  const lightMajor = document.getElementById("lightMajor");
+  const lightMajorValue = document.getElementById("lightMajorValue");
+  const lightMinor = document.getElementById("lightMinor");
+  const lightMinorValue = document.getElementById("lightMinorValue");
+
+  // state
+  let currentTeeth = +teethSlider.value;
+  let currentToothLength = +toothLengthSlider.value;
+  let currentRoundoff = +roundoffSlider.value;
+  let currentCircleRadius = +circleSlider.value;
+  let currentColor = colorPicker.value;
+  let circleVisible = circleToggle.checked;
+
+  let holesVisible = holesToggle.checked;
+  let currentHoleCount = +holesCount.value;
+  let currentHoleBCD = +holesBCD.value;
+  let currentHoleRadius = 5.05;
+
+  let lighteningVisible = lighteningToggle.checked;
+  let currentLighteningRadius = +lightCircle.value;
+  let currentLightMajor = +lightMajor.value;
+  let currentLightMinor = +lightMinor.value;
+
+  function syncLabels() {
+    teethValue.textContent = currentTeeth;
+    toothLengthValue.textContent = currentToothLength.toFixed(3);
+    roundoffValue.textContent = currentRoundoff;
+    circleValue.textContent = currentCircleRadius.toFixed(3);
+    holesBCDValue.textContent = currentHoleBCD;
+    lightCircleValue.textContent = currentLighteningRadius.toFixed(3);
+    lightMajorValue.textContent = currentLightMajor.toFixed(3);
+    lightMinorValue.textContent = currentLightMinor.toFixed(3);
+  }
+
+  function drawSprocket() {
+    svg.innerHTML = "";
+    const origin = new D2(0,0);
+    const rivitRadius = originToVertex(currentTeeth);
+    const toothRadian = 360/currentTeeth, toothAngle=22;
+
+    const pConstruct=origin.polar(0,rivitRadius);
+    const p1=pConstruct.polar(-90-toothAngle,3.97);
+    const p0=p1.polar(-toothAngle,currentToothLength);
+    const p2=p1.mirrorY(), p3=p0.mirrorY(), pminus=p0.rotate(origin,360/currentTeeth);
+    const pmid=p3.midpoint(pminus), pmidControl=pmid.polar(pmid.angleTo(origin),mapRoundoff(currentRoundoff));
+
+    let path=`M ${p0.x.toFixed(3)} ${p0.y.toFixed(3)} 
+              L ${p1.x.toFixed(3)} ${p1.y.toFixed(3)} 
+              A 3.970 3.970 0 0 0 ${p2.x.toFixed(3)} ${p2.y.toFixed(3)} 
+              L ${p3.x.toFixed(3)} ${p3.y.toFixed(3)} 
+              Q ${pmidControl.x.toFixed(3)} ${pmidControl.y.toFixed(3)} ${pminus.x.toFixed(3)} ${pminus.y.toFixed(3)} `;
+
+    for(let t=0;t<currentTeeth-2;t++){
+      let a=toothRadian*(t+1);
+      let p1p=p1.rotate(origin,a),p0p=p0.rotate(origin,a),
+          p2p=p2.rotate(origin,a),p3p=p3.rotate(origin,a),
+          pminusp=pminus.rotate(origin,a);
+      let mid=p3p.midpoint(pminusp), ctrl=mid.polar(mid.angleTo(origin),mapRoundoff(currentRoundoff));
+      path+=`L ${p0p.x.toFixed(3)} ${p0p.y.toFixed(3)} 
+             L ${p1p.x.toFixed(3)} ${p1p.y.toFixed(3)} 
+             A 3.970 3.970 0 0 0 ${p2p.x.toFixed(3)} ${p2p.y.toFixed(3)} 
+             L ${p3p.x.toFixed(3)} ${p3p.y.toFixed(3)} 
+             Q ${ctrl.x.toFixed(3)} ${ctrl.y.toFixed(3)} ${pminusp.x.toFixed(3)} ${pminusp.y.toFixed(3)} `;
+    }
+
+    // final close
+    let a = toothRadian * (currentTeeth - 1);
+    let p1p = p1.rotate(origin, a);
+    let p0p = p0.rotate(origin, a);
+    let p2p = p2.rotate(origin, a);
+    let p3p = p3.rotate(origin, a);
+    let pminusp = pminus.rotate(origin, a);
+    let midp = p3p.midpoint(pminusp), ctrlp=midp.polar(midp.angleTo(origin),mapRoundoff(currentRoundoff));
+
+    path += `L ${p0p.x.toFixed(3)} ${p0p.y.toFixed(3)} 
+             L ${p1p.x.toFixed(3)} ${p1p.y.toFixed(3)} 
+             A 3.970 3.970 0 0 0 ${p2p.x.toFixed(3)} ${p2p.y.toFixed(3)} 
+             L ${p3p.x.toFixed(3)} ${p3p.y.toFixed(3)} 
+             Q ${ctrlp.x.toFixed(3)} ${ctrlp.y.toFixed(3)} ${pminusp.x.toFixed(3)} ${pminusp.y.toFixed(3)} Z`;
+
+    const sprocket=document.createElementNS("http://www.w3.org/2000/svg","path");
+    sprocket.setAttribute("d",path); sprocket.setAttribute("fill",currentColor);
+    svg.appendChild(sprocket);
+
+    if(circleVisible){
+      let c=document.createElementNS("http://www.w3.org/2000/svg","circle");
+      c.setAttribute("r",currentCircleRadius.toFixed(3));
+      c.setAttribute("fill","#fff"); svg.appendChild(c);
+    }
+
+    if(holesVisible){
+      let step=360/currentHoleCount, r=currentHoleBCD/2;
+      for(let i=0;i<currentHoleCount;i++){
+        let p=origin.polar(i*step,r);
+        let h=document.createElementNS("http://www.w3.org/2000/svg","circle");
+        h.setAttribute("cx",p.x.toFixed(3));
+        h.setAttribute("cy",p.y.toFixed(3));
+        h.setAttribute("r",currentHoleRadius.toFixed(3));
+        h.setAttribute("fill","#fff"); svg.appendChild(h);
+      }
+    }
+
+    if(lighteningVisible){
+      let step=360/currentHoleCount;
+      for(let i=0;i<currentHoleCount;i++){
+        let a=i*step+step/2, p=origin.polar(a,currentLighteningRadius);
+        let e=document.createElementNS("http://www.w3.org/2000/svg","ellipse");
+        e.setAttribute("cx",p.x.toFixed(3));
+        e.setAttribute("cy",p.y.toFixed(3));
+        e.setAttribute("rx",(currentLightMajor/2).toFixed(3));
+        e.setAttribute("ry",(currentLightMinor/2).toFixed(3));
+        e.setAttribute("fill","#fff");
+        e.setAttribute("transform",`rotate(${a} ${p.x.toFixed(3)} ${p.y.toFixed(3)})`);
+        svg.appendChild(e);
+      }
+    }
+  }
+
+  // events
+  [teethSlider,toothLengthSlider,roundoffSlider,circleSlider,holesBCD,lightCircle,lightMajor,lightMinor]
+    .forEach(inp=>inp.addEventListener("input",()=>{
+      currentTeeth=+teethSlider.value;
+      currentToothLength=+toothLengthSlider.value;
+      currentRoundoff=+roundoffSlider.value;
+      currentCircleRadius=+circleSlider.value;
+      currentHoleBCD=+holesBCD.value;
+      currentLighteningRadius=+lightCircle.value;
+      currentLightMajor=+lightMajor.value;
+      currentLightMinor=+lightMinor.value;
+      syncLabels(); drawSprocket();
+    }));
+
+  [circleToggle,holesToggle,lighteningToggle].forEach(inp=>
+    inp.addEventListener("change",()=>{
+      circleVisible=circleToggle.checked;
+      holesVisible=holesToggle.checked;
+      lighteningVisible=lighteningToggle.checked;
+      drawSprocket();
+    }));
+
+  holesCount.addEventListener("change",()=>{currentHoleCount=+holesCount.value;drawSprocket();});
+  holesRadiusInputs.forEach(r=>r.addEventListener("change",e=>{
+    if(e.target.checked){currentHoleRadius=+e.target.value;drawSprocket();}
+  }));
+  colorPicker.addEventListener("input",e=>{currentColor=e.target.value;drawSprocket();});
+
+  downloadSvgBtn.addEventListener("click",()=>{
+    const svgSize=200;
+    const data=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200" width="${svgSize}mm" height="${svgSize}mm">${svg.innerHTML}</svg>`;
+    const blob=new Blob([data],{type:"image/svg+xml"}); const url=URL.createObjectURL(blob);
+    const link=document.createElement("a");
+    link.href=url;
+    link.download=`sprocket_${currentTeeth}_${currentToothLength.toFixed(1)}.svg`;
+    document.body.appendChild(link); link.click(); link.remove();
+    URL.revokeObjectURL(url);
+  });
+
+  syncLabels(); drawSprocket();
+</script>
+
+</body>
+</html>
