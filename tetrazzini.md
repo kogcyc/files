@@ -19,7 +19,7 @@
 - Turkey, diced
 - 1/2 lb white cheddar cheese, grated
 
-Directions
+##Directions##
 
 1 - Sauté the mushrooms in 4 Tbsp of butter. Add 2–3 oz of sherry and cook briefly to combine.
 
