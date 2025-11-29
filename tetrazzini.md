@@ -20,11 +20,11 @@ Ingredients (for 1.5 lbs of spaghetti)
 
 Directions
 
-   1 - Sauté the mushrooms in 4 Tbsp of butter. Add 2–3 oz of sherry and cook briefly to combine.
-   2 - Sauté the bell pepper(s) in 2 oz olive oil until softened.
+1 - Sauté the mushrooms in 4 Tbsp of butter. Add 2–3 oz of sherry and cook briefly to combine.
+
+2 - Sauté the bell pepper(s) in 2 oz olive oil until softened.
   
-   3 - Prepare the béchamel – cook 4 Tbsp butter and 4 Tbsp flour to a roux - add milk (12 oz) and chicken
-   stock (6 oz) – cook until smooth - season - mix 2 egg yolks with 3 oz cream – temper the egg/cream mixture
+3 - Prepare the béchamel – cook 4 Tbsp butter and 4 Tbsp flour to a roux - add milk (12 oz) and chicken stock (6 oz) – cook until smooth - season - mix 2 egg yolks with 3 oz cream – temper the egg/cream mixture
    with 4 Tbps of the warm sauce – add the tempered egg/cream mixture - cook gently until the sauce “rises”
    slightly against the spoon when stirred - NEVER allow to boil.
    
