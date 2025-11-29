@@ -1,5 +1,6 @@
-Turkey Tetrazzini
-Ingredients (for 1.5 lbs of spaghetti)
+# Turkey Tetrazzini #
+
+## Ingredients ## (for 1.5 lbs of spaghetti)
 
 [ Note: this recipe uses a total of 8 oz butter ]
 
