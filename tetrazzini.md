@@ -3,7 +3,7 @@ Ingredients (for 1.5 lbs of spaghetti)
 
 [ Note: this recipe uses a total of 8 oz butter ]
 
-   1 lb mushrooms
+- 1 lb mushrooms
    4 Tbsp butter (2 oz)
    1–1½ bell peppers
    2 oz olive oil
