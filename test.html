@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create a header section with a background color, displaying a logo and navigation icons.</title>
+
+  <style>
+    html,
+body {
+  margin: 0;
+  padding: 0;  
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+html {
+  background-color: rgb(176, 47, 47);
+}
+
+.topper {
+  height: 42px;
+  background-color: rgb(156, 179, 122);
+  display: flex;
+  padding-top: 10px;
+}
+
+.nav_left img,
+.nav_right img {
+  height: 40px;
+}
+.nav_left {
+  padding-left: 12px;
+}
+
+.nav_right {
+  margin-left: auto; 
+  padding-right: 6px;
+}
+
+.main {
+  flex: 2;
+  background-color: #ace;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.main h1, h2, h3, h4, h5, h6{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color: #f99;
+}
+
+/* Layout container */
+.layout {
+  display: flex;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Sidebar column */
+.sidebar {
+  flex: 1;
+  background-color: #384;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.box {
+  background: #9866ed;
+  margin-bottom: 10px;
+}
+
+/* Responsive collapse */
+@media (max-width: 700px) {
+  .layout {
+    flex-direction: column;
+  }
+}
+
+  </style>
+
+  
+</head>
+<body>
+  <section class="topper">
+  <div class="nav_left">
+    <img src="https://kogcyc.github.io/files/svg/kogswell_logo.svg" />
+  </div>
+  <div class="nav_right">
+    <img src="https://kogcyc.github.io/files/svg/home.svg" />
+    <img src="https://kogcyc.github.io/files/svg/search.svg" />
+    <img src="https://kogcyc.github.io/files/svg/burger.svg" />
+  </div>
+</section>
+
+<main class="layout">
+  <!-- MAIN COLUMN -->
+
+  <div class="main">
+    <h2>Main Column</h2>
+    <p>This is the main content area.</p>
+    <p>Resize the browser window to see the columns collapse.</p>
+  </div>
+
+  <!-- SIDEBAR COLUMN -->
+  <aside class="sidebar">
+    <div class="box">Sidebar Item 1</div>
+    <div class="box">Sidebar Item 2</div>
+    <div class="box">Sidebar Item 3</div>
+  </aside>
+</main>
+
+
+  <script>
+    
+  </script>
+</body>
+</html>
