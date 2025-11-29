@@ -31,4 +31,4 @@
 
 5 - Combine the spaghetti, mushrooms with sherry, peppers, béchamel, and diced turkey.
 
-6 - Spoon the spaghetti mix into a large, buttered baking dish, sprinkle with ½ lb cheddar cheese, bake 325 for 20 minutes.
+6 - Spoon the spaghetti mix into a large, buttered baking dish, sprinkle with 1/2 lb cheddar cheese, bake 325 for 20 minutes.
