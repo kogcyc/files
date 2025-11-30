@@ -1,125 +1,87 @@
 <!DOCTYPE html>
-<html>
-
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Create a header section with a background color, displaying a logo and navigation icons.</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tailwind Example</title>
 
-  <style>
-    html,
-body {
-  margin: 0;
-  padding: 0;  
-  font-family: sans-serif;
-  line-height: 1.5;
-}
-
-html {
-  background-color: rgb(176, 47, 47);
-}
-
-.topper {
-  height: 42px;
-  background-color: rgb(156, 179, 122);
-  display: flex;
-  padding-top: 10px;
-}
-
-.nav_left img,
-.nav_right img {
-  height: 40px;
-}
-.nav_left {
-  padding-left: 12px;
-}
-
-.nav_right {
-  margin-left: auto; 
-  padding-right: 6px;
-}
-
-.main {
-  flex: 2;
-  background-color: #ace;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding-left: 10px;
-  padding-top: 10px;
-  padding-right: 10px;
-}
-
-.main h1, h2, h3, h4, h5, h6{
-  margin-top: 0px;
-  margin-bottom: 0px;
-  background-color: #f99;
-}
-
-/* Layout container */
-.layout {
-  display: flex;
-  gap: 1rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* Sidebar column */
-.sidebar {
-  flex: 1;
-  background-color: #384;
-  margin-right: 10px;
-  margin-top: 10px;
-}
-
-.box {
-  background: #9866ed;
-  margin-bottom: 10px;
-}
-
-/* Responsive collapse */
-@media (max-width: 700px) {
-  .layout {
-    flex-direction: column;
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-M9W69FQ4bFBpV38eRcVx0Ys+EMVw47e1Th+VqxGNzcRCjSc5MiNmiY6L0H944VWI1XHlzTH0wvPpBUkVrtSjrA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Supermercado+One&display=swap');
+</style>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          moss: '#889966'
+        }
+      }
+    }
   }
-}
-
-  </style>
-
-  
+</script>
 </head>
-<body>
-  <section class="topper">
-  <div class="nav_left">
-    <img src="https://kogcyc.github.io/files/svg/kogswell_logo.svg" />
-  </div>
-  <div class="nav_right">
-    <img src="https://kogcyc.github.io/files/svg/home.svg" />
-    <img src="https://kogcyc.github.io/files/svg/search.svg" />
-    <img src="https://kogcyc.github.io/files/svg/burger.svg" />
-  </div>
-</section>
 
-<main class="layout">
-  <!-- MAIN COLUMN -->
+<body class="bg-gray-100 text-gray-900 font-sans">
 
-  <div class="main">
-    <h2>Main Column</h2>
-    <p>This is the main content area.</p>
-    <p>Resize the browser window to see the columns collapse.</p>
-  </div>
+  <!-- Top navigation bar -->
+  <header class="bg-moss text-black p-6">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <span class="font-['Supermercado_One'] text-5xl font-bold tracking-tighter">kogswell</span>
+      <nav class="space-x-4">
+        <a href="#" class="hover:underline text-4xl inline-block -translate-y-2">🔎</a>
+        <a href="#" class="hover:underline text-5xl inline-block -translate-y-1">≡</a>
 
-  <!-- SIDEBAR COLUMN -->
-  <aside class="sidebar">
-    <div class="box">Sidebar Item 1</div>
-    <div class="box">Sidebar Item 2</div>
-    <div class="box">Sidebar Item 3</div>
-  </aside>
-</main>
+      </nav>
+    </div>
+  </header>
 
+  <!-- Main content wrapper -->
+  <main class="max-w-4xl mx-auto p-6">
 
-  <script>
-    
-  </script>
+    <h1 class="text-3xl font-bold mb-4">Hello Tailwind!</h1>
+
+    <p class="mb-6">
+      This is a simple example page showing how Tailwind works.  
+      Everything you see here is styled using utility classes.
+    </p>
+
+    <!-- Button Examples -->
+    <div class="space-x-2 mb-10">
+      <button class="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+        Primary
+      </button>
+
+      <button class="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400">
+        Secondary
+      </button>
+    </div>
+
+    <!-- Two column layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-xl font-semibold mb-2">Left Column</h2>
+        <p>
+          Tailwind's utility-first approach helps keep styling simple and consistent.
+        </p>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-xl font-semibold mb-2">Right Column</h2>
+        <p>
+          Resize your browser — the grid switches to one column on small screens.
+        </p>
+      </div>
+    </div>
+
+  </main>
+
 </body>
 </html>
