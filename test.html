@@ -5,42 +5,85 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tailwind Example</title>
 
-  <!-- Tailwind CDN -->
+  <!-- 1️⃣ Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Slab:wght@100..900&family=Supermercado+One&display=swap');
-</style>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          moss: '#896',
-          darkish: '#111',
-          hover_red: '#c00',
-          search: '#145',
-          bars: '#505',
-          cabin: '#750'
-          
+
+  <!-- 2️⃣ Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            body: ['IBM Plex Sans', 'sans-serif'],
+            heading: ['Roboto Slab', 'serif'],
+            mono: ['IBM Plex Mono', 'monospace']
+          },
+          colors: {
+            moss: '#dc8',
+            light_moss: '#ab8',
+            darkish: '#111',
+            hover_red: '#c00',
+            search: '#145',
+            bars: '#505',
+            cabin: '#432',
+            light_cabin: '#a98',
+            kompet: '#89a',
+            product_green: '#ab8',
+            kustard: '#ba8',
+            light_gray: '#bbb'
+          }
         }
       }
     }
-  }
-</script>
+  </script>
+
+  <!-- 3️⃣ Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- 4️⃣ Google Fonts -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,500;1,500&family=IBM+Plex+Sans:ital@0;1&family=Roboto+Slab:wght@700&family=Supermercado+One&display=swap');
+  </style>
+
+  <!-- 5️⃣ Global Typography using @apply -->
+  <style>
+    body {
+      @apply font-body;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      @apply font-heading;
+    }
+
+    pre, code {
+      @apply font-mono;
+    }
+  </style>
 </head>
 
-<body class="bg-gray-100 text-gray-900 font-sans">
+<body class="bg-gray-100 text-gray-900">
 
   <!-- Top navigation bar -->
   <header class="bg-moss text-black pt-4 pr-2 pb-4 pl-2">
     <div class="max-w-4xl mx-auto flex justify-between items-center">
-      <span class="inline-block -translate-x-[1px] font-['Supermercado_One'] text-5xl font-bold tracking-tighter text-darkish hover:text-hover_red">kogswell</span>
+
+      <!-- Corrected Supermercado One -->
+      <span class="inline-block -translate-x-[1px] 
+                   font-['Supermercado_One'] 
+                   text-5xl font-bold tracking-tighter text-darkish hover:text-hover_red">
+        kogswell
+      </span>
+
       <nav class="space-x-4">
-        <a href="#" class="text-3xl inline-block -translate-y-0"><i class="fa-solid fa-magnifying-glass text-search hover:text-hover_red"></i></a>
-        <a href="#" class="text-3xl inline-block -translate-y-0"><i class="fa-solid fa-bars text-bars hover:text-hover_red"></i></a>
-        <a href="#" class="text-3xl inline-block -translate-y-1"><i class="fa-solid fa-house text-cabin hover:text-hover_red"></i></a>
+        <a href="#" class="text-4xl inline-block -translate-y-0">
+          <i class="fa-solid fa-magnifying-glass text-search hover:text-hover_red"></i>
+        </a>
+        <a href="#" class="text-4xl inline-block -translate-y-0">
+          <i class="fa-solid fa-bars text-cabin hover:text-hover_red"></i>
+        </a>
       </nav>
+
     </div>
   </header>
 
@@ -50,32 +93,37 @@
     <!-- Two column layout -->
     <div class="grid grid-cols-1 md:grid-cols-[5fr_2fr] gap-6">
 
-      <div class="bg-gray-100 p-4 rounded shadow">
-        <img src="https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg?_gl=1*6d7bvg*_ga*MTMwNjMxMTYyMC4xNzY0NTMyMjY4*_ga_8JE65Q40S6*czE3NjQ1MzIyNjgkbzEkZzEkdDE3NjQ1MzIzMjIkajYkbDAkaDA." />
+      <!-- LEFT COLUMN -->
+      <div class="bg-light_gray p-3 rounded-[16px]"> 
+        <img src="https://images.pexels.com/photos/1563356/pexels-photo-1563356.jpeg" />
         <h2 class="text-xl font-semibold mb-2">Left Column</h2>
         <p>
           Tailwind's utility-first approach helps keep styling simple and consistent.
         </p>
       </div>
 
-<div class="space-y-6">
-  
-<div class="border-[6px] border-search p-4 rounded-[16px]">
-  <img src="https://bluelug.com/contents/rivendell/images/platypus/comp_green.jpg" />
-  <p><em><strong>Rivendell Bicycle Works</strong></em> produces superb bicycle components. Click here to visit them.</p>
-</div>
+      <!-- RIGHT COLUMN STACK -->
+      <div class="space-y-6">
 
-<div class="border-[6px] border-cabin p-4 rounded-[16px]">
-  <h2 class="text-xl font-semibold mb-2">Another Section</h2>
-  <p>Here is the next block.</p>
-</div>
+        <div class="bg-kompet p-3 rounded-[16px]">
+          <img src="https://bluelug.com/contents/rivendell/images/platypus/comp_green.jpg" />
+          <p>
+            <strong>Rivendell Bicycle Works</strong> produces superb bicycle components.
+            Click here to visit them.
+          </p>
+        </div>
 
-<div class="border-[6px] border-bars p-4 rounded-[16px]">
-  <h2 class="text-xl font-semibold mb-2">Another Section</h2>
-  <p>And another one stacked below.</p>
-</div>
+        <div class="bg-light_cabin p-3 rounded-[16px]">
+          <h2 class="text-xl font-semibold mb-2">Another Section</h2>
+          <p>Here is the next block.</p>
+        </div>
 
-</div>
+        <div class="bg-product_green p-3 rounded-[16px]">
+          <h2 class="text-xl font-semibold mb-2">Another Section</h2>
+          <p>And another one stacked below.</p>
+        </div>
+
+      </div>
 
     </div>
 
@@ -83,4 +131,3 @@
 
 </body>
 </html>
-
