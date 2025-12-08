@@ -15,11 +15,12 @@ Hello
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Supermercado+One&display=swap');
   .supermercado-one-700 {
-    font-family: "Supermercado One", sans-serif;
+    font-family: "Supermercado One", monospace;
     font-weight: 700;
     font-style: normal;
   }
 </style>
-<div class="supermercado-one-700 p-2 text-3xl tracking-tighter text-[#000]">kogswell</div>
+<div class="supermercado-one-700 p-2 text-6xl tracking-[-6px] -translate-x-[1px] text-[#000]">kogswell</div>
+
 
 ```
