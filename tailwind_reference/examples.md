@@ -1,6 +1,7 @@
 Hello
 
-```
+```html
+
 <div class="flex items-center rounded-xl bg-[#123] p-1">
   <img src="https://kogcyc.github.io/desktop/svg/tailwind.svg" class="h-8 w-8" />
   <div class="p-2 font-sans text-2xl text-[#6cf]">tailwind</div>
@@ -20,4 +21,5 @@ Hello
   }
 </style>
 <div class="supermercado-one-700 p-2 text-3xl tracking-tighter text-[#000]">kogswell</div>
+
 ```
