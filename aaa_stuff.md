@@ -138,9 +138,9 @@ put it in .bashrc if you want it permanent
 
 ### add custom actions to Thunar
 
-    xclip -selection clipboard -i %f
-    xclip -selection clipboard -o > %f
-    xclip -selection clipboard -t $(file -b --mime-type %f) -i %f
+    xclip -selection clipboard -i %f	file -> clipboard
+    xclip -selection clipboard -o > %f	clipboard -> file
+    xclip -selection clipboard -t $(file …) -i %f	imageFile -> clipboard
 
 ### install Handbrake
 
