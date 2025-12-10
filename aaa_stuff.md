@@ -140,7 +140,7 @@ put it in .bashrc if you want it permanent
 
     xclip -selection clipboard -i %f	               file -> clipboard
     xclip -selection clipboard -o > %f	               clipboard -> file
-    xclip -selection clipboard -t $(file …) -i %f	   imageFile -> clipboard
+    xclip -selection clipboard -t $(file …) -i %f	   imageFile -> clipboard    NOTE: this will not paste a JPEG into GIMP
 
 ### install Handbrake
 
