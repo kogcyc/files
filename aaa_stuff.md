@@ -47,20 +47,36 @@ put it in .bashrc if you want it permanent
     git clone https://github.com/themix-project/oomox-gtk-theme.git
 
     ./change_color.sh -o zzz <(echo -e "
-    BG=224466
+    BG=113322
     FG=ffffff
-    BTN_BG=446688
-    BTN_FG=ffffff
-    HDR_BTN_BG=1a5fb4
-    HDR_BTN_FG=ffffff
-    HDR_BG=224466
+
+    HDR_BG=113322
     HDR_FG=ffffff
-    SEL_BG=bb7700
-    SEL_FG=ffffff       <<--- controls the color of the text under desktop icons
-    TXT_BG=882211
+
+    BTN_BG=113322
+    BTN_FG=ffffff
+
+    HDR_BTN_BG=559999
+    HDR_BTN_FG=ffffff
+
+    SEL_BG=002211
+    SEL_FG=ffffff
+
+    TXT_BG=113322
     TXT_FG=ffffff
-    WM_BORDER_FOCUS=777777
-    WM_BORDER_UNFOCUS=777777
+
+    WM_BORDER_FOCUS=113322
+    WM_BORDER_UNFOCUS=113322
+
+    # Accent/active state (added)
+    ACCENT_BG=559999
+    ACCENT_FG=ffffff
+
+    # Optional extras
+    HOVER_BG=224455
+    HOVER_FG=ffffff
+    DISABLED_BG=445566
+    DISABLED_FG=888888
     ")
 
     https://github.com/PapirusDevelopmentTeam/papirus-folders?tab=readme-ov-file#script-usage
