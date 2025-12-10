@@ -63,8 +63,6 @@ put it in .bashrc if you want it permanent
     WM_BORDER_UNFOCUS=777777
     ")
 
-
-
     https://github.com/PapirusDevelopmentTeam/papirus-folders?tab=readme-ov-file#script-usage
 
     sudo add-apt-repository ppa:papirus/papirus
@@ -73,48 +71,11 @@ put it in .bashrc if you want it permanent
 
     papirus-folders -C brown --theme Papirus-Dark
 
-
     cd ~/.themes/
     cd black/
     cd xfwm4/
 
-    import subprocess
-    from sys import argv
-
-    rgy = ['bb0000', '009700', '999900']
-    buttons = ["close-active.svg", "maximize-active.svg", "hide-active.svg"]
-
-    button = '''
-    <svg width="24" height="26">
-      <rect x="0" y="0" width="24" height="26" fill="#rectfill" />
-      <circle cx="13" cy="14" r="7" stroke="#fff" stroke-width="0" fill="#cfill" />
-    </svg>
-    '''
-
-    for i, t in enumerate(rgy):
-        svg_file = buttons[i]
-        xpm_file = svg_file.replace(".svg", ".xpm")
-
-        # Write SVG
-        newbutton = button.replace('cfill', t).replace('rectfill', argv[1])
-        with open(svg_file, 'w') as f:
-            f.write(newbutton)
-        print(f"Wrote: {svg_file}")
-
-        # Convert SVG to XPM
-        try:
-            subprocess.run(['convert', svg_file, xpm_file], check=True)
-             print(f"Converted to: {xpm_file}")
-        except subprocess.CalledProcessError as e:
-            print(f"Failed to convert {svg_file}: {e}")
-
-
-
-    for f in close-inactive.xpm close-prelight.xpm close-pressed.xpm; do     cp -v close-active.xpm "$f"; done
-
-    for f in maximize-*.xpm; do     [ "$f" != "maximize-active.xpm" ] && cp -v maximize-active.xpm "$f"; done
-
-    for f in hide-*.xpm; do     [ "$f" != "hide-active.xpm" ] && cp -v hide-active.xpm "$f"; done
+    get kogcyc.github.io/files/xfwm4.tar.gz and read the readme
 
 
 
