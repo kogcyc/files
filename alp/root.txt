@@ -1,0 +1,19 @@
+
+apk add nano
+nano /etc/apk/repositories
+reboot 
+
+apk add xorg-server xinit xterm openbox obconf-qt dbus xf86-input-libinput
+apk add xfce4-terminal mousepad thunar galculator doas firefox-esr tint2
+apk add python3 py3-pip
+
+rc-update add dbus
+service dbus start
+
+apk add font-inconsolata
+addgroup matt input
+
+setup-xorg-base
+
+echo 'exec openbox-session' > /home/matt/.xinitrc
+chown matt:matt /home/matt/.xinitrc
