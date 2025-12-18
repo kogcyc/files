@@ -3,7 +3,7 @@ apk add nano
 nano /etc/apk/repositories
 reboot 
 
-apk add xorg-server xinit openbox dbus xf86-input-libinput font-inconsolata doas tint2 xterm kitty kitty-kitten thunar firefox-esr mousepad galculator obconf-qt 
+apk add xorg-server xinit openbox dbus xf86-input-libinput font-inconsolata doas tint2 xterm kitty kitty-kitten thunar firefox-esr mousepad galculator obconf-qt feh
 
 rc-update add dbus
 service dbus start
