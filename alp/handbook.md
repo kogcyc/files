@@ -47,6 +47,19 @@ Openbox theme directory
 
     ~/.local/share/themes
 
+
+Bluetooth mouse
+
+    # Install necessary packages
+    apk add bluez bluez-utils
+
+    # Load required kernel module for HID devices (mice/keyboards)
+    modprobe uhid
+
+    # Enable and start the Bluetooth service
+    rc-update add bluetooth default
+    rc-service bluetooth start
+
 You configured
 
 Colors
