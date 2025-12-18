@@ -1,0 +1,5 @@
+PS1='\033[32m\u:\033[36m\w \033[0m'
+export PS1
+
+# aliases
+alias ll='ls -la'
