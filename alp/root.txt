@@ -3,14 +3,11 @@ apk add nano
 nano /etc/apk/repositories
 reboot 
 
-apk add xorg-server xinit xterm openbox obconf-qt dbus xf86-input-libinput
-apk add xfce4-terminal mousepad thunar galculator doas firefox-esr tint2
-apk add python3 py3-pip
+apk add xorg-server xinit openbox dbus xf86-input-libinput font-inconsolata doas tint2 xterm kitty kitty-kitten thunar firefox-esr mousepad galculator obconf-qt 
 
 rc-update add dbus
 service dbus start
 
-apk add font-inconsolata
 addgroup matt input
 
 setup-xorg-base
