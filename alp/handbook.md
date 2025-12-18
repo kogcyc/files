@@ -21,11 +21,11 @@ GTK theme selection file
 
 ~/.config/gtk-3.0/settings.ini
 
-[Settings]
-gtk-theme-name=Adwaita
-gtk-icon-theme-name=Papirus
-gtk-font-name=Sans 10
-gtk-cursor-theme-name=Adwaita
+    [Settings]
+    gtk-theme-name=Adwaita
+    gtk-icon-theme-name=Papirus
+    gtk-font-name=Sans 10
+    gtk-cursor-theme-name=Adwaita
 
 changes will occur on next startx
 
