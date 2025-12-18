@@ -1,25 +1,25 @@
-Openbox core configuration
+## Openbox configuration
 
 Main Openbox config file
 
-~/.config/openbox/rc.xml
+    ~/.config/openbox/rc.xml
 
-Openbox right-click menu file
+Openbox "root menu" file
 
     ~/.config/openbox/menu.xml
 
 Openbox autostart file (user-level)
 
-~/.config/openbox/autostart
+    ~/.config/openbox/autostart
 
 
 Tint2 config location
 
-~/.config/tint2/tint2rc
+    ~/.config/tint2/tint2rc
 
 GTK theme selection file
 
-~/.config/gtk-3.0/settings.ini
+    ~/.config/gtk-3.0/settings.ini
 
     [Settings]
     gtk-theme-name=Adwaita
@@ -27,42 +27,21 @@ GTK theme selection file
     gtk-font-name=Sans 10
     gtk-cursor-theme-name=Adwaita
 
-changes will occur on next startx
-
-
-
-
-Icon theme name
-
-For Papirus:
-
-Papirus
-
-
-Refreshing GTK after changes
-
-Restart GTK apps or re-login
-
-No universal “reload” command
+    changes will occur on next startx
 
 Wallpaper setting
 
-Openbox does not handle wallpaper
+    feh
 
-Requires a helper such as:
 
-feh
-
-nitrogen
 
 xsetroot (solid colors)
 
-Terminals
-Kitty
+
 
 Kitty config file
 
-~/.config/kitty/kitty.conf
+    ~/.config/kitty/kitty.conf
 
 
 You configured
