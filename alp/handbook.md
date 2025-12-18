@@ -43,6 +43,9 @@ Kitty config file
 
     ~/.config/kitty/kitty.conf
 
+Openbox theme directory
+
+    ~/.local/share/themes
 
 You configured
 
