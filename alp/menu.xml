@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+
+  <menu id="root-menu" label="openbox" show-icons="yes">
+
+    <!-- kbd -->
+    <item label="kbd">
+      <action name="execute">
+        <command>brightnessctl -d smc::kbd_backlight set 99%</command>
+      </action>
+    </item>
+
+    <!-- accessories -->
+    <item label="tint2">
+      <action name="execute">
+        <command>tint2</command>
+      </action>
+    </item>
+
+    <!-- file managers -->
+    <item label="thunar">
+      <action name="execute">
+        <command>thunar</command>
+      </action>
+    </item>
+
+    <!-- terminals -->
+    <item label="terminal">
+      <action name="execute">
+        <command>kitty</command>
+      </action>
+    </item>
+
+    <!-- browsers -->
+    <item label="firefox">
+      <action name="execute">
+        <command>firefox-esr</command>
+      </action>
+    </item>
+
+    <!-- editors -->
+    <item label="mousepad">
+      <action name="execute">
+        <command>mousepad</command>
+      </action>
+    </item>
+
+    <item label="gimp">
+      <action name="execute">
+        <command>gimp</command>
+      </action>
+    </item>
+
+    <item label="inkscape">
+      <action name="execute">
+        <command>inkscape</command>
+      </action>
+    </item>
+
+    <item label="obconf">
+      <action name="execute">
+        <command>obconf-qt</command>
+      </action>
+    </item>
+
+    <!-- accessories -->
+    <item label="calculator">
+      <action name="execute">
+        <command>galculator</command>
+      </action>
+    </item>
+
+    <item label="clock">
+      <action name="execute">
+        <command>xclock -digital</command>
+      </action>
+    </item>
+
+    <!-- system -->
+    <item label="reload openbox">
+      <action name="reconfigure"/>
+    </item>
+
+    <item label="restart openbox">
+      <action name="restart"/>
+    </item>
+
+    <separator/>
+
+    <item label="logout">
+      <action name="exit"/>
+    </item>
+
+  </menu>
+
+</openbox_menu>
