@@ -20,10 +20,9 @@ How wifi works
 
     the second entry, "coffee_shop" was created, by you, when you went to the coffee shop
 
-    you created it by copying it from its home and in to your 'home' directory and then add that second entry
-
-    after the edit, you copy it back ...
-    
+    the easist way to edit it (add SSIDs to it) is this:
+	
+    doas nano /etc/wpa_supplicant/wpa_supplicant.conf
 
 Main Openbox config file
 
