@@ -95,6 +95,20 @@ How to check laptop battery
 
     acpi b
 
+screnfetch 
+
+    pfetch-rs
+	
+       /\ /\       root@alp 
+      // \  \      os     Alpine Linux 3.21.5
+     //   \  \     host   MacBookAir5,1 1.0
+    ///    \  \    kernel 6.12.61-0-lts
+    //      \  \   uptime 3h 22m
+             \     pkgs   527
+                   memory 483M / 3826M
+
+
+
 You configured
 
 Colors
