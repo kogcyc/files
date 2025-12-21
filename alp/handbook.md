@@ -107,7 +107,13 @@ screnfetch
              \     pkgs   527
                    memory 483M / 3826M
 
+Restart wifi
 
+    rc-service wpa_supplicant restart
+
+Colors for Openbox root menu, etc
+
+    .local/share/themes/<Current-Openbox-Theme>/openbox/themerc 
 
 You configured
 
