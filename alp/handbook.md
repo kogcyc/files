@@ -1,5 +1,30 @@
 ## Openbox configuration
 
+How wifi works
+
+    there is a file here:
+
+    /etc/wpa/wpa_supplicant.conf
+
+    network={
+	  ssid="install_example"
+	  psk=65a4e30515bbb1fe81b4f6aeabe84090e4b79093d6c1855e6d10b4cffac7f073
+    }
+
+    network={
+	  ssid="coffee_shop"
+	  psk="123maple"
+    }
+
+    the first entry, "install_example" was created with you install Alpine Linux
+
+    the second entry, "coffee_shop" was created, by you, when you went to the coffee shop
+
+    you created it by copying it from its home and in to your 'home' directory and then add that second entry
+
+    after the edit, you copy it back ...
+    
+
 Main Openbox config file
 
     ~/.config/openbox/rc.xml
@@ -62,6 +87,15 @@ Set typeface/font of 'root menu'
       <!-- 'italic' or 'normal' -->
     </font>
 
+Syntax highlighting themes om Mousepad
+
+    /usr/share/gtksourceview-3.0/styles/ <- where mousepad looks for the theme to display them in Preferences
+    /usr/share/gtksourceview-4/styles/ <- where is finds the themes 
+
+How to check laptop battery
+
+    acpi b
+
 You configured
 
 Colors
@@ -115,12 +149,7 @@ Requires a working dbus-launch
 
 Installing dbus-x11 fixed failures on Alpine
 
-Mousepad editor
 
-Syntax highlighting files
-
-/usr/share/gtksourceview-3.0/styles/
-/usr/share/gtksourceview-4/styles/
 
 
 Observed behavior
