@@ -48,17 +48,19 @@ Openbox theme directory
     ~/.local/share/themes
 
 
-Bluetooth mouse
+Set typeface/font of 'root menu'
 
-    # Install necessary packages
-    apk add bluez bluez-utils
-
-    # Load required kernel module for HID devices (mice/keyboards)
-    modprobe uhid
-
-    # Enable and start the Bluetooth service
-    rc-update add bluetooth default
-    rc-service bluetooth start
+    look for this stanza in ~/.config/openbox/rc.xml
+    
+    <font place="MenuItem">
+      <name>Inconsolata-Nerd</name>
+      <size>13</size>
+      <!-- font size in points -->
+      <weight>normal</weight>
+      <!-- 'bold' or 'normal' -->
+      <slant>normal</slant>
+      <!-- 'italic' or 'normal' -->
+    </font>
 
 You configured
 
