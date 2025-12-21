@@ -16,7 +16,7 @@ How wifi works
 	  psk="123maple"
     }
 
-    the first entry, "install_example" was created when you install Alpine Linux
+    the first entry, "install_example" was created when you installed Alpine Linux
 
     the second entry, "coffee_shop" was created, by you, when you went to the coffee shop
 
