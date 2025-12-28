@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+
+  <menu id="root-menu" label="openbox" show-icons="yes">
+
+    <!-- will light mac keyboard -->
+    <item label=" 󰌌  mac kbd light">
+      <action name="execute">
+        <command>brightnessctl -d smc::kbd_backlight set 99%</command>
+      </action>
+    </item>
+
+    <item label=" 󰐯  tint2">
+      <action name="execute">
+        <command>tint2</command>
+      </action>
+    </item>
+
+	<item label="   terminal">
+	  <action name="Execute">
+	    <command>kitty</command>
+	  </action>
+	</item>
+
+	<item label=" 󰉋  thunar">
+	  <action name="Execute">
+	    <command>thunar</command>
+	  </action>
+	</item>
+
+	<item label="   mousepad">
+	  <action name="Execute">
+	    <command>mousepad</command>
+	  </action>
+	</item>
+
+    <item label=" 󱞐  firefox">
+      <action name="execute">
+        <command>firefox-esr</command>
+      </action>
+    </item>
+
+    <item label="   gimp">
+      <action name="execute">
+        <command>gimp</command>
+      </action>
+    </item>
+
+    <item label=" 󰕙  inkscape">
+      <action name="execute">
+        <command>inkscape</command>
+      </action>
+    </item>
+
+    <item label="   openscad">
+      <action name="execute">
+        <command>openscad</command>
+      </action>
+    </item>
+
+    <item label=" 󰃬  calculator">
+      <action name="execute">
+        <command>galculator</command>
+      </action>
+    </item>
+
+    <item label="   obconf">
+      <action name="execute">
+        <command>obconf-qt</command>
+      </action>
+    </item>
+
+    <item label=" 󰕾  sound">
+      <action name="execute">
+        <command>pavucontrol</command>
+      </action>
+    </item>
+
+    <item label=" 󰈈  xeyes">
+      <action name="execute">
+        <command>xeyes</command>
+      </action>
+    </item>
+
+    <!-- system -->
+    <item label=" 󰜉 reload openbox">
+      <action name="reconfigure"/>
+    </item>
+
+    <item label=" 󰜉 restart openbox">
+      <action name="restart"/>
+    </item>
+
+    <separator/>
+
+    <item label=" 󰍃 logout">
+      <action name="exit"/>
+    </item>
+
+  </menu>
+
+</openbox_menu>
