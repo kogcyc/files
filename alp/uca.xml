@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Open Terminal Here</name>
+	<submenu></submenu>
+	<unique-id>1765804058008145-1</unique-id>
+	<command>kitty &amp;</command>
+	<description>Example for a custom action</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+	<other-files/>
+</action>
+<action>
+	<icon></icon>
+	<name>file -&gt; clipboard</name>
+	<submenu></submenu>
+	<unique-id>1766953771229687-1</unique-id>
+	<command>xclip -selection clipboard &lt; %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon></icon>
+	<name>clipboard -&gt; file</name>
+	<submenu></submenu>
+	<unique-id>1766954015041432-2</unique-id>
+	<command>xclip -selection clipboard -o &gt; %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<other-files/>
+	<text-files/>
+</action>
+</actions>
