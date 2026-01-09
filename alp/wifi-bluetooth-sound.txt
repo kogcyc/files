@@ -1,0 +1,15 @@
+doas apk update
+doas apk add networkmanager network-manager-applet
+doas rc-update add networkmanager default
+doas rc-service networkmanager start
+doas rc-service wpa_supplicant stop
+#doas rc-update del wpa_supplicant
+nm-applet &
+
+doas apk add bluez bluez-deprecated blueman
+doas rc-update add bluetooth default
+doas rc-service bluetooth start
+blueman-applet &
+
+doas apk add alsa-utils alsa-ucm-conf pulseaudio pulseaudio-alsa pavucontrol xfce4-pulseaudio-plugin mesa-gles mesa-egl
+pulseaudio --start
