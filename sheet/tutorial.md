@@ -1,4 +1,4 @@
-
+```json
     {
     "material": "A1008",
     "thickness": 0.060,
@@ -10,6 +10,7 @@
     "min_flange_formed": 0.286,
     "die_width": 0.472
     }
+```
 
 ## Material properties (what the material does)
 
