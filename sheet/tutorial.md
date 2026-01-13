@@ -1,16 +1,16 @@
-```json
+
     {
-    "material": "A1008",
-    "thickness": 0.060,
-    "bend_radius": 0.045,
-    "bend_deduction": 0.061,
-    "k_factor": 0.38,
-    "relief_depth": 0.095,
-    "min_flange_flat": 0.255,
-    "min_flange_formed": 0.286,
-    "die_width": 0.472
+       "material": "A1008",
+       "thickness": 0.060,
+       "bend_radius": 0.045,
+       "bend_deduction": 0.061,
+       "k_factor": 0.38,
+       "relief_depth": 0.095,
+       "min_flange_flat": 0.255,
+       "min_flange_formed": 0.286,
+       "die_width": 0.472
     }
-```
+
 
 ## Material properties (what the material does)
 
