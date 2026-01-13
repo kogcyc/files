@@ -11,32 +11,31 @@
     "die_width": 0.472
     }
 
-##Material properties (what the steel does)
+## Material properties (what the material does)
 
-These exist even if you bent it by hand with a hammer.
+*These exist even if you bent it by hand with a hammer*
 
 
-Thickness
+**Thickness**
 
-thickness = 0.060"
+    thickness = 0.060"
 
-That’s the actual steel you bought.
-Everything else is scaled from this.
-
+That’s the actual steel you chose - everything else is scaled from this
 
 
 
-K-factor
 
-k_factor = 0.38
+**K-factor**
 
-This is where the neutral axis sits inside the thickness during a bend.
+    k_factor = 0.38
 
-0.0  = inside surface
-0.5  = middle
-1.0  = outside surface
+This is where the neutral axis sits inside the thickness during a bend
 
-0.38 means the neutral axis lives slightly toward the inside face.
+    0.0  = inside surface
+    0.5  = middle
+    1.0  = outside surface
+
+0.38 means the neutral axis lives slightly toward the inside face
 
 That is material behavior: how much it stretches vs compresses
 
