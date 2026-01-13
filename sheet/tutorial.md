@@ -12,12 +12,12 @@
     }
 
 
-## Material properties (what the material does)
+# Material properties (what the material does)
 
 *These exist even if you bent it by hand with a hammer*
 
 
-**Thickness**
+## Thickness 
 
     thickness = 0.060"
 
@@ -26,7 +26,7 @@ That’s the actual steel you chose - everything else is scaled from this
 
 
 
-**K-factor**
+## K-factor 
 
     k_factor = 0.38
 
@@ -43,15 +43,15 @@ That is material behavior: how much it stretches vs compresses
 
 
 
-     Tool + machine geometry (what the brake does)
+# Tool + machine geometry (what the brake does)
 
-     These are properties of SendCutSend’s bending equipment.
+*These are properties of SendCutSend’s bending equipment*
 
 
 
-Die width
+## Die width
 
-die_width = 0.472"
+    die_width = 0.472"
 
 That is the V-opening in the bottom die.
 
@@ -62,31 +62,21 @@ This single number largely determines:
 - minimum flange
 - accuracy
 
+## Bend radius
 
-
-
-
-
-Bend radius
-
-bend_radius = 0.045"
+    bend_radius = 0.045"
 
 This is basically:
 
 the radius of the punch nose + how the metal springs back in this die
 
-You don’t get to choose this — the machine imposes it.
+You don’t get to choose this — the machine imposes it
 
+# Hybrid numbers (physics × machine)
 
+*These are what you actually use in CAD*
 
-
-    Hybrid numbers (physics × machine)
-
-    These are what you actually use in CAD.
-
-
-
-Bend allowance
+## Bend allowance
 
 Not listed directly — but computed from:
 
@@ -95,7 +85,7 @@ Not listed directly — but computed from:
 - bend angle
 - bend radius
 
-This is the length of metal consumed by the bend arc.
+This is the length of metal consumed by the bend arc
 
 
 
@@ -103,28 +93,28 @@ This is the length of metal consumed by the bend arc.
 
 
 
-Bend deduction
+## Bend deduction
 
-bend_deduction = 0.061"
+    bend_deduction = 0.061"
 
 This is:
 
 how much shorter the finished part is than the flat layout
 
-It is the accountant’s version of bend allowance.
+It is the accountant’s version of bend allowance
 
-SendCutSend gives you this so you don’t have to do the math.
-
-
+SendCutSend gives you this so you don’t have to do the math
 
 
 
 
-Relief depth
 
-relief_depth = 0.095"
 
-This is how far a cut must extend past a bend so the metal can deform without tearing.
+## Relief depth
+
+    relief_depth = 0.095"
+
+This is how far a cut must extend past a bend so the metal can deform without tearing
 
 It is directly related to:
 
@@ -136,36 +126,14 @@ It is directly related to:
 
 
 
-Minimum flange
+## Minimum flange
 
-min_flange_flat = 0.255"
-min_flange_formed = 0.286"
+    min_flange_flat = 0.255"
+    min_flange_formed = 0.286"
 
 This is:
 
 the shortest tab their brake can grab and bend
 
-This is 100% tool geometry + safety margin.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+This is 100% tool geometry + safety margin
 
