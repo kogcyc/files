@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<style-scheme id="assune" _name="assume" version="1.0">
+
+	<!-- ========================================================= -->
+	<!-- Color palette (20% more saturation + value) -->
+	<!-- ========================================================= -->
+
+	<color name="bg"        value="#000000"/>
+
+	<!-- boosted from #7FA7CF -->
+	<color name="primary"  value="#eeeeee"/>
+
+	<!-- boosted from #CFA77F -->
+	<color name="secondary" value="#FFD09B"/>
+
+	<!-- boosted from #6FCF97 -->
+	<color name="string"   value="#8CFFB9"/>
+
+	<!-- boosted from #CF6F6F -->
+	<color name="number"   value="#FF8C8C"/>
+
+	<!-- boosted from #6FAF6F -->
+	<color name="comment"  value="#8CDB8C"/>
+
+	<!-- boosted from #AAAAAA -->
+	<color name="operator" value="#DDDDDD"/>
+
+	<!-- boosted from #FF8800 -->
+	<color name="cursor"   value="#FFAA33"/>
+
+	<!-- ========================================================= -->
+	<!-- Global / default styles -->
+	<!-- ========================================================= -->
+
+	<style name="text" foreground="primary" background="bg"/>
+	<style name="selection" foreground="bg" background="#DDDDDD"/>
+	<style name="cursor" foreground="cursor" background="bg" bold="true"/>
+	<style name="current-line" background="#111111"/>
+	<style name="line-numbers" foreground="#666666" background="bg"/>
+
+	<!-- ========================================================= -->
+	<!-- Comments -->
+	<!-- ========================================================= -->
+
+	<style name="def:comment" foreground="comment" background="bg" italic="true"/>
+	<style name="def:doc-comment" foreground="comment" background="bg" italic="true"/>
+
+	<!-- ========================================================= -->
+	<!-- Strings -->
+	<!-- ========================================================= -->
+
+	<style name="def:string" foreground="string" background="bg"/>
+	<style name="def:special-char" foreground="string" background="bg" bold="true"/>
+
+	<!-- ========================================================= -->
+	<!-- Numbers and constants -->
+	<!-- ========================================================= -->
+
+	<style name="def:number" foreground="number" background="bg"/>
+	<style name="def:constant" foreground="number" background="bg" bold="true"/>
+
+	<!-- ========================================================= -->
+	<!-- Keywords and flow control -->
+	<!-- ========================================================= -->
+
+	<style name="keyword" foreground="primary" background="bg" bold="true"/>
+	<style name="def:keyword" foreground="primary" background="bg" bold="true"/>
+	<style name="def:statement" foreground="primary" background="bg"/>
+
+	<!-- ========================================================= -->
+	<!-- Identifiers and names -->
+	<!-- ========================================================= -->
+
+	<style name="def:identifier" foreground="secondary" background="bg"/>
+	<style name="def:type" foreground="secondary" background="bg" bold="true"/>
+
+	<!-- ========================================================= -->
+	<!-- Operators and punctuation -->
+	<!-- ========================================================= -->
+
+	<style name="def:operator" foreground="operator" background="bg"/>
+	<style name="def:punctuation" foreground="operator" background="bg"/>
+
+	<!-- ========================================================= -->
+	<!-- Bracket matching -->
+	<!-- ========================================================= -->
+
+	<style name="bracket-match" foreground="bg" background="primary"/>
+	<style name="bracket-mismatch" foreground="bg" background="#FF0000"/>
+
+	<!-- ========================================================= -->
+	<!-- Preprocessor -->
+	<!-- ========================================================= -->
+
+	<style name="def:preprocessor" foreground="primary" background="bg"/>
+
+</style-scheme>
