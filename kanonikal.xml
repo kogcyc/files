@@ -1,87 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <style-scheme id="kanonikal" _name="kanonikal" version="1.0">
-	<!-- ========================================================= -->
-	<!-- Color palette (named colors for reuse / clarity) -->
-	<!-- ========================================================= -->
-	<!-- Background -->
-	<color name="bg" value="#000000"/>
-	<!-- Primary structural color (keywords, flow) -->
-	<color name="primary" value="#7FA7CF"/>
-	<!-- Secondary structural color (types, names) -->
-	<color name="secondary" value="#CFA77F"/>
-	<!-- Accents -->
-	<color name="string" value="#6FCF97"/>
-	<color name="number" value="#CF6F6F"/>
-	<color name="comment" value="#6FAF6F"/>
-	<color name="operator" value="#AAAAAA"/>
-	<color name="cursor" value="#FF8800"/>
-	<!-- ========================================================= -->
-	<!-- Global / default styles -->
-	<!-- ========================================================= -->
-	<!-- Default text (fallback for everything not explicitly styled) -->
-	<style name="text" foreground="primary" background="bg"/>
-	<!-- Text selection -->
-	<style name="selection" foreground="bg" background="#DDDDDD"/>
-	<!-- Cursor -->
-	<style name="cursor" foreground="cursor" background="bg" bold="true"/>
-	<!-- Current line highlight -->
-	<style name="current-line" background="#111111"/>
-	<!-- Line numbers -->
-	<style name="line-numbers" foreground="#555555" background="bg"/>
-	<!-- ========================================================= -->
-	<!-- Comments -->
-	<!-- ========================================================= -->
-	<!-- Line and block comments -->
-	<style name="def:comment" foreground="comment" background="bg" italic="true"/>
-	<!-- Documentation comments / docstrings -->
-	<style name="def:doc-comment" foreground="comment" background="bg" italic="true"/>
-	<!-- ========================================================= -->
-	<!-- Strings -->
-	<!-- ========================================================= -->
-	<!-- All string literals -->
-	<style name="def:string" foreground="string" background="bg"/>
-	<!-- Escapes inside strings -->
-	<style name="def:special-char" foreground="string" background="bg" bold="true"/>
-	<!-- ========================================================= -->
-	<!-- Numbers and constants -->
-	<!-- ========================================================= -->
-	<!-- Integers, floats, hex, etc. -->
-	<style name="def:number" foreground="number" background="bg"/>
-	<!-- Language constants (TRUE, FALSE, NULL, etc.) -->
-	<style name="def:constant" foreground="number" background="bg" bold="true"/>
-	<!-- ========================================================= -->
-	<!-- Keywords and flow control -->
-	<!-- ========================================================= -->
-	<!-- Keywords: if, for, return, def, class, etc. -->
-	<style name="keyword" foreground="primary" background="bg" bold="true"/>
-	<!-- Language-specific keyword fallback -->
-	<style name="def:keyword" foreground="primary" background="bg" bold="true"/>
-	<!-- Statements (used by some grammars) -->
-	<style name="def:statement" foreground="primary" background="bg"/>
-	<!-- ========================================================= -->
-	<!-- Identifiers and names -->
-	<!-- ========================================================= -->
-	<!-- Variable and function identifiers -->
-	<style name="def:identifier" foreground="secondary" background="bg"/>
-	<!-- Types and class names -->
-	<style name="def:type" foreground="secondary" background="bg" bold="true"/>
-	<!-- ========================================================= -->
-	<!-- Operators and punctuation -->
-	<!-- ========================================================= -->
-	<!-- Operators: + - * / = == etc. -->
-	<style name="def:operator" foreground="operator" background="bg"/>
-	<!-- Delimiters and punctuation: () {} [] , ; -->
-	<style name="def:punctuation" foreground="operator" background="bg"/>
-	<!-- ========================================================= -->
-	<!-- Bracket matching -->
-	<!-- ========================================================= -->
-	<!-- Matching bracket highlight -->
-	<style name="bracket-match" foreground="bg" background="primary"/>
-	<!-- Mismatched bracket highlight -->
-	<style name="bracket-mismatch" foreground="bg" background="#FF0000"/>
-	<!-- ========================================================= -->
-	<!-- Preprocessor / misc -->
-	<!-- ========================================================= -->
-	<!-- Preprocessor directives (#include, #define, etc.) -->
-	<style name="def:preprocessor" foreground="primary" background="bg"/>
+
+	<color name="bg"          value="#000"/> 
+	<color name="cyan"        value="#079"/> 
+	<color name="green"       value="#4b0"/> 
+	<color name="darkgreen"   value="#040"/> 
+	<color name="darkorange"  value="#730"/>
+	<color name="yellow"      value="#db0"/> 
+	<color name="red"         value="#f00"/> 
+	<color name="gray"        value="#666"/> 
+	<color name="orange"      value="#c30"/> 
+	<color name="magenta"     value="#f0a"/> 
+    <color name="blue"        value="#51d"/> 
+	<color name="putty"       value="#654"/> 
+	<color name="white"       value="#888"/> 
+
+	<style name="text"              foreground="white"       background="bg"/>
+	<style name="selection"         foreground="bg"          background="gray"/>
+	<style name="cursor"            foreground="red"         background="bg" bold="true"/>
+	<style name="line-numbers"      foreground="darkorange"  background="bg"/>
+	<style name="def:comment"       foreground="putty"       background="bg" italic="true"/>
+	<style name="def:string"        foreground="yellow"      background="bg"/>
+	<style name="def:number"        foreground="magenta"     background="bg"/>
+	<style name="def:keyword"       foreground="red"         background="bg" bold="true"/>
+	<style name="def:identifier"    foreground="green"       background="bg"/>
+    <style name="def:preprocessor"  foreground="blue"        background="bg" bold="true"/>
+
 </style-scheme>
