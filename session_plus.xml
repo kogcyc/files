@@ -3,27 +3,28 @@
 
 	<color name="bg"          value="#000"/> 
 	<color name="cyan"        value="#079"/> 
-	<color name="green"       value="#4b0"/> 
+	<color name="green"       value="#090"/> 
 	<color name="darkgreen"   value="#040"/> 
-	<color name="darkorange"  value="#730"/>
-	<color name="yellow"      value="#db0"/> 
-	<color name="red"         value="#f00"/> 
+	<color name="darkorange"  value="#505"/>
+	<color name="yellow"      value="#970"/> 
+	<color name="red"         value="#a00"/> 
 	<color name="gray"        value="#666"/> 
 	<color name="orange"      value="#c30"/> 
 	<color name="magenta"     value="#f0a"/> 
-  <color name="blue"        value="#51d"/> 
-	<color name="putty"       value="#654"/> 
-	<color name="white"       value="#888"/> 
+        <color name="blue"        value="#61c"/> 
+	<color name="putty"       value="#055"/> 
+	<color name="white"       value="#999"/> 
 
 	<style name="text"              foreground="white"       background="bg"/>
 	<style name="selection"         foreground="bg"          background="gray"/>
 	<style name="cursor"            foreground="red"         background="bg" bold="true"/>
 	<style name="line-numbers"      foreground="darkorange"  background="bg"/>
 	<style name="def:comment"       foreground="putty"       background="bg" italic="true"/>
-	<style name="def:string"        foreground="yellow"      background="bg"/>
-	<style name="def:number"        foreground="magenta"     background="bg"/>
+	<style name="def:string"        foreground="yellow"      background="bg" bold="false"/>
+	<style name="def:number"        foreground="magenta"     background="bg" bold="true"/>
 	<style name="def:keyword"       foreground="red"         background="bg" bold="true"/>
-	<style name="def:identifier"    foreground="green"       background="bg"/>
-  <style name="def:preprocessor"  foreground="blue"        background="bg" bold="true"/>
+	<style name="def:identifier"    foreground="green"       background="bg" bold="true"/>
+        <style name="def:preprocessor"  foreground="blue"        background="bg" bold="false"/>
+        <style name="builtin"           foreground="cyan"        background="bg" bold="true"/>
 
 </style-scheme>
