@@ -1,0 +1,4 @@
+pyftsubset FlexNerd.ttf \
+  --output-file=knerd.woff2 \
+  --flavor=woff2 \
+  --text="󰍜"
