@@ -1,0 +1,8 @@
+󰈔󰉋󰃬󰈹󰄋󰔬󰀝󰀵󰍜󰋜󰋩󰄀
+
+file,folder,edit,calc,ink,
+gimp,vscode,firefox,
+chrome,wifi,phone,car,train,
+airplane,debian,ubuntu,apple,
+windows,search,menu,home,image,
+binary,text,pdf,camera
