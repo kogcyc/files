@@ -1,60 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Hex Digit Color Adjuster</title>
+<meta charset="utf-8">
+<title>rgbval controller</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+  html { font-family: monospace; }
+
+  body {
+    margin: 24px;
+    background: #000;   /* initial rgbval */
+    color: #FFF;        /* inverse of #000 */
+  }
+
+  h1 { margin-bottom: 8px; }
+
+  code {
+    font-size: 2em;
+    padding: 4px 8px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 70px);
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 6px;
+    cursor: pointer;
+  }
+
+</style>
 </head>
+
 <body>
-<h2>Hex Digit Color Adjuster</h2>
-<input type="text" id="colorInput" value="#aaccee" maxlength="7">
-<button onclick="scaleHex(-1)">Scale -</button>
-<button onclick="scaleHex(1)">Scale +</button><br><br>
-<button onclick="adjustChannel('r', -1)">R-</button>
-<button onclick="adjustChannel('r', 1)">R+</button>
-<button onclick="adjustChannel('g', -1)">G-</button>
-<button onclick="adjustChannel('g', 1)">G+</button>
-<button onclick="adjustChannel('b', -1)">B-</button>
-<button onclick="adjustChannel('b', 1)">B+</button><br><br>
-<div id="colorDisplay" style="width:200px;height:200px;margin-top:10px;"></div>
+
+  <code id="rgbText">#000</code>
+
+  <div class="grid">
+    <button onclick="bump('r', -1)">R−</button>
+    <button onclick="bump('r', +1)">R+</button>
+
+    <button onclick="bump('g', -1)">G−</button>
+    <button onclick="bump('g', +1)">G+</button>
+
+    <button onclick="bump('b', -1)">B−</button>
+    <button onclick="bump('b', +1)">B+</button>
+
+    <button onclick="shift(-1)">S−</button>
+    <button onclick="shift(+1)">S+</button>
+  </div>
 
 <script>
-function adjustHexDigit(digit, delta) {
-    let val = parseInt(digit, 16);
-    val = Math.max(0, Math.min(15, val + delta));
-    return val.toString(16);
-}
+  let rgbval = "#000";
 
-function scaleHex(delta) {
-    let input = document.getElementById('colorInput').value;
-    if (/^#([0-9a-fA-F]{6})$/.test(input)) {
-        let hex = input.substring(1).split('');
-        for (let i = 0; i < 6; i++) {
-            hex[i] = adjustHexDigit(hex[i], delta);
-        }
-        let newHex = "#" + hex.join('');
-        updateDisplay(newHex);
-    } else {
-        alert("Invalid 6-hex color format (e.g. #aaccee)");
-    }
-}
+  function clamp(n) {
+    n = n % 16;
+    return n < 0 ? n + 16 : n;
+  }
 
-function adjustChannel(channel, delta) {
-    let input = document.getElementById('colorInput').value;
-    if (/^#([0-9a-fA-F]{6})$/.test(input)) {
-        let hex = input.substring(1).split('');
-        let indices = { r: [0,1], g: [2,3], b: [4,5] };
-        indices[channel].forEach(i => hex[i] = adjustHexDigit(hex[i], delta));
-        let newHex = "#" + hex.join('');
-        updateDisplay(newHex);
-    } else {
-        alert("Invalid 6-hex color format (e.g. #aaccee)");
-    }
-}
+  function parse() {
+    const h = rgbval.slice(1);
+    return {
+      r: parseInt(h[0], 16),
+      g: parseInt(h[1], 16),
+      b: parseInt(h[2], 16)
+    };
+  }
 
-function updateDisplay(hex) {
-    document.getElementById('colorInput').value = hex;
-    document.getElementById('colorDisplay').style.backgroundColor = hex;
-}
+  function toHex({ r, g, b }) {
+    return "#" +
+      r.toString(16).toUpperCase() +
+      g.toString(16).toUpperCase() +
+      b.toString(16).toUpperCase();
+  }
+
+  function invert({ r, g, b }) {
+    return toHex({
+      r: 15 - r,
+      g: 15 - g,
+      b: 15 - b
+    });
+  }
+
+  function render() {
+    document.body.style.background = rgbval;
+    document.body.style.color = invert(parse());
+    document.getElementById("rgbText").textContent = rgbval;
+    document.title = rgbval;
+  }
+
+  function bump(channel, delta) {
+    const c = parse();
+    c[channel] = clamp(c[channel] + delta);
+    rgbval = toHex(c);
+    render();
+  }
+
+  function shift(dir) {
+    const c = parse();
+    const delta = dir > 0 ? 1 : -1;
+
+    c.r = Math.min(15, Math.max(0, c.r + delta));
+    c.g = Math.min(15, Math.max(0, c.g + delta));
+    c.b = Math.min(15, Math.max(0, c.b + delta));
+
+    rgbval = toHex(c);
+    render();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    render();
+  });
 </script>
 </body>
 </html>
