@@ -1,0 +1,2 @@
+ffmpeg -framerate 24 -i roll%04d.png \
+  -c:v libx264 -crf 18 -pix_fmt yuv420p chain_outer_left.mp4
