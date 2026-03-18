@@ -10,7 +10,7 @@ import urllib.error
 import urllib.request
 
 # Update this to the directory that hosts the target scripts.
-BASE_URL = "https://something.github.io/files/somewhere"
+BASE_URL = "https://kogcyc.github.io/files/remote"
 
 SCRIPT_NAME_RE = re.compile(r"^[A-Za-z0-9_-]+$")
 
