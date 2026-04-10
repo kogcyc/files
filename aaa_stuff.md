@@ -46,7 +46,17 @@ put it in .bashrc if you want it permanent
 
     git clone https://github.com/themix-project/oomox-gtk-theme.git
 
-    ./change_color.sh -o zzz <(echo -e "
+    sudo apt update
+
+    sudo apt install \
+    sassc \
+    libglib2.0-dev-bin \
+    librsvg2-bin \
+    gtk2-engines-murrine \
+    gtk2-engines-pixbuf
+
+    ./change_color.sh -o color color.color
+
     BG=113322
     FG=ffffff
 
@@ -77,7 +87,7 @@ put it in .bashrc if you want it permanent
     HOVER_FG=ffffff
     DISABLED_BG=445566
     DISABLED_FG=888888
-    ")
+
 
     https://github.com/PapirusDevelopmentTeam/papirus-folders?tab=readme-ov-file#script-usage
 
