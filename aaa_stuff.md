@@ -135,4 +135,17 @@ put it in .bashrc if you want it permanent
     sudo apt install libdvdcss2 
     sudo dpkg-reconfigure libdvd-pkg
 
+### install XFCE on RPI4
 
+    Imager Raspberry Pi OS Lite 64bit on to an SD
+
+    sudo apt update
+    sudo apt upgrade
+
+    sudo apt install xserver-xorg
+    sudp apt install xfce4 xfce4-terminal
+
+    sudo apt install lightdm (might be installed by default
+
+    sudo systemctl enable lightdm
+    sudo systemctl start lightdm
