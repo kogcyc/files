@@ -1,0 +1,68 @@
+
+
+   
+
+   0 setup-xorg-base
+   1 python3
+   2 df
+   3 setup-desktop
+   4 df
+   5 startx
+   6 apk install papirus-icon-theme
+   7 apk addd papirus-icon-theme
+   8 apk add papirus-icon-theme
+   9 whoami
+  10 apk add gimp
+  11 convert
+  12 apk add imagemagick
+  13 df
+  14 convert
+  15 ls
+  16 mkdir Pictures
+  17 cd Pictures/
+  18 magick -size 160x90 xc:transparent output.png
+  19 wget
+  20 wget kogcyc.github.io/selling/hard_linux.py
+  21 apk add python3
+  22 python3
+  23 python3 hard_linux.py 
+  24 apk add dmidecode
+  25 python3 hard_linux.py 
+  26 apk add lscpu
+  27 python3 hard_linux.py 
+  28 apk add lsblk
+  29 python3 hard_linux.py 
+  30 apk add openscad
+  31 cat /sys/class/power_supply/BAT0/capacity
+  32 shutdown -now
+  33 shutdown
+  34 halt
+  35 cd /etc
+  36 ls
+  37 cd wpa_supplicant/
+  38 ls
+  39 cat wpa_supplicant.conf 
+  40 mousepad wpa_supplicant.conf 
+  41 apk add mousepad
+  42 mousepad wpa_supplicant.conf 
+  43 df
+  44 python3
+  45 apk update
+  46 apk add alsa-utils alsa-lib
+  47 addgroup root audio
+  48 alsamixer
+  49 rc-service alsa start
+  50 alsamixer
+  51 apk add pipewire-pulse pavucontrol
+  52 pavucontrol
+  53 alsamixer
+  54 pavucontrol
+  55 apk add pipewire-pulse
+  56 pipewire & wireplumber & pipewire-pulse &
+  57 pulseaudio --start
+  58 pulseaudio
+  59 pavucontrol
+  60 speaker-test -t sine -f 440
+  61 addgroup root audio
+  62 pulseaudio --start
+  63 pavucontrol
