@@ -1,0 +1,42 @@
+sudo mkdir -p /mnt/sambaEF
+sudo mount -t exfat /dev/sdb2 /mnt/sambaEF
+sudo mousepad /etc/fstab
+
+Add:
+
+UUID=7EFF-DE46 /mnt/sambaEF exfat defaults,uid=1000,gid=1000,umask=0022 0 0
+
+Then:
+
+sudo umount /mnt/sambaEF
+sudo systemctl daemon-reload
+sudo mount -a
+
+Test:
+
+touch /mnt/sambaEF/testfile
+
+Edit Samba:
+
+sudo mousepad /etc/samba/smb.conf
+
+Add:
+
+[sambaEF]
+comment = 750GB exFAT Samba Share
+path = /mnt/sambaEF
+read only = no
+valid users = matt
+force user = matt
+create mask = 0755
+
+Then:
+
+testparm
+sudo smbpasswd -a matt
+sudo systemctl restart smbd
+smbclient //localhost/sambaEF -U matt -c 'ls'
+
+From another computer:
+
+smb://192.168.12.218/sambaEF
