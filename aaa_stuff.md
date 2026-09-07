@@ -53,7 +53,8 @@ put it in .bashrc if you want it permanent
     libglib2.0-dev-bin \
     librsvg2-bin \
     gtk2-engines-murrine \
-    gtk2-engines-pixbuf
+    gtk2-engines-pixbuf \
+    libgdk-pixbuf-xlib-2.0-dev
 
     ./change_color.sh -o color color.color
 
