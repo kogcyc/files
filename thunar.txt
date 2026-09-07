@@ -1,0 +1,2 @@
+xclip -selection clipboard -i %f	               file -> clipboard
+xclip -selection clipboard -o > %f	               clipboard -> file
