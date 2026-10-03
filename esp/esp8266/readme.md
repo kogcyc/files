@@ -74,7 +74,16 @@ while True:
     time.sleep(0.5)
 ```
 
+## 9) Stop Python on the ESP8266
+```bash
+sudo lsof /dev/ttyUSB0
+```
+this will show you the process number - kill it
+
 ---
+
+
+--- 
 
 ## Troubleshooting
 - **Permission denied**: re-login after adding `dialout`.
